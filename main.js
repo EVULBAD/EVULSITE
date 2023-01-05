@@ -1,9 +1,9 @@
-const animation = document.querySelector(".animation");
+const button = document.querySelector(".button");
 const locked = document.querySelector("#locked");
 
-animation.addEventListener('click',()=>{
-    animation.classList.add("ani_locked");
+button.addEventListener("click",()=>{
+    locked.classList.add("ani_locked");
     setTimeout(function() {
-        animation.classList.remove("ani_locked");
-    },210);
+        locked.classList.remove("ani_locked");
+    },200);
 })
