@@ -1,13 +1,11 @@
 /* ALL PAGES */
-body {
-    margin:0;
-    height:100%;
-    width:100%;
-    color:black;
+html, body {
+	margin:0;
+	height:100%;
 }
 
-.hide_frame {
-    display:none;
+body {
+    background:black;
 }
 
 /* LANDING PAGE */
@@ -25,12 +23,11 @@ door img::selection{
 
 door img {
     max-width:100vw;
-    height:100%;
     pointer-events:none;
 }
 
 dust {
-	background:url(https://media2.giphy.com/media/LOXI5APpNVSxStuOpT/giphy.gif?cid=6c09b952f67712c40c98345a6c3a44a80d0062b526c48daa&rid=giphy.gif&ct=s);
+	background:url(https://media2.giphy.com/media/LOXI5APpNVSxStuOpT/giphy.gif?cid=6c09b952f67712c40c98345a6c3a44a80d0062b526c48daa&rid=giphy.gif&ct=s); /* placeholder gif - to replace */
 	background-size:contain;
 	position:absolute;
 	opacity:0.04;
@@ -42,3 +39,22 @@ dust {
 }
 
 /* LANDING PAGE ANIMATION */
+.animation#locked {
+    background:url(imgs/door_locked_sheet.png);
+    width:583px;
+    position:fixed;
+    top:110px;
+    left:688px;
+    cursor:pointer;
+    z-index:999;
+    height:879px;
+}
+
+.ani_locked {
+    animation: locked 0.2s steps(5) forwards;
+}
+
+@keyframes locked {
+    from {background-position:-583px;}
+    to {background-position:-3498px;}
+}
