@@ -8,6 +8,10 @@ body {
     background:black;
 }
 
+.hidden {
+    display:none;
+}
+
 /* LANDING PAGE */
 door {
     position:fixed;
@@ -24,6 +28,16 @@ door svg {
 
 door img::selection{
     background:rgba(0, 0, 0, 0);
+}
+
+.button {
+    cursor:pointer;
+    fill:transparent;
+    transition:0.3s;
+}
+
+.button:hover {
+    fill:rgba(255, 238, 0, 0.05)
 }
 
 dust {
@@ -43,16 +57,8 @@ dust {
 }
 
 #locked img {
-    width: 600%;
-}
-
-/* LANDING PAGE ANIMATION */
-.ani_locked {
-    animation-delay: 0s;
-    animation: locked 200ms 0s steps(5) forwards;
-}
-
-@keyframes locked {
-    0% {transform:translateX(-100vw);}
-    100% {transform:translateX(-600vw);}
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
 }
