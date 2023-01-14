@@ -1,5 +1,5 @@
 //declaration of button.
-const button = document.querySelector(".button");
+let button = document.querySelector(".button");
 
 //when svg w/ class ".button" is clicked...
 button.addEventListener("click",(e)=>{
@@ -11,8 +11,8 @@ button.addEventListener("click",(e)=>{
     let frameCount = document.getElementById(aniName).children.length;
     //finds div that contains animation frames.
     let aniFrames = document.getElementById(aniName);
-    //finds div's start frame.
-    let startFrame = aniFrames.firstElementChild;
+    //finds div's start frame. has to find first element child and skip to the next element sibling to skip the svg.
+    let startFrame = aniFrames.firstElementChild.nextElementSibling;
     //finds div's first frame.
     let nextFrame = startFrame.nextElementSibling;
 
