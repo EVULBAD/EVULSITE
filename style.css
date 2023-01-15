@@ -9,6 +9,34 @@ body {
     overflow:hidden;
 }
 
+footer {
+	background:black;
+	color:dimgrey;
+	width:100%;
+    z-index:999;
+    position:absolute;
+    bottom:0;
+    padding:0.25% 0 0.25% 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+}
+
+footer p {
+    padding:0;
+    margin:0;
+    text-align:center;
+}
+
+footer p:first-child{
+    margin-bottom:0.75%;
+}
+
+footer a {
+    color:dimgrey;
+}
+
 .hidden {
     z-index:1;
 }
@@ -51,14 +79,14 @@ door img::selection{
 }
 
 .button:hover {
-    fill:rgba(255, 238, 0, 0.05)
+    fill:rgba(255,238,0,0.05)
 }
 
 dust {
 	background:url(https://media2.giphy.com/media/LOXI5APpNVSxStuOpT/giphy.gif?cid=6c09b952f67712c40c98345a6c3a44a80d0062b526c48daa&rid=giphy.gif&ct=s); /* placeholder gif - to replace */
 	background-size:contain;
 	position:absolute;
-	opacity:0.1;
+	opacity:0.05;
 	pointer-events:none;
 	overflow:hidden;
 	height:100vh;

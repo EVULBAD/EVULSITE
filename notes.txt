@@ -18,19 +18,6 @@ https://www.image-map.net/ - image map gen
 
 redirect to mobile website - https://pagecrafter.com/redirect-to-mobile-website-tutorial/
 
-        <img class="hide_frame" src="imgs/door_locked.001.png"></img>
-        <img class="hide_frame" src="imgs/door_locked.002.png"></img>
-        <img class="hide_frame" src="imgs/door_locked.003.png"></img>
-        <img class="hide_frame" src="imgs/door_locked.004.png"></img>
-        <img class="hide_frame" src="imgs/door_locked.005.png"></img>
-
-
--need to re-render:
-    -door view zoomed out
-    -isolated door
-
-
-
     /*for (let i = 0; i < (frameCount - 3); i++) {
         currentFrame = nextFrame;
         console.log(currentFrame);
@@ -40,3 +27,10 @@ redirect to mobile website - https://pagecrafter.com/redirect-to-mobile-website-
             nextFrame.classList.remove("hidden"); nextFrame.classList.add("current");
         },1000);
     }*/
+
+dark door fade in
+light door flickers comes on
+lighting buzz sound fx
+door jiggle sound fx
+
+https://levelup.gitconnected.com/use-javascript-to-make-an-element-follow-the-cursor-3872307778b4 - div follow cursor
