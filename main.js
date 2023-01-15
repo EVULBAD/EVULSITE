@@ -1,21 +1,19 @@
-//declaration of button.
+//cursor-following text box.
+let textbox = document.getElementById("textbox");
+const onMouseMove = (e) =>{
+    textbox.style.left = e.pageX + "px";
+    textbox.style.top = e.pageY + "px";
+}
+document.addEventListener("mousemove", onMouseMove);
+
+//animation.
 let button = document.querySelector(".button");
-
-//when svg w/ class ".button" is clicked...
 button.addEventListener("click",(e)=>{
-    //searches for the second class in clicked target's class list, which is the name of the animation.
     let aniName = e.target.classList[1];
-    //gets the amount of frames (excluding start frame):
-    //  1. uses aniName to search for the element with the same id as aniName.
-    //  2. it then counts the amount of children inside the div that shares said id, which is the number of frames for the animation.
     let frameCount = document.getElementById(aniName).children.length;
-    //finds div that contains animation frames.
     let aniFrames = document.getElementById(aniName);
-    //finds div's start frame. has to find first element child and skip to the next element sibling to skip the svg.
     let startFrame = aniFrames.firstElementChild.nextElementSibling;
-    //finds div's first frame.
     let nextFrame = startFrame.nextElementSibling;
-
     startFrame.classList.add("hidden"); startFrame.classList.remove("current");
     nextFrame.classList.remove("hidden"); nextFrame.classList.add("current");
     let currentFrame = nextFrame; //currently: 001

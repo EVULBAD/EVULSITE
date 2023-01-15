@@ -32,5 +32,3 @@ dark door fade in
 light door flickers comes on
 lighting buzz sound fx
 door jiggle sound fx
-
-https://levelup.gitconnected.com/use-javascript-to-make-an-element-follow-the-cursor-3872307778b4 - div follow cursor
