@@ -2,33 +2,19 @@ https://stackoverflow.com/questions/9486961/animated-image-with-javascript - ani
 
 https://codepen.io/jcoulterdesign/pen/NOMeEb - fully html/css game
 
-https://www1.flightrising.com/effort/1 - flight rising sprite animations
-
 https://medium.com/jspoint/creating-css-animations-using-sprite-sheet-47e2b7a3793c - sprite animations
-
-https://www.youtube.com/watch?v=kgqMcFrT51o - addeventlistener toggle animations
-
-https://www.youtube.com/watch?v=hTvcQpwY_tc&t=644s - addeventlistener
 
 https://imagemapper.noc.io/#/ - responsive image mapping
 
 https://codeshack.io/images-sprite-sheet-generator/ - sprite sheet generator
 
-https://www.image-map.net/ - image map gen
-
-redirect to mobile website - https://pagecrafter.com/redirect-to-mobile-website-tutorial/
-
-    /*for (let i = 0; i < (frameCount - 3); i++) {
-        currentFrame = nextFrame;
-        console.log(currentFrame);
-        nextFrame = nextFrame.nextElementSibling;
-        setTimeout(function() {
-            currentFrame.classList.add("hidden"); currentFrame.classList.remove("current");
-            nextFrame.classList.remove("hidden"); nextFrame.classList.add("current");
-        },1000);
-    }*/
+https://github.com/sebarmeli/JS-Redirection-Mobile-Site - mobile redirection
 
 dark door fade in
 light door flickers comes on
 lighting buzz sound fx
 door jiggle sound fx
+
+city ambience: https://youtu.be/jX-0Wb_wQsY
+light hum: https://youtu.be/BL8B_yh2iJs
+door locked: https://youtu.be/44TAvrrTfuk

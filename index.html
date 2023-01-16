@@ -5,17 +5,21 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=B612+Mono=swap" rel="stylesheet"> 
 </head>
 <body>
-    <dust></dust>
     <div id="textbox" class="hidden">
-        <p id="locked_txt">locked!</p>
+        <p id="locked_txt"><span style="color:red;">closed up</span>! just like the sign says.<br>crazy how that works.</p>
     </div>
     <door>
         <div id="locked" class="animate">
             <svg version="1.1" width="1920px" height="1080px" viewbox="0 0 1920 1080" preserveAspectRatio="xMidYMax slice">
-                <polygon class="button locked" points="1040,632,1083,632,1077,718,1033,720"></polygon>
+                <polygon class="button locked" points="1041,640,1083,640,1078,721,1034,723"></polygon>
             </svg>
+            <img id="overlay" src="imgs/door_overlay.png">
+            <dust></dust>
             <img rel="preload" src="imgs/door_closed.png" class="current">
             <img rel="preload" src="imgs/door_locked.001.png" class="hidden">
             <img rel="preload" src="imgs/door_locked.002.png" class="hidden">
@@ -26,7 +30,7 @@
     </door>
     <footer>
         <div id="innerfooter">
-            <p>copyright © 2023 EVULBAD // <a href="mailto:evulbad@gmail.com">contact me</a> // someday, there'll be a sitemap here. not today though</p>
+            <p>copyright © 2023 EVULBAD ◈ <a href="mailto:evulbad@gmail.com">contact me</a> ◈ someday, there'll be a sitemap here. not today though</p>
         </div>
     </footer>
 </body>
