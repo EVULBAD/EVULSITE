@@ -5,14 +5,33 @@ window.onload = function() {
     ambience.play();
 };*/
 
+//overlay resizer.
+let overlayRef = document.querySelector(".animate img");
+const overlay = document.getElementById("overlay");
+let overlayWidth = overlayRef.getBoundingClientRect().width;
+let overlayHeight = overlayRef.getBoundingClientRect().height;
+overlay.style.width = overlayWidth + "px"; overlay.style.height = overlayHeight + "px";
+window.addEventListener("resize", function(){
+    overlayRef = document.querySelector(".animate img");
+    overlayWidth = overlayRef.getBoundingClientRect().width;
+    overlayHeight = overlayRef.getBoundingClientRect().height;
+    overlay.style.width = overlayWidth + "px"; overlay.style.height = overlayHeight + "px";
+    }
+)
+
+//declaration of cursor-following text box.
+function cursorPal(e) {
+    textbox.style.left = e.pageX + "px"; textbox.style.top = e.pageY + "px";
+}
+
 //animation.
 let button = document.querySelector(".button");
 let timer;
 button.addEventListener("click",(e)=>{
     let aniName = e.target.classList[1];
-    let frameCount = (document.getElementById(aniName).children.length)-3;
+    let frameCount = (document.getElementById(aniName).children.length)-1;
     let aniFrames = document.getElementById(aniName);
-    let startFrame = aniFrames.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling;
+    let startFrame = aniFrames.firstElementChild;
     let nextFrame = startFrame.nextElementSibling;
     clearTimeout(timer);
     startFrame.classList.add("hidden"); startFrame.classList.remove("current");
@@ -33,12 +52,9 @@ button.addEventListener("click",(e)=>{
         currentFrame = nextFrame;
     },(41.7*frameCount));
     //button audio.
-    let audio = new Audio("sounds/" + aniName + ".mp3"); audio.play();
-    //cursor-following text box.
-    function cursorPal(e) {
-        textbox.style.left = e.pageX + "px"; textbox.style.top = e.pageY + "px";
-    }
-    let textbox = document.getElementById("textbox");
+    let audio = new Audio("sounds/" + aniName + ".wav"); audio.play();
+    //activation of cursor-following text box w/ click.
+    const textbox = document.getElementById("textbox");
     textbox.style.left = e.pageX + "px"; textbox.style.top = e.pageY + "px";
     textbox.classList.remove("hidden");
     document.addEventListener("mousemove", cursorPal);
@@ -47,3 +63,4 @@ button.addEventListener("click",(e)=>{
         document.removeEventListener("mousemove",cursorPal);
     },5000)
 });
+document.removeEventListener("mousemove",cursorPal);

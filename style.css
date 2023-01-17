@@ -18,7 +18,46 @@ img.current {
 }
 
 #overlay {
+    pointer-events:none;
+    z-index:999;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    overflow:hidden;
+}
+
+#overlay img {
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+wiggle {
+    width:100%;
+    height:100%;
     z-index:10;
+    background:url("imgs/wiggle.png") 0 0 repeat-y;
+    position:absolute;
+    top:0;
+    left:0;
+    background-size:3% 50%;
+}
+
+wiggle#left{
+    animation: moveUp 3s infinite linear;
+}
+
+wiggle#right {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+    animation: moveDown 3s infinite linear;
 }
 
 #textbox.hidden {
@@ -53,7 +92,7 @@ img.current {
 footer {
 	background:black;
 	color:rgb(75, 75, 75);
-	width:100%;
+	width:100vw;
     z-index:999;
     position:absolute;
     bottom:0;
@@ -61,6 +100,10 @@ footer {
     display:flex;
     align-items:center;
     justify-content:center;
+}
+
+#innerfooter {
+    padding:0 0.75%;
 }
 
 footer p {
@@ -79,6 +122,25 @@ footer a {
     color:rgb(75, 75, 75);
 }
 
+/* ANIMATION */
+@keyframes moveDown {
+    0% {
+        background-position-y:0;   
+    }
+    100% {
+        background-position-y:100%;
+    }
+}
+
+@keyframes moveUp {
+    100% {
+        background-position-y:0;   
+    }
+    0% {
+        background-position-y:100%;
+    }
+}
+
 /* LANDING PAGE */
 door {
     position:fixed;
@@ -95,7 +157,6 @@ door svg {
     height:fit-content;
     max-width:100%;
     max-height:100%;
-    position:absolute;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
@@ -116,16 +177,10 @@ door img::selection{
     fill:rgba(255,238,0,0.05)
 }
 
-dust {
-	background:url(https://media2.giphy.com/media/LOXI5APpNVSxStuOpT/giphy.gif?cid=6c09b952f67712c40c98345a6c3a44a80d0062b526c48daa&rid=giphy.gif&ct=s); /* placeholder gif - to replace */
-	background-size:contain;
-	position:absolute;
-	opacity:0.05;
-	pointer-events:none;
-	overflow:hidden;
-	height:100vh;
-	width:100vw;
+#dust {
+	opacity:0.01;
     z-index:9;
+    display:block;
 }
 
 #locked {

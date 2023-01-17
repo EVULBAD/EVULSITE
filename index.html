@@ -14,19 +14,24 @@
         <p id="locked_txt"><span style="color:red;">closed up</span>! just like the sign says.<br>crazy how that works.</p>
     </div>
     <door>
-        <div id="locked" class="animate">
-            <svg version="1.1" width="1920px" height="1080px" viewbox="0 0 1920 1080" preserveAspectRatio="xMidYMax slice">
-                <polygon class="button locked" points="1041,640,1083,640,1078,721,1034,723"></polygon>
-            </svg>
-            <img id="overlay" src="imgs/door_overlay.png">
-            <dust></dust>
-            <img rel="preload" src="imgs/door_closed.png" class="current">
-            <img rel="preload" src="imgs/door_locked.001.png" class="hidden">
-            <img rel="preload" src="imgs/door_locked.002.png" class="hidden">
-            <img rel="preload" src="imgs/door_locked.003.png" class="hidden">
-            <img rel="preload" src="imgs/door_locked.004.png" class="hidden">
-            <img rel="preload" src="imgs/door_locked.005.png" class="hidden">
+        <svg version="1.1" width="1920px" height="1080px" viewbox="0 0 1920 1080" preserveAspectRatio="xMidYMax slice">
+            <polygon class="button locked" points="1041,640,1083,640,1078,721,1034,723"></polygon>
+        </svg>
+        <div id="overlay">
+            <img id="dust" src="imgs/dust.gif">
+            <wiggle id="left"></wiggle><wiggle id="right"></wiggle>
+            <img src="imgs/door_overlay.png">
         </div>
+        <main>
+            <div id="locked" class="animate">
+                <img rel="preload" src="imgs/door_closed.png" class="current">
+                <img rel="preload" src="imgs/door_locked.001.png" class="hidden">
+                <img rel="preload" src="imgs/door_locked.002.png" class="hidden">
+                <img rel="preload" src="imgs/door_locked.003.png" class="hidden">
+                <img rel="preload" src="imgs/door_locked.004.png" class="hidden">
+                <img rel="preload" src="imgs/door_locked.005.png" class="hidden">
+            </div>
+        </main>
     </door>
     <footer>
         <div id="innerfooter">
