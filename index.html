@@ -7,9 +7,10 @@
     <link href="style.css" rel="stylesheet" type="text/css" media="all">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=B612+Mono=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=B612+Mono=swap"> 
 </head>
 <body>
+    <!--<script>0</script>-->
     <div id="textbox" class="hidden">
         <p id="locked_txt"><span style="color:red;">closed up</span>! just like the sign says.<br>crazy how that works.</p>
     </div>
@@ -18,6 +19,12 @@
             <polygon class="button locked" points="1041,640,1083,640,1078,721,1034,723"></polygon>
         </svg>
         <div id="overlay">
+            <div id="volume">
+                <div id="volbuttcont">
+                    <i id="volume_button" class="fa-solid fa-fw fa-volume-high"></i>
+                </div>
+                <input id="volume_input" type="range" min="0" max="100"></input>
+            </div>
             <img id="dust" src="imgs/dust.gif">
             <wiggle id="left"></wiggle><wiggle id="right"></wiggle>
             <img src="imgs/door_overlay.png">
@@ -40,4 +47,5 @@
     </footer>
 </body>
 </html>
-<script preload src="main.js"></script>
+<script defer src="main.js"></script>
+<script defer src="https://kit.fontawesome.com/026267e182.js" crossorigin="anonymous"></script>
