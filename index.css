@@ -1,28 +1,22 @@
-/* ALL PAGES */
-html, body {
-	margin:0;
-	height:100%;
-}
-
-body {
+#index main {
     background:black;
     overflow:hidden;
 }
-
-img.hidden {
+    
+#index img.hidden {
     z-index:1;
 }
-
-img.current {
+    
+#index img.current {
     z-index:2;
 }
-
-#volbuttcont {
+    
+#index #volbuttcont {
     width:auto;
     padding-right:2%;
 }
-
-#volume {
+    
+#index #volume {
     position:absolute;
     top:0;
     right:0;
@@ -39,15 +33,15 @@ img.current {
     justify-content:center;
 }
 
-#volume:hover{
+#index #volume:hover{
     opacity:1;
 }
 
-#volume i {
+#index #volume i {
     color:white;
 }
 
-#volume input {
+#index #volume input {
     -webkit-appearance:none;
     overflow:hidden;
     border-radius:0;
@@ -55,11 +49,11 @@ img.current {
     cursor:pointer;
 }
 
-::-webkit-slider-runnable-track {
+#index ::-webkit-slider-runnable-track {
     background:black;
 }
 
-::-webkit-slider-thumb {
+#index ::-webkit-slider-thumb {
     -webkit-appearance:none;
     height:100%;
     width:12%;
@@ -68,12 +62,12 @@ img.current {
     border:none;
 }
 
-::-moz-range-track {
+#index ::-moz-range-track {
     height:100%;
     background:black;
 }
 
-::-moz-range-thumb {
+#index ::-moz-range-thumb {
     background:white;
     height:100%;
     width:12%;
@@ -83,11 +77,11 @@ img.current {
     box-sizing:border-box;
 }
 
-::-ms-fill-lower { 
+#index ::-ms-fill-lower { 
     background:red;
 }
 
-::-ms-thumb { 
+#index ::-ms-thumb { 
     background:white;
     border:none;
     height:100%;
@@ -95,26 +89,26 @@ img.current {
     box-sizing:border-box;
 }
 
-::-ms-ticks-after { 
+#index ::-ms-ticks-after { 
     display:none; 
 }
 
-::-ms-ticks-before { 
+#index ::-ms-ticks-before { 
     display: none; 
 }
 
-::-ms-track { 
+#index ::-ms-track { 
     background:black;
     color:transparent;
     height:100%;
     border:none;
 }
 
-::-ms-tooltip { 
+#index ::-ms-tooltip { 
     display:none;
 }
 
-#overlay {
+#index #overlay {
     z-index:999;
     position:absolute;
     top:50%;
@@ -124,7 +118,7 @@ img.current {
     pointer-events:none;
 }
 
-#overlay img {
+#index #overlay img {
     width:100%;
     height:100%;
     position:absolute;
@@ -132,7 +126,7 @@ img.current {
     left:0;
 }
 
-wiggle {
+#index wiggle {
     width:100%;
     height:100%;
     z-index:10;
@@ -143,11 +137,11 @@ wiggle {
     background-size:3% 50%;
 }
 
-wiggle#left{
+#index wiggle#left{
     animation: moveUp 3s infinite linear;
 }
 
-wiggle#right {
+#index wiggle#right {
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);
@@ -157,12 +151,12 @@ wiggle#right {
     animation: moveDown 3s infinite linear;
 }
 
-#textbox.hidden {
+#index #textbox.hidden {
     opacity:0;
     transition:opacity 0.3s;
 }
 
-#textbox {
+#index #textbox {
     background:black;
     color:white;
     width:fit-content;
@@ -176,7 +170,7 @@ wiggle#right {
     backface-visibility:hidden;
 }
 
-#textbox p {
+#index #textbox p {
     pointer-events:none;
     text-transform:uppercase;
     margin:0;
@@ -187,48 +181,15 @@ wiggle#right {
     letter-spacing:1px;
 }
 
-footer {
-	background:black;
-	color:rgb(75, 75, 75);
-	width:100vw;
-    z-index:999;
-    position:absolute;
-    bottom:0;
-    padding:0.5% 0 0.25% 0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-#innerfooter {
-    padding:0 0.75%;
-}
-
-footer p {
-    font-family:"Inconsolata", monospace;
-    padding:0;
-    margin:0;
-    text-align:center;
-    font-size:14px;
-}
-
-footer p:first-child{
-    margin-bottom:0.75%;
-}
-
-footer a {
-    color:rgb(75, 75, 75);
-}
-
 /* ANIMATION */
-.button {
+#index .button {
     cursor:pointer;
     fill:yellow;
     opacity:.2;
     transition:0.3s;
 }
 
-.button:hover {
+#index .button:hover {
     fill:rgba(255,238,0,0.05)
 }
 
@@ -251,15 +212,7 @@ footer a {
 }
 
 /* LANDING PAGE */
-door {
-    position:fixed;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
-}
-
-door svg {
+#index main svg {
     position:absolute;
     z-index:999;
     width:auto;
@@ -271,24 +224,24 @@ door svg {
     transform: translate(-50%,-50%);
 }
 
-door img::selection{
+#index main img::selection{
     background:rgba(0, 0, 0, 0);
 }
 
-#dust {
-	opacity:0.02;
+#index #dust {
+    opacity:0.02;
     z-index:9;
     display:block;
 }
 
-#locked {
+#index #locked {
     width:100vw;
     display:flex;
     align-content:center;
     justify-content:center;
 }
 
-#locked img {
+#index #locked img {
     width:auto;
     max-width:100%;
     max-height:100vh;

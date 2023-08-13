@@ -1,0 +1,45 @@
+html, body {
+	margin:0;
+	height:100%;
+}
+
+main {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+}
+
+footer {
+    background:black;
+    color:rgb(75, 75, 75);
+    width:100vw;
+    z-index:999;
+    position:absolute;
+    bottom:0;
+    padding:0.5% 0 0.25% 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+#innerfooter {
+    padding:0 0.75%;
+}
+
+footer p {
+    font-family:"Inconsolata", monospace;
+    padding:0;
+    margin:0;
+    text-align:center;
+    font-size:14px;
+}
+
+footer p:first-child{
+    margin-bottom:0.75%;
+}
+
+footer a {
+    color:rgb(75, 75, 75);
+}
