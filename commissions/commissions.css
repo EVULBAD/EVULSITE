@@ -2,7 +2,7 @@
     display:flex;
 }
 
-#commissions main a {
+#commissions a.twod, #commissions a.threed {
     width:100%;
     height:100%;
     display:block;
@@ -26,6 +26,8 @@
     height:100%;
     display:block;
     opacity:0.6;
+    z-index:0;
+    position:relative;
 }
 
 #commissions .twod background {
@@ -44,4 +46,35 @@
     background-size:2100px;
     background-attachment: fixed;
     background-repeat:no-repeat;
+}
+
+#commissions content {
+    color:white;
+    z-index:1;
+    display:flex;
+    align-items: center;;
+    width:66.66%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+#commissions vertical_wrap {
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    flex-grow: 4;
+    height:100%;
+}
+
+#commissions jump, #commissions commission_type, #commissions .nav, #commissions form {
+    background:grey;
+    margin:10px;
+    padding:10px;
+}
+
+a.nav {
+    width:15%;
+    text-align:center;
 }
