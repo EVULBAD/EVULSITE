@@ -1,4 +1,4 @@
 # EVULSITE
-this is my house.
+I'm an artist, and social media hates me for it! I need to make my own home to showcase me and my art. So, this is my house.
 
-i'm an artist, and social media hates me for it! i need to make my own home to showcase me and my art.
+At the moment, image and audio assets are private. They will become public once they're up on [my website](https://www.evulbad.com).
