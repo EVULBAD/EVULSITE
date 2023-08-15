@@ -1,5 +1,6 @@
 #commissions main {
     display:flex;
+    overflow-x:hidden;
 }
 
 #commissions a.twod, #commissions a.threed {
@@ -21,13 +22,18 @@
     flex-grow: 3;
 }
 
+/*BACKGROUND IMAGES*/
 #commissions background {
     width:100%;
     height:100%;
     display:block;
-    opacity:0.6;
     z-index:0;
-    position:relative;
+    position:fixed;
+    filter:brightness(0.6);
+    -webkit-transition:filter 1000ms;
+	-moz-transition:filter 1000ms;
+	transition:filter 1000ms;
+    overflow:hidden;
 }
 
 #commissions .twod background {
@@ -48,12 +54,68 @@
     background-repeat:no-repeat;
 }
 
+#commissions.index .threed background:hover, #commissions.index .twod background:hover {
+    filter:brightness(1);
+}
+
+/*LOGOS*/
+#commissions logo {
+    width:100%;
+    display:flex;
+    overflow:hidden;
+}
+
+#commissions logo.left {
+    justify-content: flex-end;
+}
+
+#commissions .logo.left, #commissions .logo.right {
+    z-index:1;
+    max-height:calc(100vh - 54px);
+}
+
+#commissions .logo.right {
+    bottom:36px;
+    filter: invert(100%);
+}
+
+#commissions .logo.left {
+    top:0;
+}
+
+#commissions .logo.left.bg, #commissions .logo.right.bg {
+    z-index:0;
+    margin:0;
+    min-height:100vh;
+    opacity:0.7;
+    bottom:0!important;
+}
+
+#commissions .logo.right.bg {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+#commissions .logo {
+    position:absolute;
+    margin:10px;
+}
+
+#commissions.info .logo {
+    position:fixed;
+}
+
+/*INFO PAGES*/
+#commissions.info {
+    overflow-y:scroll;
+}
+
 #commissions content {
     color:white;
     z-index:1;
     display:flex;
-    align-items: center;;
-    width:66.66%;
+    align-items: center;
+    width:75%;
     height:100%;
     position:absolute;
     top:0;
@@ -61,20 +123,43 @@
 }
 
 #commissions vertical_wrap {
-    display:flex;
-    flex-direction:column;
-    justify-content: flex-start;
-    flex-grow: 4;
     height:100%;
+    width:100%;
+    position:relative;
 }
 
 #commissions jump, #commissions commission_type, #commissions .nav, #commissions form {
     background:grey;
-    margin:10px;
     padding:10px;
 }
 
-a.nav {
+#commissions commissions {
+    display:flex;
+    flex-direction:column;
+    margin-top:76px;
+}
+
+#commissions commissions:last-child {
+    margin-bottom:35px;
+}
+
+#commissions commission_type {
+    margin-bottom: 10px;
+}
+
+#commissions a.nav {
     width:15%;
     text-align:center;
+    margin: 10px 10px;
+}
+
+#commissions jump {
+    text-align:center;
+    position:absolute;
+    margin:10px 0;
+    width:calc(100% - 20px);
+}
+
+#commissions jump p {
+    margin:0;
 }
