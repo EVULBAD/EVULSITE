@@ -1,6 +1,12 @@
 /*BIGGUNS*/
+body#commissions {
+    overflow-x:hidden;
+}
+
 #commissions main {
     display:flex;
+    overflow:auto;
+    overflow-x:hidden;
 }
 
 #commissions a.twod, #commissions a.threed {
@@ -106,11 +112,6 @@
 }
 
 /*INFO PAGES*/
-body#commissions.info {
-    height:100vh;
-    overflow:auto;
-}
-
 #commissions wrapper {
     color:black;
     z-index:999;
@@ -128,7 +129,14 @@ body#commissions.info {
     height:100%;
     width:45%;
     display:flex;
-    margin-top:150px;
+}
+
+#commissions.info content {
+    margin-top:156px;
+}
+
+#commissions.form content {
+    margin-top:10px;
 }
 
 #commissions commission_type, #commissions form {
