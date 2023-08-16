@@ -1,3 +1,8 @@
+/*BIGGUNS*/
+body#index {
+    overflow:hidden;
+}
+
 #index main {
     background:black;
     overflow:hidden;
@@ -10,7 +15,8 @@
 #index img.current {
     z-index:2;
 }
-    
+
+/*VOLUME TOGGLE*/
 #index #volbuttcont {
     width:auto;
     padding-right:2%;
@@ -108,6 +114,7 @@
     display:none;
 }
 
+/*OVERLAYS*/
 #index #overlay {
     z-index:999;
     position:absolute;
@@ -151,6 +158,7 @@
     animation: moveDown 3s infinite linear;
 }
 
+/*TEXTBOX*/
 #index #textbox.hidden {
     opacity:0;
     transition:opacity 0.3s;
@@ -162,7 +170,7 @@
     width:fit-content;
     padding:0.5%;
     position:absolute;
-    transform:translate(.75vw,-3.25vw);
+    transform:translate(10px,-45px);
     pointer-events:none;
     z-index:3;
     opacity:1;
@@ -181,7 +189,7 @@
     letter-spacing:1px;
 }
 
-/* ANIMATION */
+/*ANIMATION*/
 #index .button {
     cursor:pointer;
     fill:yellow;
@@ -211,7 +219,7 @@
     }
 }
 
-/* LANDING PAGE */
+/*DOOR*/
 #index main svg {
     position:absolute;
     z-index:999;

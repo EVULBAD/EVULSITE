@@ -1,6 +1,6 @@
+/*BIGGUNS*/
 #commissions main {
     display:flex;
-    overflow-x:hidden;
 }
 
 #commissions a.twod, #commissions a.threed {
@@ -19,7 +19,7 @@
 }
 
 #commissions .twod:hover, #commissions .threed:hover{
-    flex-grow: 3;
+    flex-grow:3;
 }
 
 /*BACKGROUND IMAGES*/
@@ -106,29 +106,32 @@
 }
 
 /*INFO PAGES*/
-#commissions.info {
-    overflow-y:scroll;
+body#commissions.info {
+    height:100vh;
+    overflow:auto;
 }
 
-#commissions content {
-    color:white;
-    z-index:1;
+#commissions wrapper {
+    color:black;
+    z-index:999;
     display:flex;
     align-items: center;
-    width:75%;
+    justify-content: center;
+    width:100%;
     height:100%;
     position:absolute;
     top:0;
     left:0;
 }
 
-#commissions vertical_wrap {
+#commissions content {
     height:100%;
-    width:100%;
-    position:relative;
+    width:45%;
+    display:flex;
+    margin-top:150px;
 }
 
-#commissions jump, #commissions commission_type, #commissions .nav, #commissions form {
+#commissions commission_type, #commissions form {
     background:grey;
     padding:10px;
 }
@@ -136,28 +139,41 @@
 #commissions commissions {
     display:flex;
     flex-direction:column;
-    margin-top:76px;
 }
 
-#commissions commissions:last-child {
-    margin-bottom:35px;
+#commissions #addons {
+    margin-bottom:45px;
 }
 
 #commissions commission_type {
     margin-bottom: 10px;
 }
 
-#commissions a.nav {
-    width:15%;
+#commissions .nav {
+    background:lightgrey;
+    width:27.5%;
     text-align:center;
-    margin: 10px 10px;
+    position:fixed;
+    top:calc(50% - 35px);
+    transform:translateY(calc(-50% + 35px));
+}
+
+#commissions .nav.left {
+    left:0;
+}
+
+#commissions .nav.right {
+    right:0;
 }
 
 #commissions jump {
     text-align:center;
-    position:absolute;
-    margin:10px 0;
-    width:calc(100% - 20px);
+    position:fixed;
+    background:lightgrey;
+    padding:10px 0;
+    top:10px;
+    width:45%;
+    height:36px;
 }
 
 #commissions jump p {
