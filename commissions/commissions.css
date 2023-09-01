@@ -133,6 +133,7 @@ body#commissions {
 #commissions commissions {
     display:flex;
     flex-direction:column;
+    width:100%;
 }
 
 #commissions #addons, #commissions form {
@@ -170,6 +171,7 @@ body#commissions {
     position:absolute;
     padding:10px 0;
     border-radius: 20px;
+    margin: -17px 0;
 }
 
 #commissions nav.left {
@@ -198,11 +200,25 @@ body#commissions {
     margin:0;
 }
 
-#commissions #bust, #commissions #halfbody, #commissions #fullbody, #commissions #scenic, #commissions #add-ons {
+#commissions #bust, #commissions #halfbody, #commissions #fullbody, #commissions #add-ons {
     scroll-margin-top: 66px;
 }
 
 /*FORM PAGES*/
 #commissions form {
     width:100%;
+}
+
+#commissions formlabel {
+    display:flex;
+    justify-content: center;
+}
+
+#commissions .textinput {
+    width:calc(100% - 5px);
+    border:none;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }
