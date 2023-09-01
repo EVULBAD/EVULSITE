@@ -7,18 +7,18 @@ body#commissions {
     display:flex;
 }
 
-#commissions a.twod, #commissions a.threed {
+#commissions a#twod, #commissions a#threed {
     width:100%;
     height:100%;
     display:block;
 }
 
-#commissions .twod:hover, #commissions .threed:hover{
+#commissions #twod:hover, #commissions #threed:hover{
     flex-grow:3;
 }
 
 /*BACKGROUND IMAGES*/
-#commissions .twod, #commissions .threed {
+#commissions #twod, #commissions #threed {
     background-size:cover;
     filter:brightness(0.6);
     background-attachment:fixed;
@@ -29,23 +29,23 @@ body#commissions {
 	transition:flex-grow 1000ms, filter 1000ms;
 }
 
-#commissions .twod {
+#commissions #twod {
     background-image: url(imgs/2d.png);
     background-color: red;
     background-position:left;
 }
 
-#commissions .threed {
+#commissions #threed {
     background-image: url(imgs/3d.png);
     background-color: blue;
     background-position:right;
 }
 
-#commissions.index .threed:hover, #commissions.index .twod:hover {
+#commissions.index #threed:hover, #commissions.index #twod:hover {
     filter:brightness(1);
 }
 
-#commissions.info .twod, #commissions.info .threed {
+#commissions.info #twod, #commissions.info #threed, #commissions.form #twod, #commissions.form #threed {
     width:100%;
     height:100%;
     position:fixed;
@@ -94,7 +94,7 @@ body#commissions {
     margin:10px;
 }
 
-#commissions.info logo {
+#commissions.info logo, #commissions.form logo {
     position:fixed;
 }
 
@@ -135,7 +135,7 @@ body#commissions {
     flex-direction:column;
 }
 
-#commissions #addons {
+#commissions #addons, #commissions form {
     margin-bottom:45px;
 }
 
@@ -148,8 +148,8 @@ body#commissions {
     height:36px;
     text-align:center;
     position:fixed;
-    top:calc(50% - 35px);
-    transform:translateY(calc(-50% + 35px));
+    top:calc(50% - (35px + 36px));
+    transform:translateY(calc(-50% + (35px + 36px)));
 }
 
 #commissions .nav.left {
@@ -200,4 +200,9 @@ body#commissions {
 
 #commissions #bust, #commissions #halfbody, #commissions #fullbody, #commissions #scenic, #commissions #add-ons {
     scroll-margin-top: 66px;
+}
+
+/*FORM PAGES*/
+#commissions form {
+    width:100%;
 }
