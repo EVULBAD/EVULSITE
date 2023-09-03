@@ -17,32 +17,78 @@ body#commissions {
     flex-grow:3;
 }
 
+/*TEXT*/
+#commissions p {
+    margin: 0;
+}
+
+#commissions a {
+    text-decoration:none;
+}
+
+#commissions h1, #commissions h2 {
+    margin:0;
+    line-height:1;
+}
+
+#commissions h1 {
+    font-size:24px;
+}
+
+#commissions h2 {
+    font-size:36px;
+}
+
+#commissions sub {
+    line-height:0;
+    font-size:14px
+}
+
+#commissions .textcenter {
+    text-align: center;
+}
+
+#commissions .textright {
+    text-align:right;
+}
+
 /*BACKGROUND IMAGES*/
 #commissions #twod, #commissions #threed {
     background-size:cover;
-    filter:brightness(0.6);
     background-attachment:fixed;
-        flex-grow:1;
+    flex-grow:1;
     flex-basis:0;
     -webkit-transition:flex-grow 1000ms, filter 1000ms;
 	-moz-transition:flex-grow 1000ms, filter 1000ms;
 	transition:flex-grow 1000ms, filter 1000ms;
 }
 
+#commissions #twod::before, #commissions #threed::before {
+    content: " ";
+    display:block;
+    opacity:0.4;
+    width:100%;
+    height:100%;
+    background-color:black;
+    -webkit-transition:opacity 1000ms;
+	-moz-transition:opacity 1000ms;
+	transition:opacity 1000ms;
+}
+
+#commissions #threed:hover::before, #commissions #twod:hover::before {
+    opacity:0;
+}
+
 #commissions #twod {
     background-image: url(imgs/2d.png);
-    background-color: red;
+    background-color: darkred;
     background-position:left;
 }
 
 #commissions #threed {
     background-image: url(imgs/3d.png);
-    background-color: blue;
+    background-color: darkblue;
     background-position:right;
-}
-
-#commissions.index #threed:hover, #commissions.index #twod:hover {
-    filter:brightness(1);
 }
 
 #commissions.info #twod, #commissions.info #threed, #commissions.form #twod, #commissions.form #threed {
@@ -93,14 +139,8 @@ body#commissions {
     position:absolute;
     margin:10px;
 }
-
-#commissions.info logo, #commissions.form logo {
-    position:fixed;
-}
-
 /*INFO PAGES*/
 #commissions .wrapper {
-    color:black;
     z-index:999;
     display:flex;
     align-items: center;
@@ -113,7 +153,7 @@ body#commissions {
 
 #commissions content {
     height:100%;
-    width:45%;
+    width:40%;
     display:flex;
 }
 
@@ -125,9 +165,8 @@ body#commissions {
     margin-top:10px;
 }
 
-#commissions commission_type, #commissions form {
-    background:grey;
-    padding:10px;
+#commissions commission_type {
+    padding:20px;
 }
 
 #commissions commissions {
@@ -136,21 +175,22 @@ body#commissions {
     width:100%;
 }
 
-#commissions #addons, #commissions form {
+#commissions #addons {
     margin-bottom:45px;
 }
 
-#commissions commission_type {
+#commissions.info commission_type {
     margin-bottom: 10px;
 }
 
 #commissions .nav {
-    width:27.5%;
+    width:30%;
     height:36px;
     text-align:center;
     position:fixed;
     top:calc(50% - (35px + 36px));
     transform:translateY(calc(-50% + (35px + 36px)));
+    margin: -52px 0;
 }
 
 #commissions .nav.left {
@@ -162,7 +202,6 @@ body#commissions {
 }
 
 #commissions nav {
-    background:lightgrey;
     width:40%;
     height:100%;
     display:flex;
@@ -171,7 +210,6 @@ body#commissions {
     position:absolute;
     padding:10px 0;
     border-radius: 20px;
-    margin: -17px 0;
 }
 
 #commissions nav.left {
@@ -185,9 +223,8 @@ body#commissions {
 #commissions jump {
     text-align:center;
     position:fixed;
-    background:lightgrey;
     padding:10px 0;
-    width:50%;
+    width:45%;
     height:36px;
     top:0;
     left: 50%;
@@ -206,7 +243,12 @@ body#commissions {
 
 /*FORM PAGES*/
 #commissions form {
-    width:100%;
+    width:80%;
+    margin:0 auto;
+}
+
+#commissions.form commission_type {
+    margin-bottom:45px;
 }
 
 #commissions formlabel {
@@ -221,4 +263,25 @@ body#commissions {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+}
+
+/*2D PAGES COLORS*/
+#commissions.twod {
+    color: #190A2A;
+}
+
+#commissions.twod a {
+    color: #9A4251;
+}
+
+#commissions.twod commission_type {
+    background: #b4aab3;
+}
+
+#commissions.twod jump, #commissions.twod nav {
+    background: #190A2A;
+}
+
+#commissions.twod jump {
+    color: #b4aab3;
 }
