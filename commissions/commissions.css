@@ -111,6 +111,7 @@ body#commissions {
 #commissions .logo.left, #commissions .logo.right {
     z-index:1;
     max-height:calc(100vh - 54px);
+    padding:0!important;
 }
 
 #commissions .logo.right {
@@ -139,6 +140,7 @@ body#commissions {
     position:absolute;
     margin:10px;
 }
+
 /*INFO PAGES*/
 #commissions .wrapper {
     z-index:999;
@@ -158,7 +160,7 @@ body#commissions {
 }
 
 #commissions.info content {
-    margin-top:66px;
+    margin-top:76px;
 }
 
 #commissions.form content {
@@ -202,7 +204,7 @@ body#commissions {
 }
 
 #commissions nav {
-    width:40%;
+    width:140px;
     height:100%;
     display:flex;
     align-items: center;
@@ -214,16 +216,19 @@ body#commissions {
 
 #commissions nav.left {
     right:10px;
+    padding-left:13px;
 }
 
 #commissions nav.right {
     left:10px;
+    padding-right:13px;
 }
 
 #commissions jump {
     text-align:center;
     position:fixed;
     padding:10px 0;
+    padding-bottom: 20px;
     width:45%;
     height:36px;
     top:0;
@@ -237,8 +242,36 @@ body#commissions {
     margin:0;
 }
 
-#commissions #bust, #commissions #halfbody, #commissions #fullbody, #commissions #add-ons {
-    scroll-margin-top: 66px;
+#commissions #info, #commissions #bust, #commissions #halfbody, #commissions #fullbody, #commissions #add-ons {
+    scroll-margin-top: 76px;
+}
+
+#commissions .columns {
+    display:flex;
+    justify-content: space-between;
+}
+
+#commissions .example {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex:0 1 60%;
+}
+
+#commissions .text {
+    flex:0 0 40%;
+}
+
+#commissions .example img {
+    width:100%;
+}
+
+#commissions .right.text, #commissions .right.example {
+    margin-left:5px;
+}
+
+#commissions .left.text, #commissions .left.example {
+    margin-right:5px;
 }
 
 /*FORM PAGES*/
@@ -267,21 +300,63 @@ body#commissions {
 
 /*2D PAGES COLORS*/
 #commissions.twod {
-    color: #190A2A;
+    color: black;
 }
 
-#commissions.twod a {
-    color: #9A4251;
+#commissions.twod content a {
+    color: #CC302F;
 }
 
-#commissions.twod commission_type {
-    background: #b4aab3;
+#commissions.twod jump, #commissions.twod a nav {
+    background: #B4ABB4;
+    color:black;
 }
 
-#commissions.twod jump, #commissions.twod nav {
-    background: #190A2A;
+#commissions.twod commission_type a:hover {
+    color: black;
 }
 
-#commissions.twod jump {
-    color: #b4aab3;
+#commissions.twod jump a {
+    color: #CC302F;
+}
+
+#commissions.twod jump a:hover {
+    color: black;
+}
+
+ #commissions.twod commission_type {
+    background: #D6CED6;
+}
+
+/*ANIMATIONS*/
+#commissions.twod a nav.right span {
+    position:absolute;
+    right:16px;
+    animation: rightpoint 1s ease-in-out infinite;
+}
+
+#commissions.twod a nav.left span {
+    position:absolute;
+    left:16px;
+    animation: leftpoint 1s ease-in-out infinite;
+}
+
+@keyframes rightpoint {
+    0% {right:16px;}
+    20% {right:16px;}
+    40% {right:12px;}
+    50% {right:16px;}
+    60% {right:12px;}
+    80% {right:16px;}
+    100% {right:16px;}
+}
+
+@keyframes leftpoint {
+    0% {left:16px;}
+    20% {left:16px;}
+    40% {left:12px;}
+    50% {left:16px;}
+    60% {left:12px;}
+    80% {left:16px;}
+    100% {left:16px;}
 }

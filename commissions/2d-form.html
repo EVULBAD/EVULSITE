@@ -16,7 +16,7 @@
         <div class="wrapper">
             <content>
                 <a class="nav left" href="2d.html">
-                    <nav class="left">back</nav>
+                    <nav class="left"><span>◀</span>&nbsp;back</nav>
                 </a>
                 <commissions>
                     <commission_type>
@@ -29,12 +29,12 @@
                         do not send commission inquiries to any of my social media accounts; i will just point you back here. forms and emails keep me organized!</p>
                         <br>
                         <form>
-                            <formlabel><b>COMMISSION TYPE<span style="color:red">*</span></b></formlabel>
+                            <formlabel><b>COMMISSION TYPE<span style="color:#CC302F">*</span></b></formlabel>
                             <input type="radio" id="bust" name="type" value="bust" checked="checked" data-valuetwo="1"><label for="bust">bust</label><br>
                             <input type="radio" id="half-body" name="type" value="half-body" data-valuetwo="1"><label for="half-body">half-body</label><br>
                             <input type="radio" id="full-body" name="type" value="full-body" data-valuetwo="1"><label for="full-body">full-body</label><br>
                             <br>
-                            <formlabel><b>COLOR STYLE<span style="color:red">*</span></b></formlabel>
+                            <formlabel><b>COLOR STYLE<span style="color:#CC302F">*</span></b></formlabel>
                             <input type="radio" id="flat" name="style" value="flat" checked="checked" data-valuetwo="1"><label for="flat">monochrome</label><br>
                             <input type="radio" id="flat" name="style" value="flat" data-valuetwo="1"><label for="flat">flat color</label><br>
                             <input type="radio" id="cel" name="style" value="cel" data-valuetwo="1"><label for="cel">fully shaded</label><br>
@@ -45,7 +45,7 @@
                             <input type="checkbox" id="checkboxes-2" name="add-ons" value="scenic&nbsp;bg" data-valuetwo="1"><label for="checkboxes-2">scenic background</label><br>
                             <input type="checkbox" id="checkboxes-3" name="add-ons" value="rush" data-valuetwo="1"><label for="checkboxes-3">rush order</label><br>
                             <br>
-                            <formlabel><b>REFERENCE IMAGE(S)<span style="color:red">*</span></b></formlabel>
+                            <formlabel><b>REFERENCE IMAGE(S)<span style="color:#CC302F">*</span></b></formlabel>
                             <input type="file" id="files" name="ref&nbsp;files" multiple><br>
                             <label for="url">or paste urls:</label><br>
                             <textarea class="form-control textinput" name="ref&nbsp;urls" placeholder="separate links with commas." rows="2" cols="50" style="resize: none;"></textarea><br>
@@ -53,13 +53,15 @@
                             <formlabel><b>ADDITIONAL INFO</b></formlabel>
                             <textarea class="form-control textinput" name="addtl&nbsp;info" placeholder="character traits, poses, fashion, color schemes, etc etc etc..." rows="5" cols="50" style="resize: none;"></textarea><br>
                             <br>
-                            <formlabel><b>CONTACT EMAIL<span style="color:red">*</span></b></formlabel>
+                            <formlabel><b>CONTACT EMAIL<span style="color:#CC302F">*</span></b></formlabel>
                             <input class="form-control textinput" name="email" placeholder="email@example.com" size="50" type="text" /><br>
                             <br>
-                            <tos><input type="checkbox" id="checkboxes-0" name="tos" value="yes"><label for="checkboxes-0">I have read and agree to the 
-                            <a href="./tos.html" target="_blank">terms of service</a>.<span style="color:red">*</span></label></tos><br>
-                            <!--minimum price: <span id="sum">billion</span>-->
-                            <input type="submit" value="SUBMIT">
+                            <div class="textcenter">
+                                <tos><input type="checkbox" id="checkboxes-0" name="tos" value="yes"><label for="checkboxes-0">I have read and agree to the 
+                                    <a href="./tos.html" target="_blank">terms of service</a>.<span style="color:#CC302F">*</span></label></tos><br>
+                                    <!--minimum price: <span id="sum">billion</span>-->
+                                    <input type="submit" value="SUBMIT">
+                            </div>
                         </form>
                     </commission_type>
                 </commissions>
