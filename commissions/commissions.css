@@ -350,6 +350,12 @@ label {
     justify-content: space-between;
 }
 
+#commissions .rows {
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+}
+
 #commissions .example {
     display: flex;
     justify-content: center;
