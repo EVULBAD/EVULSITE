@@ -181,13 +181,13 @@ label {
 #commissions #twod {
     background-image: url(imgs/2d.png);
     background-color: darkred;
-    background-position:left;
+    background-position:-100vw;
 }
 
 #commissions #threed {
     background-image: url(imgs/3d.png);
     background-color: darkblue;
-    
+    background-position:100vw;
 }
 
 #commissions.info #twod, #commissions.info #threed, #commissions.form #twod, #commissions.form #threed {
@@ -404,13 +404,13 @@ label {
 }
 
 /*ANIMATIONS*/
-#commissions.twod a nav.right span {
+#commissions a nav.right span {
     position:absolute;
     right:16px;
     animation: rightpoint 1s ease-in-out infinite;
 }
 
-#commissions.twod a nav.left span {
+#commissions a nav.left span {
     position:absolute;
     left:16px;
     animation: leftpoint 1s ease-in-out infinite;

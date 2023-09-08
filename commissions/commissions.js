@@ -45,7 +45,7 @@ function fixBackgroundSizeCover(bodyClass) {
     document.getElementById(bodyClass).style.backgroundSize = "100vw auto";
   }
 
-  console.log("resize bg has run");
+  //console.log("resize bg has run");
 };
 
 if (document.body.classList.contains("twod") === true) {
