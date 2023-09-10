@@ -14,14 +14,14 @@
     <!--<script>0</script>-->
     <main>
         <div class="wrapper">
-            <content>
-                <a class="nav left" href="index.html">
-                    <nav class="left"><span>◀</span>&nbsp;back</nav>
-                </a>
-                <jump>
-                    <p><b>jump to:</b></p>
-                    <p><a href="#info">info</a> | <a href="#lowpoly">low poly</a> | <a href="#highpoly">high poly</a> | <a href="#addons">add-ons</a></p>
-                </jump>
+            <jump class="updown">
+                <p><b>jump to:</b></p>
+                <p><a href="#info">info</a> | <a href="#lowpoly">low poly</a> | <a href="#highpoly">high poly</a> | <a href="#addons">add-ons</a></p>
+            </jump>
+            <nav class="left leftright">
+                <a href="javascript:delay('index.html')" id="toindex" class="left btn"><span>◀</span>&nbsp;back</a>
+            </nav>
+            <content class="leftright">
                 <commissions>
                     <commission_type id="info">
                         <div class="textcenter">
@@ -109,12 +109,10 @@
                         </div>
                     </commission_type>
                 </commissions>
-                <div class="nav right">
-                    <a href="3d-form.html">
-                        <nav class="right">to order form&nbsp;<span>▶</span></nav>
-                    </a>
-                </div>
             </content>
+            <nav class="right leftright">
+                <a href="javascript:delay('3d-form.html')" id="toform" class="right btn">to order form&nbsp;<span>▶</span></a>
+            </nav>
         </div>
         <div id="threed">
             <logo class="right">

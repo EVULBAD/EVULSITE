@@ -170,9 +170,9 @@ label {
     background-attachment:fixed;
     flex-grow:1;
     flex-basis:0;
-    -webkit-transition:flex-grow 1000ms, filter 1000ms;
-	-moz-transition:flex-grow 1000ms, filter 1000ms;
-	transition:flex-grow 1000ms, filter 1000ms;
+    -webkit-transition:flex-grow 1s, flex-basis 1s;
+	-moz-transition:flex-grow 1s, flex-basis 1s;
+	transition:flex-grow 1s, flex-basis 1s;
 }
 
 #commissions #twod::before, #commissions #threed::before {
@@ -297,25 +297,24 @@ label {
     margin-bottom: 10px;
 }
 
-#commissions .nav {
+#commissions nav {
     width:30%;
     height:36px;
     text-align:center;
     position:fixed;
-    top:calc(50% - (35px + 36px));
-    transform:translateY(calc(-50% + (35px + 36px)));
+    top:calc(50% - 35px);
     margin: -52px 0;
 }
 
-#commissions .nav.left {
+#commissions nav.left {
     left:0;
 }
 
-#commissions .nav.right {
+#commissions nav.right {
     right:0;
 }
 
-#commissions nav {
+#commissions nav > a {
     width:140px;
     height:100%;
     display:flex;
@@ -326,12 +325,12 @@ label {
     border-radius: 20px;
 }
 
-#commissions nav.left {
+#commissions nav > a.left {
     right:10px;
     padding-left:13px;
 }
 
-#commissions nav.right {
+#commissions nav > a.right {
     left:10px;
     padding-right:13px;
 }
@@ -339,15 +338,14 @@ label {
 #commissions jump {
     text-align:center;
     position:fixed;
-    padding:10px 0;
     padding-bottom: 20px;
+    padding-top:30px;
     width:45%;
     height:36px;
-    top:0;
-    left: 50%;
-    transform: translateX(-50%);
+    top:-20px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    z-index:999;
 }
 
 #commissions jump p {
@@ -417,13 +415,13 @@ label {
 }
 
 /*ANIMATIONS*/
-#commissions a nav.right span {
+#commissions nav.right span {
     position:absolute;
     right:16px;
     animation: rightpoint 1s ease-in-out infinite;
 }
 
-#commissions a nav.left span {
+#commissions nav.left span {
     position:absolute;
     left:16px;
     animation: leftpoint 1s ease-in-out infinite;
@@ -449,6 +447,66 @@ label {
     100% {left:16px;}
 }
 
+@keyframes to-left {
+    0% {transform: translateX(0);}
+    10% {transform: translateX(10px);}
+    100% {transform: translateX(-200vw);}
+}
+
+@keyframes to-right {
+    0% {transform: translateX(0);}
+    10% {transform: translateX(-10px);}
+    100% {transform: translateX(200vw);}
+}
+
+@keyframes to-top {
+    0% {transform: translateY(0);}
+    10% {transform: translateY(10px);}
+    100% {transform: translateY(-200vh);}
+}
+
+.to-left, .to-right, .to-top {
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.from-left {
+    animation-name: to-left;
+    animation-direction: reverse;
+}
+
+.to-left {
+    animation-name: to-left;
+}
+
+.from-right {
+    animation-name: to-right;
+    animation-direction: reverse;
+}
+
+.to-right {
+    animation-name: to-right;
+}
+
+.from-top {
+    animation-name: to-top;
+    animation-direction: reverse;
+}
+
+.to-top {
+    animation-name: to-top;
+}
+
+.full-width {
+    flex-basis:100% !important;
+    cursor:default !important;
+}
+
+#commissions #twod.full-width::before, #commissions #threed.full-width::before {
+    opacity:0.4!important;
+}
+
 /*2D PAGES COLORS*/
 #commissions.twod {
     color: black;
@@ -458,7 +516,7 @@ label {
     color: #CC302F;
 }
 
-#commissions.twod jump, #commissions.twod a nav {
+#commissions.twod jump, #commissions.twod nav > a {
     background: #B4ABB4;
     color:black;
 }
@@ -524,7 +582,7 @@ label {
     color: #0055C1;
 }
 
-#commissions.threed jump, #commissions.threed a nav {
+#commissions.threed jump, #commissions.threed nav > a {
     background: #D5C3AE;
     color:black;
 }

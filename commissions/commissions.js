@@ -1,5 +1,8 @@
 //declaration.
-let bodyClass;
+let bodyClass,
+  currentURL,
+  pageType = null,
+  prevURL = document.referrer;
 
 //js for file uploading on the form page. implements limitations to user uploads.
 function uploadFile(target) {
@@ -48,20 +51,30 @@ function fixBackgroundSizeCover(bodyClass) {
   //console.log("resize bg has run");
 };
 
+//function that delays loading a new page when a link is clicked.
+function delay(url) {
+  setTimeout(function() {
+    window.location = url
+  }, 1000);
+}
+
+//figuring out the current url.
 if (document.body.classList.contains("twod") === true) {
-  console.log("twod")
+  currentURL = "twod";
+  pageType = document.body.classList[0];
   fixBackgroundSizeCover("twod");
   window.addEventListener("resize", function(e) {
     fixBackgroundSizeCover("twod")
   });
 } else if (document.body.classList.contains("threed") === true) {
-  console.log("threed")
+  currentURL = "threed";
+  pageType = document.body.classList[0];
   fixBackgroundSizeCover("threed");
   window.addEventListener("resize", function(e) {
     fixBackgroundSizeCover("threed")
   });
 } else {
-  console.log("index")
+  currentURL = "index";
   fixBackgroundSizeCover("threed");
   window.addEventListener("resize", function(e) {
     fixBackgroundSizeCover("threed")
@@ -69,5 +82,51 @@ if (document.body.classList.contains("twod") === true) {
   fixBackgroundSizeCover("twod");
   window.addEventListener("resize", function(e) {
     fixBackgroundSizeCover("twod")
+  });
+}
+
+//figuring out the previous url.
+if (prevURL.indexOf("/commissions/index") != -1) {
+  prevURL = "index"
+} else if (prevURL.indexOf("/commissions/3d") != -1) {
+  prevURL = "3d info"
+} if (prevURL.indexOf("/commissions/3d-form") != -1) {
+  prevURL = "3d form"
+}
+
+console.log("previous url: " + prevURL)
+console.log("current url: " + currentURL)
+
+//usings the buttons.
+const btns = document.querySelectorAll('.btn');
+for (const btn of btns) {
+  btn.addEventListener("click", function() {
+    let clickedBtn = btn.id,
+      content = document.querySelectorAll("content.leftright")[0],
+      leftNav = document.querySelectorAll("nav.left.leftright")[0],
+      rightNav = document.querySelectorAll("nav.right.leftright")[0],
+      jumpNav = document.querySelectorAll("jump.updown")[0];
+    if (currentURL === "index") {
+      if (clickedBtn === "twod" || clickedBtn === "threed") {
+        console.log("loading url: " + clickedBtn)
+        btn.classList.add("full-width");
+      }
+    } else if (currentURL === "threed") {
+      if (clickedBtn === "toform") {
+        console.log("loading url: 3d form")
+        content.classList.add("to-left");
+        rightNav.classList.add("to-left");
+        jumpNav.classList.add("to-top");
+      } else if (clickedBtn === "toinfo") {
+        console.log("3d, form to info")
+        content.classList.add("to-right");
+      } else if (clickedBtn === "toindex") {
+        console.log("3d, info to index");
+        content.classList.add("to-right");
+        rightNav.classList.add("to-right");
+        leftNav.classList.add("to-right");
+        jumpNav.classList.add("to-top");
+      }
+    }
   });
 }
