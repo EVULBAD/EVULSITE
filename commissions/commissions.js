@@ -1,82 +1,42 @@
 //declarations.
 let bodyClass,
   currentURL,
-  pageType = null,
-  prevURL = document.referrer;
+  prevURL = document.referrer,
+  clickedBtn;
 
-//self-explanatory.
+//STANDALONE FUNCTIONS:
+//self-explanatory. gets current url.
 function currentURLFinder() {
   return window.location.href;
 }
 
-currentURL = currentURLFinder();
-
-if (currentURL.indexOf("2d") != -1) {
-  pageType = document.body.classList[0];
-  fixBackgroundSizeCover("twod");
-  window.addEventListener("resize", function(e) {
-    fixBackgroundSizeCover("twod")
-  });
-} else if (currentURL.indexOf("3d") != -1) {
-  pageType = document.body.classList[0];
-  fixBackgroundSizeCover("threed");
-  window.addEventListener("resize", function(e) {
-    fixBackgroundSizeCover("threed")
-  });
-} else {
-  fixBackgroundSizeCover("threed");
-  window.addEventListener("resize", function(e) {
-    fixBackgroundSizeCover("threed")
-  });
-  fixBackgroundSizeCover("twod");
-  window.addEventListener("resize", function(e) {
-    fixBackgroundSizeCover("twod")
+//saving values of clicked links.
+const btns = document.querySelectorAll(".btn");
+for (const btn of btns) {
+  btn.addEventListener("click", function() {
+    clickedBtn = btn.id;
+    return clickedBtn;
   });
 }
 
-//jQuery for smoothstate.
-(function ($) {
-  "use strict";
-  $(document).ready(function () {
-    let $body = $("body"),
-      $main = $("#main"),
-      $site = $("html, body"),
-      transition = "none";
-    $main.smoothState({
-      onBefore: function($anchor, $container) {
-        let current = $("[data-viewport]").first().data("viewport"),
-          target = $anchor.data("target");
-        currentURL = currentURLFinder();
-        current = current ? current : 0;
-        target = target ? target : 0;
-        if (current === target) {
-          transition = "none";
-        } else if (current < target) {
-          transition = "to-left";
-        } else if (current > target){
-          transition = "to-right";
-        }
-      },
-      onStart: {
-        duration: 2000,
-        render: function (url, $container) {
-          $main.addClass("is-exiting");
-          $main.attr("data-transition", transition);
-          $site.animate({scrollTop: 0});
-        }
-      },
-      onReady: {
-        duration: 0,
-        render: function ($container, $newContent) {
-          $container.html($newContent);
-          $container.removeClass("is-exiting");
-        }
-      },
-      }).data("smoothState");
-  });
-}(jQuery));
+//background size adjuster thanks to perttu on stack overflow. very slightly adjusted to suit my needs.
+//keeps the scrollbar from resizing the bg, because i"m a tightass about stuff like that.
+function fixBackgroundSizeCover(bodyClass) {
+  let bgImageWidth = 1920,
+    bgImageHeight = 1080,
+    bgImageRatio = bgImageWidth / bgImageHeight,
+    windowSizeRatio = window.innerWidth / window.innerHeight;
 
-//js for file uploading on the form page. implements limitations to user uploads.
+  if (bgImageRatio > windowSizeRatio) {
+    document.getElementById(bodyClass).style.backgroundSize = "auto 100vh";
+  } else {
+    document.getElementById(bodyClass).style.backgroundSize = "100vw auto";
+  }
+
+  //console.log("resize bg has run");
+};
+
+//function for file uploading on the form page. implements limitations to user uploads.
 function uploadFile(target) {
   let fileSize,
     fileMb,
@@ -106,37 +66,78 @@ function uploadFile(target) {
   }
 }
 
-//background size adjuster thanks to perttu on stack overflow. very slightly adjusted to suit my needs.
-//keeps the scrollbar from resizing the bg, because i"m a tightass about stuff like that.
-function fixBackgroundSizeCover(bodyClass) {
-  let bgImageWidth = 1920,
-    bgImageHeight = 1080,
-    bgImageRatio = bgImageWidth / bgImageHeight,
-    windowSizeRatio = window.innerWidth / window.innerHeight;
+//ACTUAL WORK:
+//intializing page by getting current url.
+currentURL = currentURLFinder();
 
-  if (bgImageRatio > windowSizeRatio) {
-    document.getElementById(bodyClass).style.backgroundSize = "auto 100vh";
-  } else {
-    document.getElementById(bodyClass).style.backgroundSize = "100vw auto";
-  }
-
-  //console.log("resize bg has run");
-};
-
-//using the buttons.
-const btns = document.querySelectorAll(".btn");
-for (const btn of btns) {
-  btn.addEventListener("click", function() {
-    let clickedBtn = btn.id,
-      content = document.querySelectorAll("content.leftright")[0],
-      leftNav = document.querySelectorAll("nav.left.leftright")[0],
-      rightNav = document.querySelectorAll("nav.right.leftright")[0],
-      jumpNav = document.querySelectorAll("jump.updown")[0];
-    if (currentURL === "index") {
-      if (clickedBtn === "twod" || clickedBtn === "threed") {
-        console.log("loading url: " + clickedBtn)
-        btn.classList.add("full-width");
-      }
-    }
+//
+if (currentURL.indexOf("2d") != -1) {
+  fixBackgroundSizeCover("twod");
+  window.addEventListener("resize", function(e) {
+    fixBackgroundSizeCover("twod")
+  });
+} else if (currentURL.indexOf("3d") != -1) {
+  fixBackgroundSizeCover("threed");
+  window.addEventListener("resize", function(e) {
+    fixBackgroundSizeCover("threed")
+  });
+} else {
+  fixBackgroundSizeCover("threed");
+  window.addEventListener("resize", function(e) {
+    fixBackgroundSizeCover("threed")
+  });
+  fixBackgroundSizeCover("twod");
+  window.addEventListener("resize", function(e) {
+    fixBackgroundSizeCover("twod")
   });
 }
+
+//jQuery for smoothState.
+(function ($) {
+  "use strict";
+  $(document).ready(function () {
+    let $body = $("body"),
+      $main = $("#main"),
+      $site = $("html, body"),
+      transition;
+    $main.smoothState({
+      onBefore: function($anchor, $container) {
+        let current = $("[data-viewport]").first().data("viewport"),
+          target = $anchor.data("target");
+        currentURL = currentURLFinder();
+        current = current ? current : 0;
+        target = target ? target : 0;
+        //console.log("current: " + current)
+        //console.log("target: " + target)
+        //console.log("current URL: " + currentURL)
+        if (current < target) {
+          if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
+            $("#" + clickedBtn).addClass("full-width");
+            transition = "from-right";
+          } else {
+            transition = "from-right";
+          }
+        } else if (current > target){
+          transition = "from-left";
+        } else {
+          transition = "none";
+        }
+      },
+      onStart: {
+        duration: 400,
+        render: function(url, $container) {
+          $main.attr("data-transition", transition);
+          $main.addClass("is-exiting");
+        }
+      },
+      onReady: {
+        duration: 0,
+        render: function($container, $newContent) {
+          $site.animate({scrollTop: 0});
+          $container.html($newContent);
+          $container.removeClass("is-exiting");
+        }
+      },
+      }).data("smoothState");
+  });
+}(jQuery));
