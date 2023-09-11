@@ -7,6 +7,11 @@ body#commissions {
     display:flex;
 }
 
+#commissions #main {
+    width:100%;
+    height:100%
+}
+
 #commissions a#twod, #commissions a#threed {
     width:100%;
     height:100%;
@@ -15,6 +20,10 @@ body#commissions {
 
 #commissions #twod:hover, #commissions #threed:hover{
     flex-grow:3;
+}
+
+#commissions .info, #commissions .form {
+    overflow-y:scroll;
 }
 
 /*TEXT*/
@@ -203,7 +212,7 @@ label {
     background-position:100vw;
 }
 
-#commissions.info #twod, #commissions.info #threed, #commissions.form #twod, #commissions.form #threed {
+#commissions .info #twod, #commissions .info #threed, #commissions .form #twod, #commissions .form #threed {
     width:100%;
     height:100%;
     position:fixed;
@@ -271,11 +280,11 @@ label {
     display:flex;
 }
 
-#commissions.info content {
+#commissions .info content {
     margin-top:76px;
 }
 
-#commissions.form content {
+#commissions .form content {
     margin-top:10px;
 }
 
@@ -293,7 +302,7 @@ label {
     margin-bottom:45px;
 }
 
-#commissions.info commission_type {
+#commissions .info commission_type {
     margin-bottom: 10px;
 }
 
@@ -396,7 +405,7 @@ label {
     margin:0 auto;
 }
 
-#commissions.form commission_type {
+#commissions .form commission_type {
     margin-bottom:45px;
 }
 
@@ -449,53 +458,47 @@ label {
 
 @keyframes to-left {
     0% {transform: translateX(0);}
-    10% {transform: translateX(10px);}
     100% {transform: translateX(-200vw);}
 }
 
 @keyframes to-right {
     0% {transform: translateX(0);}
-    10% {transform: translateX(-10px);}
     100% {transform: translateX(200vw);}
 }
 
 @keyframes to-top {
     0% {transform: translateY(0);}
-    10% {transform: translateY(10px);}
     100% {transform: translateY(-200vh);}
 }
 
-.to-left, .to-right, .to-top {
-    animation-duration: 1s;
-    animation-timing-function: ease-in-out;
+.scene-element {
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
     animation-fill-mode: forwards;
 }
 
-.from-left {
-    animation-name: to-left;
-    animation-direction: reverse;
+.is-exiting .sceneElement {
+    transition-timing-function: ease-out;
 }
 
-.to-left {
-    animation-name: to-left;
-}
-
-.from-right {
+#main[data-transition=to-left] .scene-element {
     animation-name: to-right;
     animation-direction: reverse;
 }
 
-.to-right {
-    animation-name: to-right;
+#main[data-transition=to-left].is-exiting .scene-element {
+    animation-name: to-left;
+    animation-direction: normal;
 }
 
-.from-top {
-    animation-name: to-top;
+#main[data-transition=to-right] .scene-element {
+    animation-name: to-left;
     animation-direction: reverse;
 }
 
-.to-top {
-    animation-name: to-top;
+#main[data-transition=to-right].is-exiting .scene-element {
+    animation-name: to-right;
+    animation-direction: normal;
 }
 
 .full-width {
@@ -508,129 +511,129 @@ label {
 }
 
 /*2D PAGES COLORS*/
-#commissions.twod {
+#commissions .twod {
     color: black;
 }
 
-#commissions.twod content a {
+#commissions .twod content a {
     color: #CC302F;
 }
 
-#commissions.twod jump, #commissions.twod nav > a {
+#commissions .twod jump, #commissions .twod nav > a {
     background: #B4ABB4;
     color:black;
 }
 
-#commissions.twod commission_type a:hover {
+#commissions .twod commission_type a:hover {
     color: black;
 }
 
-#commissions.twod jump a {
+#commissions .twod jump a {
     color: #CC302F;
 }
 
-#commissions.twod jump a:hover {
+#commissions .twod jump a:hover {
     color: black;
 }
 
- #commissions.twod commission_type {
+ #commissions .twod commission_type {
     background: #D6CED6;
 }
 
-#commissions.twod hr.dotted {
+#commissions .twod hr.dotted {
     border-top: 2px dotted #B4ABB4 !important;
 }
 
-#commissions.twod [type="radio"]:checked + label:after, #commissions.twod [type="checkbox"]:checked + label:after {
+#commissions .twod [type="radio"]:checked + label:after, #commissions .twod [type="checkbox"]:checked + label:after {
     background: none repeat scroll 0 0 #CC302F;
 }
 
-#commissions.twod [type="radio"]:checked + label:before, #commissions.twod [type="checkbox"]:checked + label:before {
+#commissions .twod [type="radio"]:checked + label:before, #commissions .twod [type="checkbox"]:checked + label:before {
     background-color: #B4ABB4;
 }
 
-#commissions.twod [type="radio"] + label:before, #commissions.twod [type="checkbox"] + label:before {
+#commissions .twod [type="radio"] + label:before, #commissions .twod [type="checkbox"] + label:before {
     background-color:#B4ABB4;
 }
 
-#commissions.twod [type="radio"]:checked + label:after { 
+#commissions .twod [type="radio"]:checked + label:after { 
     box-shadow:inset 0 0 0 2px white;
 }
 
-#commissions.twod [type="radio"] + label:after, #commissions.twod [type="checkbox"] + label:after {
+#commissions .twod [type="radio"] + label:after, #commissions .twod [type="checkbox"] + label:after {
     background: none repeat scroll 0 0 white;
 }
 
-#commissions.twod [type="radio"]:not(:checked):hover + label:after, #commissions.twod [type="checkbox"]:not(:checked):hover + label:after {
+#commissions .twod [type="radio"]:not(:checked):hover + label:after, #commissions .twod [type="checkbox"]:not(:checked):hover + label:after {
     background: none repeat scroll 0 0 #B4ABB4;
 }
 
-#commissions.twod .button, #commissions.twod [type="file"] + label {
+#commissions .twod .button, #commissions .twod [type="file"] + label {
     background-color: #CC302F;
 }
 
-#commissions.twod .button:hover, #commissions.twod [type="file"]:hover + label {
+#commissions .twod .button:hover, #commissions .twod [type="file"]:hover + label {
     background-color: black;
 }
 
 /*3D PAGES COLORS*/
-#commissions.threed {
+#commissions .threed {
     color: black;
 }
 
-#commissions.threed content a, #commissions.threed jump a  {
+#commissions .threed content a, #commissions .threed jump a  {
     color: #0055C1;
 }
 
-#commissions.threed jump, #commissions.threed nav > a {
+#commissions .threed jump, #commissions .threed nav > a {
     background: #D5C3AE;
     color:black;
 }
 
-#commissions.threed commission_type a:hover {
+#commissions .threed commission_type a:hover {
     color: black;
 }
 
-#commissions.threed jump a:hover {
+#commissions .threed jump a:hover {
     color: black;
 }
 
-#commissions.threed commission_type {
+#commissions .threed commission_type {
     background: #E8DDD0;
 }
 
-#commissions.threed hr.dotted {
+#commissions .threed hr.dotted {
     border-top: 2px dotted #D1B899 !important;
 }
 
-#commissions.threed [type="radio"]:checked + label:after, #commissions.threed [type="checkbox"]:checked + label:after {
+#commissions .threed [type="radio"]:checked + label:after, #commissions .threed [type="checkbox"]:checked + label:after {
     background: none repeat scroll 0 0 #0055C1;
 }
 
-#commissions.threed [type="radio"]:checked + label:before, #commissions.threed [type="checkbox"]:checked + label:before {
+#commissions .threed [type="radio"]:checked + label:before, #commissions .threed [type="checkbox"]:checked + label:before {
     background-color: #D5C3AE;
 }
 
-#commissions.threed [type="radio"] + label:before, #commissions.threed [type="checkbox"] + label:before {
+#commissions .threed [type="radio"] + label:before, #commissions .threed [type="checkbox"] + label:before {
     background-color:#D5C3AE;
 }
 
-#commissions.threed [type="radio"]:checked + label:after { 
+#commissions .threed [type="radio"]:checked + label:after { 
     box-shadow:inset 0 0 0 2px white;
 }
 
-#commissions.threed [type="radio"] + label:after, #commissions.threed [type="checkbox"] + label:after {
+#commissions .threed [type="radio"] + label:after, #commissions .threed [type="checkbox"] + label:after {
     background: none repeat scroll 0 0 white;
 }
 
-#commissions.threed [type="radio"]:not(:checked):hover + label:after, #commissions.threed [type="checkbox"]:not(:checked):hover + label:after {
+#commissions .threed [type="radio"]:not(:checked):hover + label:after, #commissions .threed [type="checkbox"]:not(:checked):hover + label:after {
     background: none repeat scroll 0 0 #D5C3AE;
 }
 
-#commissions.threed .button, #commissions.threed [type="file"] + label {
+#commissions .threed .button, #commissions .threed [type="file"] + label {
     background-color: #0055C1;
 }
 
-#commissions.threed .button:hover, #commissions.threed [type="file"]:hover + label {
+#commissions .threed .button:hover, #commissions .threed [type="file"]:hover + label {
     background-color: black;
 }

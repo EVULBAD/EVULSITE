@@ -1,8 +1,80 @@
-//declaration.
+//declarations.
 let bodyClass,
   currentURL,
   pageType = null,
   prevURL = document.referrer;
+
+//self-explanatory.
+function currentURLFinder() {
+  return window.location.href;
+}
+
+currentURL = currentURLFinder();
+
+if (currentURL.indexOf("2d") != -1) {
+  pageType = document.body.classList[0];
+  fixBackgroundSizeCover("twod");
+  window.addEventListener("resize", function(e) {
+    fixBackgroundSizeCover("twod")
+  });
+} else if (currentURL.indexOf("3d") != -1) {
+  pageType = document.body.classList[0];
+  fixBackgroundSizeCover("threed");
+  window.addEventListener("resize", function(e) {
+    fixBackgroundSizeCover("threed")
+  });
+} else {
+  fixBackgroundSizeCover("threed");
+  window.addEventListener("resize", function(e) {
+    fixBackgroundSizeCover("threed")
+  });
+  fixBackgroundSizeCover("twod");
+  window.addEventListener("resize", function(e) {
+    fixBackgroundSizeCover("twod")
+  });
+}
+
+//jQuery for smoothstate.
+(function ($) {
+  "use strict";
+  $(document).ready(function () {
+    let $body = $("body"),
+      $main = $("#main"),
+      $site = $("html, body"),
+      transition = "none";
+    $main.smoothState({
+      onBefore: function($anchor, $container) {
+        let current = $("[data-viewport]").first().data("viewport"),
+          target = $anchor.data("target");
+        currentURL = currentURLFinder();
+        current = current ? current : 0;
+        target = target ? target : 0;
+        if (current === target) {
+          transition = "none";
+        } else if (current < target) {
+          transition = "to-left";
+        } else if (current > target){
+          transition = "to-right";
+        }
+      },
+      onStart: {
+        duration: 2000,
+        render: function (url, $container) {
+          $main.addClass("is-exiting");
+          $main.attr("data-transition", transition);
+          $site.animate({scrollTop: 0});
+        }
+      },
+      onReady: {
+        duration: 0,
+        render: function ($container, $newContent) {
+          $container.html($newContent);
+          $container.removeClass("is-exiting");
+        }
+      },
+      }).data("smoothState");
+  });
+}(jQuery));
 
 //js for file uploading on the form page. implements limitations to user uploads.
 function uploadFile(target) {
@@ -35,7 +107,7 @@ function uploadFile(target) {
 }
 
 //background size adjuster thanks to perttu on stack overflow. very slightly adjusted to suit my needs.
-//keeps the scrollbar from resizing the bg, because i'm a tightass about stuff like that.
+//keeps the scrollbar from resizing the bg, because i"m a tightass about stuff like that.
 function fixBackgroundSizeCover(bodyClass) {
   let bgImageWidth = 1920,
     bgImageHeight = 1080,
@@ -51,54 +123,8 @@ function fixBackgroundSizeCover(bodyClass) {
   //console.log("resize bg has run");
 };
 
-//function that delays loading a new page when a link is clicked.
-function delay(url) {
-  setTimeout(function() {
-    window.location = url
-  }, 1000);
-}
-
-//figuring out the current url.
-if (document.body.classList.contains("twod") === true) {
-  currentURL = "twod";
-  pageType = document.body.classList[0];
-  fixBackgroundSizeCover("twod");
-  window.addEventListener("resize", function(e) {
-    fixBackgroundSizeCover("twod")
-  });
-} else if (document.body.classList.contains("threed") === true) {
-  currentURL = "threed";
-  pageType = document.body.classList[0];
-  fixBackgroundSizeCover("threed");
-  window.addEventListener("resize", function(e) {
-    fixBackgroundSizeCover("threed")
-  });
-} else {
-  currentURL = "index";
-  fixBackgroundSizeCover("threed");
-  window.addEventListener("resize", function(e) {
-    fixBackgroundSizeCover("threed")
-  });
-  fixBackgroundSizeCover("twod");
-  window.addEventListener("resize", function(e) {
-    fixBackgroundSizeCover("twod")
-  });
-}
-
-//figuring out the previous url.
-if (prevURL.indexOf("/commissions/index") != -1) {
-  prevURL = "index"
-} else if (prevURL.indexOf("/commissions/3d") != -1) {
-  prevURL = "3d info"
-} if (prevURL.indexOf("/commissions/3d-form") != -1) {
-  prevURL = "3d form"
-}
-
-console.log("previous url: " + prevURL)
-console.log("current url: " + currentURL)
-
-//usings the buttons.
-const btns = document.querySelectorAll('.btn');
+//using the buttons.
+const btns = document.querySelectorAll(".btn");
 for (const btn of btns) {
   btn.addEventListener("click", function() {
     let clickedBtn = btn.id,
@@ -110,22 +136,6 @@ for (const btn of btns) {
       if (clickedBtn === "twod" || clickedBtn === "threed") {
         console.log("loading url: " + clickedBtn)
         btn.classList.add("full-width");
-      }
-    } else if (currentURL === "threed") {
-      if (clickedBtn === "toform") {
-        console.log("loading url: 3d form")
-        content.classList.add("to-left");
-        rightNav.classList.add("to-left");
-        jumpNav.classList.add("to-top");
-      } else if (clickedBtn === "toinfo") {
-        console.log("3d, form to info")
-        content.classList.add("to-right");
-      } else if (clickedBtn === "toindex") {
-        console.log("3d, info to index");
-        content.classList.add("to-right");
-        rightNav.classList.add("to-right");
-        leftNav.classList.add("to-right");
-        jumpNav.classList.add("to-top");
       }
     }
   });

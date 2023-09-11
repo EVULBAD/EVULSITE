@@ -10,122 +10,126 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body id="commissions" class="info threed">
+<body id="commissions">
     <!--<script>0</script>-->
-    <main>
-        <div class="wrapper">
-            <jump class="updown">
-                <p><b>jump to:</b></p>
-                <p><a href="#info">info</a> | <a href="#lowpoly">low poly</a> | <a href="#highpoly">high poly</a> | <a href="#addons">add-ons</a></p>
-            </jump>
-            <nav class="left leftright">
-                <a href="javascript:delay('index.html')" id="toindex" class="left btn"><span>◀</span>&nbsp;back</a>
-            </nav>
-            <content class="leftright">
-                <commissions>
-                    <commission_type id="info">
-                        <div class="textcenter">
-                            <h2>3D COMMISSION INFO</h2>
-                            <sub><a href="2d.html">for 2D commissions, head this direction</a></sub><br><br>
-                        </div>
-                        <p>
-                        <hr class="dotted top">
-                        <div class="textcenter">
-                            <span style="background-color:limegreen; padding: 0 5px; font-weight:bold;">3D commissions are open!</span><br>
-                            2 slots available<br>
-                        </div>
-                        <hr class="dotted bottom"><br>
-                        complicated designs may cost extra depending on complexity. some designs may even get rejected due to the fact that i may not feel confident in modelling them. modelling is hard work and i want to be sure i can make you something i'm proud of!<br><br>
-                        if you're unsure about whether or not i'm willing to model something, just ask. i'm open minded, dignity is a social construct, and the worst i'll do is say no.<br><br>
-                        every model comes with null anatomy and one outfit. every render comes with a simple gradient background. additional versions of said render (i.e. transparent or outlined) can be made upon request.<br><br>
-                        rush orders are not available for 3D commissions.</p><br>
-                        <div class="textright">
-                            <sub>status last updated 9/3/23</sub>
-                        </div>
-                    </commission_type>
-                    <commission_type id="lowpoly">
-                        <div class="columns">
-                            <div class="left text rows">
-                                <div class="textright">
-                                    <hr class="dotted top">
-                                    <h1>LOW POLY MODEL</h1>
-                                    <sub>3D models made with the smallest amount of tris i can muster. usually up to 2k tris.</sub><br>
-                                    <hr class="dotted bottom"><br>
-                                    <b>full body render</b><br>
-                                    $150<br><br>
-                                    <b>avatar upgrade</b><br>
-                                    +$100
-                                </div>
-                               <div class="textcenter">
-                                    <a href="/">view low poly gallery</a>
-                               </div>
+    <div id="main">
+        <main class="threed info" data-viewport="0">
+            <div class="wrapper">
+                <jump class="scene-element">
+                    <p><b>jump to:</b></p>
+                    <p><a href="#info">info</a> | <a href="#lowpoly">low poly</a> | <a href="#highpoly">high poly</a> | <a href="#addons">add-ons</a></p>
+                </jump>
+                <nav class="left scene-element">
+                    <a href="index.html" id="toindex" class="left btn" data-target="-1"><span>◀</span>&nbsp;back</a>
+                </nav>
+                <content class="scene-element">
+                    <commissions>
+                        <commission_type id="info">
+                            <div class="textcenter">
+                                <h2>3D COMMISSION INFO</h2>
+                                <sub><a href="2d.html">for 2D commissions, head this direction</a></sub><br><br>
                             </div>
-                            <div class="right example">
-                                <img src="imgs/test.png">
-                            </div>
-                        </div>
-                    </commission_type>
-                    <commission_type id="highpoly">
-                        <div class="columns">
-                            <div class="left example">
-                                <img src="imgs/test.png">
-                            </div>
-                            <div class="right text rows">
-                                <div>
-                                    <hr class="dotted top">
-                                    <h1>HIGH POLY MODEL</h1>
-                                    <sub>3D models made with more detail. usually between 8k and 20k tris.</sub><br>
-                                    <hr class="dotted bottom"><br>
-                                    <b>full body render</b><br>
-                                    $500<br><br>
-                                    <b>avatar upgrade</b><br>
-                                    +$200
-                                </div>
-                                <div class="textcenter">
-                                    <a href="/">view high poly gallery</a>
-                               </div>
-                            </div>
-                        </div>
-                    </commission_type>
-                    <commission_type id="addons">
-                        <div class="text">
+                            <p>
                             <hr class="dotted top">
                             <div class="textcenter">
-                                <h1>ADD-ONS</h1>
-                                <sub>stuff that'll cost extra.</sub><br>
+                                <span style="background-color:limegreen; padding: 0 5px; font-weight:bold;">3D commissions are open!</span><br>
+                                2 slots available<br>
                             </div>
                             <hr class="dotted bottom"><br>
-                            <b>additional poses</b><br>
-                            +$30 each<br><br>
-                            <b>additional outfits</b><br>
-                            prices vary depending on complexity, +$50 minimum each<br><br>
-                            <b>short animations</b><br>
-                            prices vary depending on complexity, +$50 minimum each<br><br>
-                            <b>nsfw anatomy</b><br>
-                            <i>low poly model:</i> +$50<br>
-                            <i>high poly model:</i> +$100<br><br>
-                            <b>scenic background</b><br>
-                            price varies depending on complexity, +$80 minimum<br><br>
-                        </div>
-                    </commission_type>
-                </commissions>
-            </content>
-            <nav class="right leftright">
-                <a href="javascript:delay('3d-form.html')" id="toform" class="right btn">to order form&nbsp;<span>▶</span></a>
-            </nav>
-        </div>
-        <div id="threed">
-            <logo class="right">
-                <img class="logo right" src="imgs/3d_infologo.png">
-                <img class="logo right bg" src="imgs/gradient_infologo.png">
-            </logo>
-        </div>
-    </main>
-    <footer>
-        <div id="innerfooter">
-            <p>copyright © 2023 EVULBAD ◈ <a href="mailto:evulbad@gmail.com">contact me</a> ◈ someday, there'll be a sitemap here. not today though</p>
-        </div>
-    </footer>
+                            complicated designs may cost extra depending on complexity. some designs may even get rejected due to the fact that i may not feel confident in modelling them. modelling is hard work and i want to be sure i can make you something i'm proud of!<br><br>
+                            if you're unsure about whether or not i'm willing to model something, just ask. i'm open minded, dignity is a social construct, and the worst i'll do is say no.<br><br>
+                            every model comes with null anatomy and one outfit. every render comes with a simple gradient background. additional versions of said render (i.e. transparent or outlined) can be made upon request.<br><br>
+                            rush orders are not available for 3D commissions.</p><br>
+                            <div class="textright">
+                                <sub>status last updated 9/3/23</sub>
+                            </div>
+                        </commission_type>
+                        <commission_type id="lowpoly">
+                            <div class="columns">
+                                <div class="left text rows">
+                                    <div class="textright">
+                                        <hr class="dotted top">
+                                        <h1>LOW POLY MODEL</h1>
+                                        <sub>3D models made with the smallest amount of tris i can muster. usually up to 2k tris.</sub><br>
+                                        <hr class="dotted bottom"><br>
+                                        <b>full body render</b><br>
+                                        $150<br><br>
+                                        <b>avatar upgrade</b><br>
+                                        +$100
+                                    </div>
+                                <div class="textcenter">
+                                        <a href="/">view low poly gallery</a>
+                                </div>
+                                </div>
+                                <div class="right example">
+                                    <img src="imgs/test.png">
+                                </div>
+                            </div>
+                        </commission_type>
+                        <commission_type id="highpoly">
+                            <div class="columns">
+                                <div class="left example">
+                                    <img src="imgs/test.png">
+                                </div>
+                                <div class="right text rows">
+                                    <div>
+                                        <hr class="dotted top">
+                                        <h1>HIGH POLY MODEL</h1>
+                                        <sub>3D models made with more detail. usually between 8k and 20k tris.</sub><br>
+                                        <hr class="dotted bottom"><br>
+                                        <b>full body render</b><br>
+                                        $500<br><br>
+                                        <b>avatar upgrade</b><br>
+                                        +$200
+                                    </div>
+                                    <div class="textcenter">
+                                        <a href="/">view high poly gallery</a>
+                                </div>
+                                </div>
+                            </div>
+                        </commission_type>
+                        <commission_type id="addons">
+                            <div class="text">
+                                <hr class="dotted top">
+                                <div class="textcenter">
+                                    <h1>ADD-ONS</h1>
+                                    <sub>stuff that'll cost extra.</sub><br>
+                                </div>
+                                <hr class="dotted bottom"><br>
+                                <b>additional poses</b><br>
+                                +$30 each<br><br>
+                                <b>additional outfits</b><br>
+                                prices vary depending on complexity, +$50 minimum each<br><br>
+                                <b>short animations</b><br>
+                                prices vary depending on complexity, +$50 minimum each<br><br>
+                                <b>nsfw anatomy</b><br>
+                                <i>low poly model:</i> +$50<br>
+                                <i>high poly model:</i> +$100<br><br>
+                                <b>scenic background</b><br>
+                                price varies depending on complexity, +$80 minimum<br><br>
+                            </div>
+                        </commission_type>
+                    </commissions>
+                </content>
+                <nav class="right scene-element">
+                    <a href="3d-form.html" id="toform" class="right btn" data-target="1">to order form&nbsp;<span>▶</span></a>
+                </nav>
+            </div>
+            <div id="threed">
+                <logo class="right">
+                    <img class="logo right" src="imgs/3d_infologo.png">
+                    <img class="logo right bg" src="imgs/gradient_infologo.png">
+                </logo>
+            </div>
+        </main>
+        <footer>
+            <div id="innerfooter">
+                <p>copyright © 2023 EVULBAD ◈ <a href="mailto:evulbad@gmail.com">contact me</a> ◈ someday, there'll be a sitemap here. not today though</p>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
-<script defer src="commissions.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="jquery.smoothState.min.js"></script>
+<script src="commissions.js"></script>
