@@ -184,9 +184,9 @@ label {
     background-attachment:fixed;
     flex-grow:1;
     flex-basis:0;
-    -webkit-transition:flex-grow 1s, flex-basis 0.5s;
-	-moz-transition:flex-grow 1s, flex-basis 0.5s;
-	transition:flex-grow 1s, flex-basis 0.5s;
+    -webkit-transition:flex-grow 1s, flex-basis 1s;
+	-moz-transition:flex-grow 1s, flex-basis 1s;
+	transition:flex-grow 1s, flex-basis 1s;
 }
 
 #commissions #twod::before, #commissions #threed::before {
@@ -463,32 +463,32 @@ label {
 
 @keyframes to-left {
     0% {transform: translateX(0); opacity:1;}
-    100% {transform: translateX(-100px); opacity:0;}
+    100% {transform: translateX(-75vw); opacity:0;}
 }
 
 @keyframes from-left {
     100% {transform: translateX(0); opacity:1;}
-    0% {transform: translateX(-100px); opacity:0;}
+    0% {transform: translateX(-75vw); opacity:0;}
 }
 
 @keyframes to-right {
     0% {transform: translateX(0); opacity:1;}
-    100% {transform: translateX(100px); opacity:0;}
+    100% {transform: translateX(75vw); opacity:0;}
 }
 
 @keyframes from-right {
     100% {transform: translateX(0); opacity:1;}
-    0% {transform: translateX(100px); opacity:0;}
+    0% {transform: translateX(75vw); opacity:0;}
 }
 
 @keyframes to-top {
     0% {transform: translateY(0); opacity:1;}
-    100% {transform: translateY(-100px); opacity:0;}
+    100% {transform: translateY(-75vw); opacity:0;}
 }
 
 @keyframes from-top {
     100% {transform: translateY(0); opacity:1;}
-    0% {transform: translateY(-100px); opacity:0;}
+    0% {transform: translateY(-75vw); opacity:0;}
 }
 
 .scene-element {

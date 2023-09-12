@@ -1,4 +1,4 @@
-//declarations.
+//DECLARATIONS:
 let bodyClass,
   currentURL,
   prevURL = document.referrer,
@@ -10,13 +10,14 @@ function currentURLFinder() {
   return window.location.href;
 }
 
-//saving values of clicked links.
-const btns = document.querySelectorAll(".btn");
-for (const btn of btns) {
-  btn.addEventListener("click", function() {
-    clickedBtn = btn.id;
-    return clickedBtn;
-  });
+//finds btns and saves id of whichever btn is clicked.
+function buttonListener(){
+  const btns = document.querySelectorAll(".btn");
+  for (const btn of btns) {
+    btn.addEventListener("click", function() {
+      clickedBtn = btn.id;
+    });
+  }
 }
 
 //background size adjuster thanks to perttu on stack overflow. very slightly adjusted to suit my needs.
@@ -57,9 +58,9 @@ function uploadFile(target) {
     alert("maximum file size is 10mb. files listed below exceed maximum file size:\n" + fileRejects)
   } else if (target.files.length > 3) {
     alert("you may only upload up to 3 files.");
-  } else if (target.files.length <= 1) {
+  } else if (target.files.length === 1) {
     document.getElementById("file-count").innerHTML = " " + target.files.length + " file selected.";
-  } else if (target.files.length = 0) {
+  } else if (target.files.length === 0) {
     "no more than 3 files may be uploaded.";
   } else {
     document.getElementById("file-count").innerHTML = " " + target.files.length + " files selected.";
@@ -67,10 +68,11 @@ function uploadFile(target) {
 }
 
 //ACTUAL WORK:
-//intializing page by getting current url.
+//intializing page by getting current url and listening for buttons.
 currentURL = currentURLFinder();
+window.onload = buttonListener();
 
-//
+//setting up background size fixer.
 if (currentURL.indexOf("2d") != -1) {
   fixBackgroundSizeCover("twod");
   window.addEventListener("resize", function(e) {
@@ -100,10 +102,12 @@ if (currentURL.indexOf("2d") != -1) {
       $main = $("#main"),
       $site = $("html, body"),
       transition;
-    $main.smoothState({
+    $main.smoothState(
+      {
       onBefore: function($anchor, $container) {
         let current = $("[data-viewport]").first().data("viewport"),
-          target = $anchor.data("target");
+          target = $anchor.data("target"),
+          transDuration = 400;
         currentURL = currentURLFinder();
         current = current ? current : 0;
         target = target ? target : 0;
@@ -113,11 +117,14 @@ if (currentURL.indexOf("2d") != -1) {
         if (current < target) {
           if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
             $("#" + clickedBtn).addClass("full-width");
-            transition = "from-right";
-          } else {
-            transition = "from-right";
+            transDuration = 1000;
           }
+          transition = "from-right";
         } else if (current > target){
+          if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
+            $("#" + clickedBtn).addClass("full-width");
+            transDuration = 1000;
+          }
           transition = "from-left";
         } else {
           transition = "none";
@@ -138,6 +145,10 @@ if (currentURL.indexOf("2d") != -1) {
           $container.removeClass("is-exiting");
         }
       },
+      onAfter: function() {
+        buttonListener();
+        currentURL = currentURLFinder();
+      }
       }).data("smoothState");
   });
 }(jQuery));
