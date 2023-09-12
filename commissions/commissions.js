@@ -5,7 +5,7 @@ let bodyClass,
   clickedBtn;
 
 //STANDALONE FUNCTIONS:
-//self-explanatory. gets current url.
+//gets current url.
 function currentURLFinder() {
   return window.location.href;
 }
@@ -91,16 +91,6 @@ function uploadFile(target) {
   }
 }
 
-//set transition duration depending on currentURL.
-function transitionDuration(value) {
-  if (value.indexOf("3d") === -1 && value.indexOf("2d") === -1) {
-    transDuration = 1000;
-  } else {
-    transDuration = 400;
-  }
-  return transDuration;
-}
-
 //ACTUAL WORK:
 //intializing page by getting current url and listening for buttons.
 currentURL = currentURLFinder();
@@ -137,7 +127,7 @@ fixBackgroundElements();
         }
       },
       onStart: {
-        duration: transitionDuration(currentURL),
+        duration: 400,
         render: function(url, $container) {
         $main.attr("data-transition", transition);
         $main.addClass("is-exiting");
@@ -155,6 +145,18 @@ fixBackgroundElements();
         currentURL = currentURLFinder();
         buttonListener();
         fixBackgroundElements();
+        $("#" + clickedBtn).addClass("full-width");
+        $("#twod").addClass("half-width");
+        $("#threed").addClass("half-width");
+        if ($("[data-viewport]").first().data("viewport") === -1) {
+          setTimeout(function() {
+            $("#" + clickedBtn).removeClass("full-width");
+          }, 100)
+          setTimeout(function() {
+            $("#twod").removeClass("half-width");
+            $("#threed").removeClass("half-width");
+          }, 500)
+        }
       }
     }).data("smoothState");
   });

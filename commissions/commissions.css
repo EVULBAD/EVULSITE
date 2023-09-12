@@ -519,6 +519,10 @@ label {
     cursor:default !important;
 }
 
+.half-width {
+    flex-grow:1!important;
+}
+
 #commissions #twod.full-width::before, #commissions #threed.full-width::before {
     opacity:0.4!important;
 }
