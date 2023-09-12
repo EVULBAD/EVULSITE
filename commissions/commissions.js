@@ -37,6 +37,30 @@ function fixBackgroundSizeCover(bodyClass) {
   //console.log("resize bg has run");
 };
 
+//function that figures out which elements to slap fixBackgroundSizeCover onto.
+function fixBackgroundElements() {
+  if (currentURL.indexOf("2d") != -1) {
+    fixBackgroundSizeCover("twod");
+    window.addEventListener("resize", function(e) {
+      fixBackgroundSizeCover("twod")
+    });
+  } else if (currentURL.indexOf("3d") != -1) {
+    fixBackgroundSizeCover("threed");
+    window.addEventListener("resize", function(e) {
+      fixBackgroundSizeCover("threed")
+    });
+  } else {
+    fixBackgroundSizeCover("threed");
+    window.addEventListener("resize", function(e) {
+      fixBackgroundSizeCover("threed")
+    });
+    fixBackgroundSizeCover("twod");
+    window.addEventListener("resize", function(e) {
+      fixBackgroundSizeCover("twod")
+    });
+  }
+}
+
 //function for file uploading on the form page. implements limitations to user uploads.
 function uploadFile(target) {
   let fileSize,
@@ -67,32 +91,21 @@ function uploadFile(target) {
   }
 }
 
+//set transition duration depending on currentURL.
+function transitionDuration(value) {
+  if (value.indexOf("3d") === -1 && value.indexOf("2d") === -1) {
+    transDuration = 1000;
+  } else {
+    transDuration = 400;
+  }
+  return transDuration;
+}
+
 //ACTUAL WORK:
 //intializing page by getting current url and listening for buttons.
 currentURL = currentURLFinder();
-window.onload = buttonListener();
-
-//setting up background size fixer.
-if (currentURL.indexOf("2d") != -1) {
-  fixBackgroundSizeCover("twod");
-  window.addEventListener("resize", function(e) {
-    fixBackgroundSizeCover("twod")
-  });
-} else if (currentURL.indexOf("3d") != -1) {
-  fixBackgroundSizeCover("threed");
-  window.addEventListener("resize", function(e) {
-    fixBackgroundSizeCover("threed")
-  });
-} else {
-  fixBackgroundSizeCover("threed");
-  window.addEventListener("resize", function(e) {
-    fixBackgroundSizeCover("threed")
-  });
-  fixBackgroundSizeCover("twod");
-  window.addEventListener("resize", function(e) {
-    fixBackgroundSizeCover("twod")
-  });
-}
+buttonListener();
+fixBackgroundElements();
 
 //jQuery for smoothState.
 (function ($) {
@@ -102,28 +115,21 @@ if (currentURL.indexOf("2d") != -1) {
       $main = $("#main"),
       $site = $("html, body"),
       transition;
-    $main.smoothState(
-      {
+    $main.smoothState({
       onBefore: function($anchor, $container) {
         let current = $("[data-viewport]").first().data("viewport"),
           target = $anchor.data("target"),
-          transDuration = 400;
         currentURL = currentURLFinder();
         current = current ? current : 0;
         target = target ? target : 0;
-        //console.log("current: " + current)
-        //console.log("target: " + target)
-        //console.log("current URL: " + currentURL)
         if (current < target) {
           if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
             $("#" + clickedBtn).addClass("full-width");
-            transDuration = 1000;
           }
           transition = "from-right";
         } else if (current > target){
           if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
             $("#" + clickedBtn).addClass("full-width");
-            transDuration = 1000;
           }
           transition = "from-left";
         } else {
@@ -131,10 +137,10 @@ if (currentURL.indexOf("2d") != -1) {
         }
       },
       onStart: {
-        duration: 400,
+        duration: transitionDuration(currentURL),
         render: function(url, $container) {
-          $main.attr("data-transition", transition);
-          $main.addClass("is-exiting");
+        $main.attr("data-transition", transition);
+        $main.addClass("is-exiting");
         }
       },
       onReady: {
@@ -146,9 +152,10 @@ if (currentURL.indexOf("2d") != -1) {
         }
       },
       onAfter: function() {
-        buttonListener();
         currentURL = currentURLFinder();
+        buttonListener();
+        fixBackgroundElements();
       }
-      }).data("smoothState");
+    }).data("smoothState");
   });
 }(jQuery));
