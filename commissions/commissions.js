@@ -22,40 +22,42 @@ function buttonListener(){
 
 //background size adjuster thanks to perttu on stack overflow. very slightly adjusted to suit my needs.
 //keeps the scrollbar from resizing the bg, because i"m a tightass about stuff like that.
-function fixBackgroundSizeCover(bodyClass) {
+function fixBackgroundSizeCover(value) {
+  console.log(value);
+
   let bgImageWidth = 1920,
     bgImageHeight = 1080,
     bgImageRatio = bgImageWidth / bgImageHeight,
     windowSizeRatio = window.innerWidth / window.innerHeight;
 
   if (bgImageRatio > windowSizeRatio) {
-    document.getElementById(bodyClass).style.backgroundSize = "auto 100vh";
+    document.getElementById(value).style.backgroundSize = "auto 100vh";
   } else {
-    document.getElementById(bodyClass).style.backgroundSize = "100vw auto";
+    document.getElementById(value).style.backgroundSize = "100vw auto";
   }
 
   //console.log("resize bg has run");
 };
 
 //function that figures out which elements to slap fixBackgroundSizeCover onto.
-function fixBackgroundElements() {
-  if (currentURL.indexOf("2d") != -1) {
+function fixBackgroundElements(value) {
+  if (value.indexOf("2d") != -1) {
     fixBackgroundSizeCover("twod");
-    window.addEventListener("resize", function(e) {
+    window.addEventListener("resize", (e) => {
       fixBackgroundSizeCover("twod")
     });
-  } else if (currentURL.indexOf("3d") != -1) {
+  } else if (value.indexOf("3d") != -1) {
     fixBackgroundSizeCover("threed");
-    window.addEventListener("resize", function(e) {
+    window.addEventListener("resize", (e) => {
       fixBackgroundSizeCover("threed")
     });
   } else {
     fixBackgroundSizeCover("threed");
-    window.addEventListener("resize", function(e) {
+    window.addEventListener("resize", (e) => {
       fixBackgroundSizeCover("threed")
     });
     fixBackgroundSizeCover("twod");
-    window.addEventListener("resize", function(e) {
+    window.addEventListener("resize", (e) => {
       fixBackgroundSizeCover("twod")
     });
   }
@@ -93,9 +95,11 @@ function uploadFile(target) {
 
 //ACTUAL WORK:
 //intializing page by getting current url and listening for buttons.
-currentURL = currentURLFinder();
-buttonListener();
-fixBackgroundElements();
+window.onload = (e) => {
+  currentURL = currentURLFinder();
+  buttonListener();
+  fixBackgroundElements(currentURL);
+}
 
 //jQuery for smoothState.
 (function ($) {
@@ -125,6 +129,8 @@ fixBackgroundElements();
         } else {
           transition = "none";
         }
+        let el = $("#" + clickedBtn);
+        localStorage.setItem("flexFullWidth", el.hasClass("full-width"))
       },
       onStart: {
         duration: 400,
@@ -142,21 +148,26 @@ fixBackgroundElements();
         }
       },
       onAfter: function() {
+        if (localStorage.getItem("flexFullWidth") && localStorage.getItem("flexFullWidth") === "true") {
+          $(".hover").removeClass("hover");
+          $("#" + clickedBtn).addClass("full-width");
+          if ($("[data-viewport]").first().data("viewport") === -1) {
+            setTimeout(function() {
+              $("#" + clickedBtn).removeClass("full-width");
+              localStorage.clear();
+            }, 100)
+            setTimeout(function() {
+              document.addEventListener("mousemove", (e) => {
+                $(".half-width").removeClass("half-width");
+                $("#twod").addClass("hover"); $("#threed").addClass("hover");
+              }, {once: true});
+            }, 500)
+          }
+        }
         currentURL = currentURLFinder();
         buttonListener();
-        fixBackgroundElements();
-        $("#" + clickedBtn).addClass("full-width");
-        $("#twod").addClass("half-width");
-        $("#threed").addClass("half-width");
-        if ($("[data-viewport]").first().data("viewport") === -1) {
-          setTimeout(function() {
-            $("#" + clickedBtn).removeClass("full-width");
-          }, 100)
-          setTimeout(function() {
-            $("#twod").removeClass("half-width");
-            $("#threed").removeClass("half-width");
-          }, 500)
-        }
+        fixBackgroundElements(currentURL);
+        console.log(currentURL)
       }
     }).data("smoothState");
   });

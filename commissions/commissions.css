@@ -23,7 +23,7 @@ body#commissions {
     display:block;
 }
 
-#commissions #twod:hover, #commissions #threed:hover{
+#commissions #twod.hover:hover, #commissions #threed.hover:hover{
     flex-grow:3;
 }
 
@@ -184,9 +184,9 @@ label {
     background-attachment:fixed;
     flex-grow:1;
     flex-basis:0;
-    -webkit-transition:flex-grow 1s, flex-basis 400ms;
-	-moz-transition:flex-grow 1s, flex-basis 400ms;
-	transition:flex-grow 1s, flex-basis 400ms;
+    -webkit-transition:flex-grow 1s, flex-basis 400ms, backround-size 1s;
+	-moz-transition:flex-grow 1s, flex-basis 400ms, backround-size 1s;
+	transition:flex-grow 1s, flex-basis 400ms, backround-size 1s;
 }
 
 #commissions #twod::before, #commissions #threed::before {
@@ -201,7 +201,7 @@ label {
 	transition:opacity 1000ms;
 }
 
-#commissions #threed:hover::before, #commissions #twod:hover::before {
+#commissions #threed.hover:hover::before, #commissions #twod.hover:hover::before {
     opacity:0;
 }
 
