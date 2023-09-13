@@ -23,17 +23,17 @@ function buttonListener(){
 //background size adjuster thanks to perttu on stack overflow. very slightly adjusted to suit my needs.
 //keeps the scrollbar from resizing the bg, because i"m a tightass about stuff like that.
 function fixBackgroundSizeCover(value) {
-  console.log(value);
-
   let bgImageWidth = 1920,
     bgImageHeight = 1080,
     bgImageRatio = bgImageWidth / bgImageHeight,
     windowSizeRatio = window.innerWidth / window.innerHeight;
 
-  if (bgImageRatio > windowSizeRatio) {
+  if (document.getElementById(value) != null && bgImageRatio > windowSizeRatio) {
     document.getElementById(value).style.backgroundSize = "auto 100vh";
-  } else {
+  } else if (document.getElementById(value) != null && bgImageRatio < windowSizeRatio) {
     document.getElementById(value).style.backgroundSize = "100vw auto";
+  } else {
+    return;
   }
 
   //console.log("resize bg has run");
@@ -167,7 +167,6 @@ window.onload = (e) => {
         currentURL = currentURLFinder();
         buttonListener();
         fixBackgroundElements(currentURL);
-        console.log(currentURL)
       }
     }).data("smoothState");
   });
