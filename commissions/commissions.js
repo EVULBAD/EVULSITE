@@ -16,6 +16,7 @@ function buttonListener(){
   for (const btn of btns) {
     btn.addEventListener("click", function() {
       clickedBtn = btn.id;
+      //console.log(clickedBtn);
     });
   }
 }
@@ -41,26 +42,14 @@ function fixBackgroundSizeCover(value) {
 
 //function that figures out which elements to slap fixBackgroundSizeCover onto.
 function fixBackgroundElements(value) {
-  if (value.indexOf("2d") != -1) {
-    fixBackgroundSizeCover("twod");
-    window.addEventListener("resize", (e) => {
-      fixBackgroundSizeCover("twod")
-    });
-  } else if (value.indexOf("3d") != -1) {
-    fixBackgroundSizeCover("threed");
-    window.addEventListener("resize", (e) => {
-      fixBackgroundSizeCover("threed")
-    });
-  } else {
-    fixBackgroundSizeCover("threed");
-    window.addEventListener("resize", (e) => {
-      fixBackgroundSizeCover("threed")
-    });
-    fixBackgroundSizeCover("twod");
-    window.addEventListener("resize", (e) => {
-      fixBackgroundSizeCover("twod")
-    });
-  }
+  fixBackgroundSizeCover("threed");
+  window.addEventListener("resize", (e) => {
+    fixBackgroundSizeCover("threed")
+  });
+  fixBackgroundSizeCover("twod");
+  window.addEventListener("resize", (e) => {
+    fixBackgroundSizeCover("twod")
+  });
 }
 
 //function for file uploading on the form page. implements limitations to user uploads.
@@ -93,12 +82,29 @@ function uploadFile(target) {
   }
 }
 
+//function to run when smooth state is exiting so that i'm not copy-pasting the same text over and over again.
+function smoothStateIsExiting($container, $newContent) {
+  $container.removeClass("is-exiting");
+  $container.html($newContent);
+  buttonListener();
+}
+
+//function that adds a mousemove event to remove the half-width class.
+function removeHalfWidth() {
+  document.addEventListener("mousemove", (e) => {
+    $(".half-width").removeClass("half-width");
+    $("#twod").addClass("hover"); $("#threed").addClass("hover");
+  }, {once: true});
+}
+
+
 //ACTUAL WORK:
 //intializing page by getting current url and listening for buttons.
 window.onload = (e) => {
   currentURL = currentURLFinder();
   buttonListener();
   fixBackgroundElements(currentURL);
+  removeHalfWidth();
 }
 
 //jQuery for smoothState.
@@ -129,8 +135,6 @@ window.onload = (e) => {
         } else {
           transition = "none";
         }
-        let el = $("#" + clickedBtn);
-        localStorage.setItem("flexFullWidth", el.hasClass("full-width"))
       },
       onStart: {
         duration: 400,
@@ -143,29 +147,26 @@ window.onload = (e) => {
         duration: 0,
         render: function($container, $newContent) {
           $site.animate({scrollTop: 0});
-          $container.html($newContent);
-          $container.removeClass("is-exiting");
+          if ((currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1)
+            || currentURL.indexOf("form") != -1) {
+            smoothStateIsExiting($container, $newContent)
+          } else {
+            if (clickedBtn === "toindex") {
+              $body.css("overflow", "hidden");
+              $(".full-width").removeClass("full-width");
+              setTimeout(function(){
+                smoothStateIsExiting($container, $newContent);
+                $body.css("overflow", "");
+                removeHalfWidth();
+              }, 400)
+            } else {
+              smoothStateIsExiting($container, $newContent)
+            }
+          }
         }
       },
       onAfter: function() {
-        if (localStorage.getItem("flexFullWidth") && localStorage.getItem("flexFullWidth") === "true") {
-          $(".hover").removeClass("hover");
-          $("#" + clickedBtn).addClass("full-width");
-          if ($("[data-viewport]").first().data("viewport") === -1) {
-            setTimeout(function() {
-              $("#" + clickedBtn).removeClass("full-width");
-              localStorage.clear();
-            }, 100)
-            setTimeout(function() {
-              document.addEventListener("mousemove", (e) => {
-                $(".half-width").removeClass("half-width");
-                $("#twod").addClass("hover"); $("#threed").addClass("hover");
-              }, {once: true});
-            }, 500)
-          }
-        }
         currentURL = currentURLFinder();
-        buttonListener();
         fixBackgroundElements(currentURL);
       }
     }).data("smoothState");

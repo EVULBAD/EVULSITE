@@ -27,8 +27,14 @@ body#commissions {
     flex-grow:3;
 }
 
-#commissions .info, #commissions .form {
-    overflow-y:scroll;
+#commissions .bg-wrapper {
+    display:flex;
+    width:100%;
+    height:100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 /*TEXT*/
@@ -215,12 +221,6 @@ label {
     background-image: url(imgs/3d.png);
     background-color: darkblue;
     background-position:100vw;
-}
-
-#commissions .info #twod, #commissions .info #threed, #commissions .form #twod, #commissions .form #threed {
-    width:100%;
-    height:100%;
-    position:fixed;
 }
 
 /*LOGOS*/
