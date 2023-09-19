@@ -41,7 +41,7 @@ function fixBackgroundSizeCover(value) {
 };
 
 //function that figures out which elements to slap fixBackgroundSizeCover onto.
-function fixBackgroundElements(value) {
+function fixBackgroundElements() {
   fixBackgroundSizeCover("threed");
   window.addEventListener("resize", (e) => {
     fixBackgroundSizeCover("threed")
@@ -86,6 +86,8 @@ function uploadFile(target) {
 function smoothStateIsExiting($container, $newContent) {
   $container.removeClass("is-exiting");
   $container.html($newContent);
+  clickedBtn = null;
+  fixBackgroundElements();
   buttonListener();
 }
 
@@ -103,7 +105,7 @@ function removeHalfWidth() {
 window.onload = (e) => {
   currentURL = currentURLFinder();
   buttonListener();
-  fixBackgroundElements(currentURL);
+  fixBackgroundElements();
   removeHalfWidth();
 }
 
@@ -136,6 +138,7 @@ window.onload = (e) => {
           transition = "none";
         }
       },
+
       onStart: {
         duration: 400,
         render: function(url, $container) {
@@ -143,31 +146,40 @@ window.onload = (e) => {
         $main.addClass("is-exiting");
         }
       },
+
       onReady: {
         duration: 0,
         render: function($container, $newContent) {
           $site.animate({scrollTop: 0});
-          if ((currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1)
-            || currentURL.indexOf("form") != -1) {
-            smoothStateIsExiting($container, $newContent)
+          if (clickedBtn === "toindex") {
+            $body.css("overflow", "hidden");
+            $(".full-width").removeClass("full-width");
+            setTimeout(function(){
+              smoothStateIsExiting($container, $newContent);
+              $body.css("overflow", "");
+              removeHalfWidth();
+            }, 400)
+          } else if (clickedBtn === "totwod") {
+            $(".full-width").removeClass("full-width");
+            $("#twod").addClass("full-width");
+            setTimeout(function(){
+              smoothStateIsExiting($container, $newContent);
+            }, 400)
+          } else if (clickedBtn === "tothreed") {
+            $(".full-width").removeClass("full-width");
+            $("#threed").addClass("full-width");
+            setTimeout(function(){
+              smoothStateIsExiting($container, $newContent);
+            }, 400)
           } else {
-            if (clickedBtn === "toindex") {
-              $body.css("overflow", "hidden");
-              $(".full-width").removeClass("full-width");
-              setTimeout(function(){
-                smoothStateIsExiting($container, $newContent);
-                $body.css("overflow", "");
-                removeHalfWidth();
-              }, 400)
-            } else {
-              smoothStateIsExiting($container, $newContent)
-            }
+            smoothStateIsExiting($container, $newContent)
           }
         }
       },
+
       onAfter: function() {
+        fixBackgroundElements();
         currentURL = currentURLFinder();
-        fixBackgroundElements(currentURL);
       }
     }).data("smoothState");
   });

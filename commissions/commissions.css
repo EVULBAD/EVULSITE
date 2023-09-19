@@ -294,7 +294,7 @@ label {
 }
 
 #commissions commission_type {
-    padding:20px;
+    padding:5px;
 }
 
 #commissions commissions {
@@ -352,10 +352,10 @@ label {
 #commissions jump {
     text-align:center;
     position:fixed;
-    padding-bottom: 20px;
+    padding:5px;
     padding-top:30px;
+    padding-bottom:15px;
     width:45%;
-    height:36px;
     top:-20px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -537,7 +537,8 @@ label {
 }
 
 #commissions .twod jump, #commissions .twod nav > a {
-    background: #B4ABB4;
+    background-image:url("imgs/bg_crumple_dkblu.png");
+    background-color: #B4ABB4;
     color:black;
 }
 
@@ -554,11 +555,21 @@ label {
 }
 
  #commissions .twod commission_type {
-    background: #D6CED6;
+    background-image:url("imgs/bg_crumple_ltblu.png");
+    background-color: #D6CED6;
 }
 
 #commissions .twod hr.dotted {
-    border-top: 2px dotted #B4ABB4 !important;
+    border-top: 1px solid #68689B !important;
+}
+
+#commissions .twod .textinput {
+    border: 1px solid #68689B !important;
+}
+
+#commissions .twod .border-wrapper {
+    border:double #68689B;
+    padding:20px;
 }
 
 #commissions .twod [type="radio"]:checked + label:after, #commissions .twod [type="checkbox"]:checked + label:after {
@@ -566,11 +577,11 @@ label {
 }
 
 #commissions .twod [type="radio"]:checked + label:before, #commissions .twod [type="checkbox"]:checked + label:before {
-    background-color: #B4ABB4;
+    background-color: #68689B;
 }
 
 #commissions .twod [type="radio"] + label:before, #commissions .twod [type="checkbox"] + label:before {
-    background-color:#B4ABB4;
+    background-color:#68689B;
 }
 
 #commissions .twod [type="radio"]:checked + label:after { 
@@ -582,7 +593,7 @@ label {
 }
 
 #commissions .twod [type="radio"]:not(:checked):hover + label:after, #commissions .twod [type="checkbox"]:not(:checked):hover + label:after {
-    background: none repeat scroll 0 0 #B4ABB4;
+    background: none repeat scroll 0 0 #68689B;
 }
 
 #commissions .twod .button, #commissions .twod [type="file"] + label {
@@ -603,7 +614,8 @@ label {
 }
 
 #commissions .threed jump, #commissions .threed nav > a {
-    background: #D5C3AE;
+    background-image:url("imgs/bg_crumple_dkorn.png");
+    background-color: #D5C3AE;
     color:black;
 }
 
@@ -616,11 +628,21 @@ label {
 }
 
 #commissions .threed commission_type {
-    background: #E8DDD0;
+    background-image:url("imgs/bg_crumple_ltorn.png");
+    background-color: #E8DDD0;
 }
 
 #commissions .threed hr.dotted {
-    border-top: 2px dotted #D1B899 !important;
+    border-top: 1px solid #A85F37 !important;
+}
+
+#commissions .threed .textinput {
+    border: 1px solid #A85F37 !important;
+}
+
+#commissions .threed .border-wrapper {
+    border: double #A85F37;
+    padding:20px;
 }
 
 #commissions .threed [type="radio"]:checked + label:after, #commissions .threed [type="checkbox"]:checked + label:after {
@@ -628,11 +650,11 @@ label {
 }
 
 #commissions .threed [type="radio"]:checked + label:before, #commissions .threed [type="checkbox"]:checked + label:before {
-    background-color: #D5C3AE;
+    background-color: #A85F37;
 }
 
 #commissions .threed [type="radio"] + label:before, #commissions .threed [type="checkbox"] + label:before {
-    background-color:#D5C3AE;
+    background-color:#A85F37;
 }
 
 #commissions .threed [type="radio"]:checked + label:after { 
@@ -644,7 +666,7 @@ label {
 }
 
 #commissions .threed [type="radio"]:not(:checked):hover + label:after, #commissions .threed [type="checkbox"]:not(:checked):hover + label:after {
-    background: none repeat scroll 0 0 #D5C3AE;
+    background: none repeat scroll 0 0 #A85F37;
 }
 
 #commissions .threed .button, #commissions .threed [type="file"] + label {
