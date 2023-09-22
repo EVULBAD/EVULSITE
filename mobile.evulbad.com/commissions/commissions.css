@@ -1,0 +1,678 @@
+/*BIGGUNS*/
+body#commissions {
+    overflow-x:hidden;
+}
+
+#commissions main {
+    display:flex;
+}
+
+#commissions #main {
+    width:100%;
+    height:100%
+}
+
+#commissions #index {
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+
+#commissions a#twod, #commissions a#threed {
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+#commissions #twod.hover:hover, #commissions #threed.hover:hover{
+    flex-grow:3;
+}
+
+#commissions .bg-wrapper {
+    display:flex;
+    width:100%;
+    height:100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+/*TEXT*/
+#commissions p {
+    margin: 0;
+}
+
+#commissions a {
+    text-decoration:none;
+}
+
+#commissions h1, #commissions h2 {
+    margin:0;
+    line-height:1;
+}
+
+#commissions h1 {
+    font-size:24px;
+}
+
+#commissions h2 {
+    font-size:36px;
+}
+
+#commissions sub {
+    line-height:0;
+    font-size:14px
+}
+
+#commissions .textcenter {
+    text-align: center;
+}
+
+#commissions .textright {
+    text-align:right;
+}
+
+#commissions hr.dotted {
+    border:none;
+    width:100%;
+}
+
+#commissions hr.dotted.top {
+    margin-top:0;
+}
+
+#commissions hr.dotted.bottom {
+    margin-bottom:0;
+}
+
+/*FORM LABELS*/
+label {
+    display: inline;
+    position: relative;
+    cursor:pointer;  
+}
+
+[type="radio"], [type="checkbox"], [type="file"] {
+    display: none;
+}
+
+[type="radio"]:checked + label:after, [type="checkbox"]:checked + label:after {
+    content: " ";
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    top: 4px;
+    left: 1px;
+    cursor:pointer;
+}
+
+.checkmark:after {
+    content: "✖";
+    position: absolute;
+    display:none;
+}
+
+[type="checkbox"]:checked + label > .checkmark:after {
+    display: block;
+}
+
+.checkmark:after {
+    left:2px;
+    top:0;
+    color: white;
+    z-index:999;
+}
+
+#commissions tos .checkmark:after {
+    left:3px;
+    top:1px;
+    font-size:15px;
+}
+
+[type="radio"] + label:before, [type="checkbox"] + label:before {
+    display: inline-block;
+    position: relative;
+    height:17px;
+    width:17px;
+    content: " ";
+    margin-right: 5px;
+    cursor: pointer;
+    top:4px;
+}
+
+[type="radio"] + label:after, [type="checkbox"] + label:after {
+    content: " ";
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    top: 4px;
+    left: 1px;    
+}
+
+[type="radio"] + label:before {
+    border-radius:10px;
+}
+
+[type="radio"] + label:after {
+    border-radius: 50px 50px 50px 50px;
+}
+
+.button, [type="file"] + label {
+    border: none;
+    color: white;
+    border-radius:20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor:pointer;
+    font-weight:bold;
+    font-family: 'space grotesk';
+}
+
+.button {
+    padding: 15px 30px;
+    font-size: 16px;
+}
+
+[type="file"] + label {
+    padding:2px 15px;
+    font-size:14px;
+    margin:3px 0;
+}
+
+#file-count {
+    font-size:14px;
+}
+
+/*BACKGROUND IMAGES*/
+#commissions #twod, #commissions #threed {
+    background-size:cover;
+    background-attachment:fixed;
+    flex-grow:1;
+    flex-basis:0;
+    -webkit-transition:flex-grow 1s, flex-basis 400ms, backround-size 1s;
+	-moz-transition:flex-grow 1s, flex-basis 400ms, backround-size 1s;
+	transition:flex-grow 1s, flex-basis 400ms, backround-size 1s;
+}
+
+#commissions #twod::before, #commissions #threed::before {
+    content: " ";
+    display:block;
+    opacity:0.4;
+    width:100%;
+    height:100%;
+    background-color:black;
+    -webkit-transition:opacity 1000ms;
+	-moz-transition:opacity 1000ms;
+	transition:opacity 1000ms;
+}
+
+#commissions #threed.hover:hover::before, #commissions #twod.hover:hover::before {
+    opacity:0;
+}
+
+#commissions #twod {
+    background-image: url(imgs/2d.png);
+    background-color: darkred;
+    background-position:left;
+}
+
+#commissions #threed {
+    background-image: url(imgs/3d.png);
+    background-color: darkblue;
+    background-position:100vw;
+}
+
+/*LOGOS*/
+#commissions logo {
+    width:100%;
+    display:flex;
+    z-index:2;
+}
+
+#commissions logo.left {
+    justify-content: flex-end;
+}
+
+#commissions .logo.left, #commissions .logo.right {
+    z-index:1;
+    max-height:calc(100vh - 54px);
+    padding:0!important;
+}
+
+#commissions .logo.right {
+    bottom:36px;
+    filter: invert(100%);
+}
+
+#commissions .logo.left {
+    top:0;
+}
+
+#commissions .logo.left.bg, #commissions .logo.right.bg {
+    z-index:0;
+    margin:0;
+    min-height:100vh;
+    opacity:0.7;
+    bottom:0!important;
+}
+
+#commissions .logo.right.bg {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+#commissions .logo {
+    position:absolute;
+    margin:10px;
+}
+
+/*INFO PAGES*/
+#commissions .wrapper {
+    z-index:999;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+#commissions content {
+    height:100%;
+    width:40%;
+    display:flex;
+}
+
+#commissions .info content {
+    margin-top:76px;
+}
+
+#commissions .form content {
+    margin-top:10px;
+}
+
+#commissions commission_type {
+    padding:5px;
+}
+
+#commissions commissions {
+    display:flex;
+    flex-direction:column;
+    width:100%;
+}
+
+#commissions #addons {
+    margin-bottom:45px;
+}
+
+#commissions .info commission_type {
+    margin-bottom: 10px;
+}
+
+#commissions nav {
+    width:30%;
+    height:36px;
+    text-align:center;
+    position:fixed;
+    top:calc(50% - 35px);
+    margin: -52px 0;
+}
+
+#commissions nav.left {
+    left:0;
+}
+
+#commissions nav.right {
+    right:0;
+}
+
+#commissions nav > a {
+    width:140px;
+    height:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    padding:10px 0;
+    border-radius: 20px;
+}
+
+#commissions nav > a.left {
+    right:10px;
+    padding-left:13px;
+}
+
+#commissions nav > a.right {
+    left:10px;
+    padding-right:13px;
+}
+
+#commissions jump {
+    text-align:center;
+    position:fixed;
+    padding:5px;
+    padding-top:30px;
+    padding-bottom:15px;
+    width:45%;
+    top:-20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index:999;
+}
+
+#commissions jump p {
+    margin:0;
+}
+
+#commissions #info, #commissions #bust, #commissions #halfbody, #commissions #fullbody, #commissions #add-ons, #commissions #illus, #commissions #lowpoly, #commissions #highpoly {
+    scroll-margin-top: 76px;
+}
+
+#commissions .columns {
+    display:flex;
+    justify-content: space-between;
+}
+
+#commissions .rows {
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+}
+
+#commissions .example {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex:0 1 60%;
+}
+
+#commissions .text {
+    flex:0 0 40%;
+}
+
+#commissions .example img {
+    width:100%;
+}
+
+#commissions .right.text, #commissions .right.example {
+    margin-left:5px;
+}
+
+#commissions .left.text, #commissions .left.example {
+    margin-right:5px;
+}
+
+/*FORM PAGES*/
+#commissions form {
+    width:80%;
+    margin:0 auto;
+}
+
+#commissions .form commission_type {
+    margin-bottom:45px;
+}
+
+#commissions formlabel {
+    display:flex;
+    justify-content: center;
+}
+
+#commissions .textinput {
+    width:calc(100% - 5px);
+    border:none;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+/*ANIMATIONS*/
+#commissions nav.right span {
+    position:absolute;
+    right:16px;
+    animation: rightpoint 1s ease-in-out infinite;
+}
+
+#commissions nav.left span {
+    position:absolute;
+    left:16px;
+    animation: leftpoint 1s ease-in-out infinite;
+}
+
+@keyframes rightpoint {
+    0% {right:16px;}
+    20% {right:16px;}
+    40% {right:12px;}
+    50% {right:16px;}
+    60% {right:12px;}
+    80% {right:16px;}
+    100% {right:16px;}
+}
+
+@keyframes leftpoint {
+    0% {left:16px;}
+    20% {left:16px;}
+    40% {left:12px;}
+    50% {left:16px;}
+    60% {left:12px;}
+    80% {left:16px;}
+    100% {left:16px;}
+}
+
+@keyframes to-left {
+    0% {transform: translateX(0); opacity:1;}
+    100% {transform: translateX(-75vw); opacity:0;}
+}
+
+@keyframes from-left {
+    100% {transform: translateX(0); opacity:1;}
+    0% {transform: translateX(-75vw); opacity:0;}
+}
+
+@keyframes to-right {
+    0% {transform: translateX(0); opacity:1;}
+    100% {transform: translateX(75vw); opacity:0;}
+}
+
+@keyframes from-right {
+    100% {transform: translateX(0); opacity:1;}
+    0% {transform: translateX(75vw); opacity:0;}
+}
+
+@keyframes to-top {
+    0% {transform: translateY(0); opacity:1;}
+    100% {transform: translateY(-75vw); opacity:0;}
+}
+
+@keyframes from-top {
+    100% {transform: translateY(0); opacity:1;}
+    0% {transform: translateY(-75vw); opacity:0;}
+}
+
+.scene-element {
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+#main[data-transition=from-left] .scene-element {
+    animation-name: from-left;
+}
+
+#main[data-transition=from-left].is-exiting .scene-element {
+    animation-name: to-right;
+}
+
+#main[data-transition=from-right] .scene-element {
+    animation-name: from-right;
+}
+
+#main[data-transition=from-right].is-exiting .scene-element {
+    animation-name: to-left;
+}
+
+.full-width {
+    flex-basis:100% !important;
+    cursor:default !important;
+}
+
+.half-width {
+    flex-grow:1!important;
+}
+
+#commissions #twod.full-width::before, #commissions #threed.full-width::before {
+    opacity:0.4!important;
+}
+
+/*2D PAGES COLORS*/
+#commissions .twod {
+    color: black;
+}
+
+#commissions .twod content a {
+    color: #CC302F;
+}
+
+#commissions .twod jump, #commissions .twod nav > a {
+    background-image:url("imgs/bg_crumple_dkblu.png");
+    background-color: #B4ABB4;
+    color:black;
+}
+
+#commissions .twod commission_type a:hover {
+    color: black;
+}
+
+#commissions .twod jump a {
+    color: #CC302F;
+}
+
+#commissions .twod jump a:hover {
+    color: black;
+}
+
+ #commissions .twod commission_type {
+    background-image:url("imgs/bg_crumple_ltblu.png");
+    background-color: #D6CED6;
+}
+
+#commissions .twod hr.dotted {
+    border-top: 1px solid #517D84 !important;
+}
+
+#commissions .twod .textinput {
+    border: 1px solid #517D84 !important;
+}
+
+#commissions .twod .border-wrapper {
+    border:double #517D84;
+    padding:20px;
+}
+
+#commissions .twod [type="radio"]:checked + label:after, #commissions .twod [type="checkbox"]:checked + label:after {
+    background: none repeat scroll 0 0 #CC302F;
+}
+
+#commissions .twod [type="radio"]:checked + label:before, #commissions .twod [type="checkbox"]:checked + label:before {
+    background-color: #517D84;
+}
+
+#commissions .twod [type="radio"] + label:before, #commissions .twod [type="checkbox"] + label:before {
+    background-color:#517D84;
+}
+
+#commissions .twod [type="radio"]:checked + label:after { 
+    box-shadow:inset 0 0 0 2px white;
+}
+
+#commissions .twod [type="radio"] + label:after, #commissions .twod [type="checkbox"] + label:after {
+    background: none repeat scroll 0 0 white;
+}
+
+#commissions .twod [type="radio"]:not(:checked):hover + label:after, #commissions .twod [type="checkbox"]:not(:checked):hover + label:after {
+    background: none repeat scroll 0 0 #517D84;
+}
+
+#commissions .twod .button, #commissions .twod [type="file"] + label {
+    background-color: #CC302F;
+}
+
+#commissions .twod .button:hover, #commissions .twod [type="file"]:hover + label {
+    background-color: black;
+}
+
+/*3D PAGES COLORS*/
+#commissions .threed {
+    color: black;
+}
+
+#commissions .threed content a, #commissions .threed jump a  {
+    color: #0055C1;
+}
+
+#commissions .threed jump, #commissions .threed nav > a {
+    background-image:url("imgs/bg_crumple_dkorn.png");
+    background-color: #D5C3AE;
+    color:black;
+}
+
+#commissions .threed commission_type a:hover {
+    color: black;
+}
+
+#commissions .threed jump a:hover {
+    color: black;
+}
+
+#commissions .threed commission_type {
+    background-image:url("imgs/bg_crumple_ltorn.png");
+    background-color: #E8DDD0;
+}
+
+#commissions .threed hr.dotted {
+    border-top: 1px solid #A85F37 !important;
+}
+
+#commissions .threed .textinput {
+    border: 1px solid #A85F37 !important;
+}
+
+#commissions .threed .border-wrapper {
+    border: double #A85F37;
+    padding:20px;
+}
+
+#commissions .threed [type="radio"]:checked + label:after, #commissions .threed [type="checkbox"]:checked + label:after {
+    background: none repeat scroll 0 0 #0055C1;
+}
+
+#commissions .threed [type="radio"]:checked + label:before, #commissions .threed [type="checkbox"]:checked + label:before {
+    background-color: #A85F37;
+}
+
+#commissions .threed [type="radio"] + label:before, #commissions .threed [type="checkbox"] + label:before {
+    background-color:#A85F37;
+}
+
+#commissions .threed [type="radio"]:checked + label:after { 
+    box-shadow:inset 0 0 0 2px white;
+}
+
+#commissions .threed [type="radio"] + label:after, #commissions .threed [type="checkbox"] + label:after {
+    background: none repeat scroll 0 0 white;
+}
+
+#commissions .threed [type="radio"]:not(:checked):hover + label:after, #commissions .threed [type="checkbox"]:not(:checked):hover + label:after {
+    background: none repeat scroll 0 0 #A85F37;
+}
+
+#commissions .threed .button, #commissions .threed [type="file"] + label {
+    background-color: #0055C1;
+}
+
+#commissions .threed .button:hover, #commissions .threed [type="file"]:hover + label {
+    background-color: black;
+}
