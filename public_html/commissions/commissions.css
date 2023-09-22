@@ -560,15 +560,15 @@ label {
 }
 
 #commissions .twod hr.dotted {
-    border-top: 1px solid #68689B !important;
+    border-top: 1px solid #517D84 !important;
 }
 
 #commissions .twod .textinput {
-    border: 1px solid #68689B !important;
+    border: 1px solid #517D84 !important;
 }
 
 #commissions .twod .border-wrapper {
-    border:double #68689B;
+    border:double #517D84;
     padding:20px;
 }
 
@@ -577,11 +577,11 @@ label {
 }
 
 #commissions .twod [type="radio"]:checked + label:before, #commissions .twod [type="checkbox"]:checked + label:before {
-    background-color: #68689B;
+    background-color: #517D84;
 }
 
 #commissions .twod [type="radio"] + label:before, #commissions .twod [type="checkbox"] + label:before {
-    background-color:#68689B;
+    background-color:#517D84;
 }
 
 #commissions .twod [type="radio"]:checked + label:after { 
@@ -593,7 +593,7 @@ label {
 }
 
 #commissions .twod [type="radio"]:not(:checked):hover + label:after, #commissions .twod [type="checkbox"]:not(:checked):hover + label:after {
-    background: none repeat scroll 0 0 #68689B;
+    background: none repeat scroll 0 0 #517D84;
 }
 
 #commissions .twod .button, #commissions .twod [type="file"] + label {

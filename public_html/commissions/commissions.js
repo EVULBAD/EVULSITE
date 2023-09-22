@@ -91,7 +91,7 @@ function smoothStateIsExiting($container, $newContent) {
   buttonListener();
 }
 
-//function that adds a mousemove event to remove the half-width class.
+//function that adds a mousemove event to add and remove some classes.
 function removeHalfWidth() {
   document.addEventListener("mousemove", (e) => {
     $(".half-width").removeClass("half-width");
@@ -99,15 +99,19 @@ function removeHalfWidth() {
   }, {once: true});
 }
 
-
-//ACTUAL WORK:
-//intializing page by getting current url and listening for buttons.
-window.onload = (e) => {
+//set of functions to run everytime the window loads.
+function onLoadFunctions() {
   currentURL = currentURLFinder();
+  SA.redirection_mobile();
   buttonListener();
   fixBackgroundElements();
   removeHalfWidth();
 }
+
+
+//ACTUAL WORK:
+//intializing page by getting current url and listening for buttons.
+window.onload = onLoadFunctions;
 
 //jQuery for smoothState.
 (function ($) {
