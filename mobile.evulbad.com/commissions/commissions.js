@@ -152,6 +152,8 @@ window.onload = onLoadFunctions;
           $site.animate({scrollTop: 0});
           if (clickedBtn === "toindex") {
             $body.css("overflow", "hidden");
+            $("logo").removeClass("hide");
+            $("logo").addClass("view");
             $(".full-width").removeClass("full-width");
             setTimeout(function(){
               smoothStateIsExiting($container, $newContent);
