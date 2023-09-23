@@ -91,21 +91,12 @@ function smoothStateIsExiting($container, $newContent) {
   buttonListener();
 }
 
-//function that adds a mousemove event to add and remove some classes.
-function removeHalfWidth() {
-  document.addEventListener("mousemove", (e) => {
-    $(".half-width").removeClass("half-width");
-    $("#twod").addClass("hover"); $("#threed").addClass("hover");
-  }, {once: true});
-}
-
 //set of functions to run everytime the window loads.
 function onLoadFunctions() {
   currentURL = currentURLFinder();
-  SA.redirection_mobile();
+  //commented out while i work on mobile SA.redirection_mobile();
   buttonListener();
   fixBackgroundElements();
-  removeHalfWidth();
 }
 
 
@@ -161,7 +152,6 @@ window.onload = onLoadFunctions;
             setTimeout(function(){
               smoothStateIsExiting($container, $newContent);
               $body.css("overflow", "");
-              removeHalfWidth();
             }, 400)
           } else if (clickedBtn === "totwod") {
             $(".full-width").removeClass("full-width");

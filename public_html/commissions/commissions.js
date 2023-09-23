@@ -102,7 +102,7 @@ function removeHalfWidth() {
 //set of functions to run everytime the window loads.
 function onLoadFunctions() {
   currentURL = currentURLFinder();
-  SA.redirection_mobile();
+  //commented out while i work on SA.redirection_mobile();
   buttonListener();
   fixBackgroundElements();
   removeHalfWidth();

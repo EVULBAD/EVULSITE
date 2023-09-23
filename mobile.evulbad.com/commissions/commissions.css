@@ -5,6 +5,7 @@ body#commissions {
 
 #commissions main {
     display:flex;
+    flex-direction: column;
 }
 
 #commissions #main {
@@ -12,9 +13,9 @@ body#commissions {
     height:100%
 }
 
-#commissions #index {
-    overflow-y:scroll;
-    overflow-x:hidden;
+#commissions #main > .index {
+    height:calc(100vh - 46px);
+    overflow:hidden;
 }
 
 #commissions a#twod, #commissions a#threed {
@@ -225,18 +226,16 @@ label {
 
 /*LOGOS*/
 #commissions logo {
-    width:100%;
+    width:100vw;
     display:flex;
-    z-index:2;
 }
 
-#commissions logo.left {
-    justify-content: flex-end;
+#commissions logo img {
+    width:calc(100vw - 20px);
 }
 
 #commissions .logo.left, #commissions .logo.right {
     z-index:1;
-    max-height:calc(100vh - 54px);
     padding:0!important;
 }
 
@@ -252,14 +251,19 @@ label {
 #commissions .logo.left.bg, #commissions .logo.right.bg {
     z-index:0;
     margin:0;
-    min-height:100vh;
+    height:100vw!important;
+    width:200px!important;
     opacity:0.7;
-    bottom:0!important;
+}
+
+#commissions .logo.left.bg {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
 }
 
 #commissions .logo.right.bg {
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
 
 #commissions .logo {
@@ -277,24 +281,22 @@ label {
     position:absolute;
     top:0;
     left:0;
+    flex-direction: column;
 }
 
 #commissions content {
     height:100%;
-    width:40%;
+    width:95%;
     display:flex;
-}
-
-#commissions .info content {
-    margin-top:76px;
-}
-
-#commissions .form content {
-    margin-top:10px;
 }
 
 #commissions commission_type {
     padding:5px;
+    margin-bottom:10px;
+}
+
+#commissions commission_type:last-child {
+    margin-bottom:0;
 }
 
 #commissions commissions {
@@ -303,71 +305,27 @@ label {
     width:100%;
 }
 
-#commissions #addons {
-    margin-bottom:45px;
-}
-
-#commissions .info commission_type {
-    margin-bottom: 10px;
-}
-
 #commissions nav {
-    width:30%;
-    height:36px;
     text-align:center;
-    position:fixed;
-    top:calc(50% - 35px);
-    margin: -52px 0;
-}
-
-#commissions nav.left {
-    left:0;
-}
-
-#commissions nav.right {
-    right:0;
+    margin:10px;
+    width:95%;
+    display:flex;
+    justify-content: space-evenly;
 }
 
 #commissions nav > a {
-    width:140px;
+    width:50%;
     height:100%;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    position:absolute;
     padding:10px 0;
     border-radius: 20px;
 }
 
-#commissions nav > a.left {
-    right:10px;
-    padding-left:13px;
+#commissions .form nav > a {
+    width:100%;
 }
 
 #commissions nav > a.right {
-    left:10px;
-    padding-right:13px;
-}
-
-#commissions jump {
-    text-align:center;
-    position:fixed;
-    padding:5px;
-    padding-top:30px;
-    padding-bottom:15px;
-    width:45%;
-    top:-20px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    z-index:999;
-}
-
-#commissions jump p {
-    margin:0;
-}
-
-#commissions #info, #commissions #bust, #commissions #halfbody, #commissions #fullbody, #commissions #add-ons, #commissions #illus, #commissions #lowpoly, #commissions #highpoly {
-    scroll-margin-top: 76px;
+    margin-left:10px;
 }
 
 #commissions .columns {
@@ -410,10 +368,6 @@ label {
     margin:0 auto;
 }
 
-#commissions .form commission_type {
-    margin-bottom:45px;
-}
-
 #commissions formlabel {
     display:flex;
     justify-content: center;
@@ -429,36 +383,36 @@ label {
 }
 
 /*ANIMATIONS*/
-#commissions nav.right span {
+#commissions nav > a.right span {
     position:absolute;
     right:16px;
-    animation: rightpoint 1s ease-in-out infinite;
+    animation: toppoint 1s ease-in-out infinite;
 }
 
-#commissions nav.left span {
+#commissions nav > a.left span {
     position:absolute;
     left:16px;
-    animation: leftpoint 1s ease-in-out infinite;
+    animation: bottompoint 1s ease-in-out infinite;
 }
 
-@keyframes rightpoint {
-    0% {right:16px;}
-    20% {right:16px;}
-    40% {right:12px;}
-    50% {right:16px;}
-    60% {right:12px;}
-    80% {right:16px;}
-    100% {right:16px;}
+@keyframes bottompoint {
+    0% {transform:translateY(0)}
+    20% {transform:translateY(0)}
+    40% {transform:translateY(-4px)}
+    50% {transform:translateY(0)}
+    60% {transform:translateY(-4px)}
+    80% {transform:translateY(0)}
+    100% {transform:translateY(0)}
 }
 
-@keyframes leftpoint {
-    0% {left:16px;}
-    20% {left:16px;}
-    40% {left:12px;}
-    50% {left:16px;}
-    60% {left:12px;}
-    80% {left:16px;}
-    100% {left:16px;}
+@keyframes toppoint {
+    0% {transform:translateY(0)}
+    20% {transform:translateY(0)}
+    40% {transform:translateY(4px)}
+    50% {transform:translateY(0)}
+    60% {transform:translateY(4px)}
+    80% {transform:translateY(0)}
+    100% {transform:translateY(0)}
 }
 
 @keyframes to-left {
@@ -536,7 +490,7 @@ label {
     color: #CC302F;
 }
 
-#commissions .twod jump, #commissions .twod nav > a {
+#commissions .twod nav > a {
     background-image:url("imgs/bg_crumple_dkblu.png");
     background-color: #B4ABB4;
     color:black;
