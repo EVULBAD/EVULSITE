@@ -121,14 +121,18 @@ window.onload = onLoadFunctions;
         target = target ? target : 0;
         if (current < target) {
           if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
+            $("logo").removeClass("view");
+            $("logo").addClass("hide");
             $("#" + clickedBtn).addClass("full-width");
           }
-          transition = "from-right";
+          transition = "from-bottom";
         } else if (current > target){
           if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
+            $("logo").removeClass("view");
+            $("logo").addClass("hide");
             $("#" + clickedBtn).addClass("full-width");
           }
-          transition = "from-left";
+          transition = "from-top";
         } else {
           transition = "none";
         }

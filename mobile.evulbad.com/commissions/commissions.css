@@ -239,85 +239,10 @@ label {
     width:100vw;
 }
 
-
 #commissions .logo.right.bg {
     -webkit-transform: scaleY(-1);
     transform: scaleY(-1);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*#commissions logo {
-    display:flex;
-    justify-content: center;
-}
-
-#commissions logo img {
-    width:calc(100vw - 20px);
-}
-
-#commissions .logo.left, #commissions .logo.right {
-    z-index:1;
-    padding:0!important;
-}
-
-#commissions .logo.right {
-    filter: invert(100%);
-}
-
-#commissions logo .left {
-    top:calc(50% - 46px - 51.95px);
-    position:absolute;
-}
-
-#commissions logo .left.bg {
-    top:calc(50%);
-    position:absolute;
-}
-
-#commissions logo .right {
-    bottom:46px;
-}
-
-#commissions .logo.left.bg, #commissions .logo.right.bg {
-    z-index:0;
-    margin:0;
-    height:100vw!important;
-    width:100px!important;
-    opacity:0.7;
-}
-
-#commissions .logo.left.bg {
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-
-#commissions .logo.right.bg {
-    -webkit-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-}
-
-#commissions .logo {
-    position:absolute;
-    margin:10px;
-}*/
 
 /*INFO PAGES*/
 #commissions .wrapper {
@@ -434,16 +359,22 @@ label {
 #commissions nav > a.right span {
     position:absolute;
     right:16px;
-    animation: toppoint 1s ease-in-out infinite;
 }
 
 #commissions nav > a.left span {
     position:absolute;
     left:16px;
+}
+
+#commissions .toppoint {
+    animation: toppoint 1s ease-in-out infinite;
+}
+
+#commissions .bottompoint {
     animation: bottompoint 1s ease-in-out infinite;
 }
 
-@keyframes bottompoint {
+@keyframes toppoint {
     0% {transform:translateY(0)}
     20% {transform:translateY(0)}
     40% {transform:translateY(-4px)}
@@ -453,7 +384,7 @@ label {
     100% {transform:translateY(0)}
 }
 
-@keyframes toppoint {
+@keyframes bottompoint {
     0% {transform:translateY(0)}
     20% {transform:translateY(0)}
     40% {transform:translateY(4px)}
@@ -461,26 +392,6 @@ label {
     60% {transform:translateY(4px)}
     80% {transform:translateY(0)}
     100% {transform:translateY(0)}
-}
-
-@keyframes to-left {
-    0% {transform: translateX(0); opacity:1;}
-    100% {transform: translateX(-75vw); opacity:0;}
-}
-
-@keyframes from-left {
-    100% {transform: translateX(0); opacity:1;}
-    0% {transform: translateX(-75vw); opacity:0;}
-}
-
-@keyframes to-right {
-    0% {transform: translateX(0); opacity:1;}
-    100% {transform: translateX(75vw); opacity:0;}
-}
-
-@keyframes from-right {
-    100% {transform: translateX(0); opacity:1;}
-    0% {transform: translateX(75vw); opacity:0;}
 }
 
 @keyframes to-top {
@@ -493,6 +404,16 @@ label {
     0% {transform: translateY(-75vw); opacity:0;}
 }
 
+@keyframes to-bottom {
+    0% {transform: translateY(0); opacity:1;}
+    100% {transform: translateY(75vw); opacity:0;}
+}
+
+@keyframes from-bottom {
+    100% {transform: translateY(0); opacity:1;}
+    0% {transform: translateY(75vw); opacity:0;}
+}
+
 .scene-element {
     animation-duration: 0.4s;
     animation-timing-function: ease-in-out;
@@ -500,20 +421,20 @@ label {
     animation-fill-mode: both;
 }
 
-#main[data-transition=from-left] .scene-element {
-    animation-name: from-left;
+#main[data-transition=from-top] .scene-element {
+    animation-name: from-top;
 }
 
-#main[data-transition=from-left].is-exiting .scene-element {
-    animation-name: to-right;
+#main[data-transition=from-top].is-exiting .scene-element {
+    animation-name: to-bottom;
 }
 
-#main[data-transition=from-right] .scene-element {
-    animation-name: from-right;
+#main[data-transition=from-bottom] .scene-element {
+    animation-name: from-bottom;
 }
 
-#main[data-transition=from-right].is-exiting .scene-element {
-    animation-name: to-left;
+#main[data-transition=from-bottom].is-exiting .scene-element {
+    animation-name: to-top;
 }
 
 .full-width {
@@ -527,6 +448,16 @@ label {
 
 #commissions #twod.full-width::before, #commissions #threed.full-width::before {
     opacity:0.4!important;
+}
+
+#commissions .hide {
+    opacity:0;
+    transition:opacity 0.4s;
+}
+
+#commissions .view {
+    opacity:1;
+    transition:opacity 0.4s;
 }
 
 /*2D PAGES COLORS*/
