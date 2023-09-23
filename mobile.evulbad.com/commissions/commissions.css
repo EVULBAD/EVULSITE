@@ -196,21 +196,7 @@ label {
 	transition:flex-grow 1s, flex-basis 400ms, backround-size 1s;
 }
 
-#commissions #twod::before, #commissions #threed::before {
-    content: " ";
-    display:block;
-    opacity:0.4;
-    width:100%;
-    height:100%;
-    background-color:black;
-    -webkit-transition:opacity 1000ms;
-	-moz-transition:opacity 1000ms;
-	transition:opacity 1000ms;
-}
 
-#commissions #threed.hover:hover::before, #commissions #twod.hover:hover::before {
-    opacity:0;
-}
 
 #commissions #twod {
     background-image: url(imgs/2d.png);
@@ -226,8 +212,61 @@ label {
 
 /*LOGOS*/
 #commissions logo {
-    width:100vw;
     display:flex;
+    position:relative;
+}
+
+#commissions .logo {
+    position:absolute;
+    width:calc(100vw - 20px);
+    margin:10px;
+    z-index:1;
+}
+
+#commissions .logo.left {
+    bottom:0;
+}
+
+#commissions .logo.right {
+    filter: invert(100%);
+}
+
+#commissions .logo.left.bg, #commissions .logo.right.bg {
+    margin:0;
+    left:0!important;
+    z-index:0;
+    opacity:0.7;
+    width:100vw;
+}
+
+
+#commissions .logo.right.bg {
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*#commissions logo {
+    display:flex;
+    justify-content: center;
 }
 
 #commissions logo img {
@@ -240,19 +279,28 @@ label {
 }
 
 #commissions .logo.right {
-    bottom:36px;
     filter: invert(100%);
 }
 
-#commissions .logo.left {
-    top:0;
+#commissions logo .left {
+    top:calc(50% - 46px - 51.95px);
+    position:absolute;
+}
+
+#commissions logo .left.bg {
+    top:calc(50%);
+    position:absolute;
+}
+
+#commissions logo .right {
+    bottom:46px;
 }
 
 #commissions .logo.left.bg, #commissions .logo.right.bg {
     z-index:0;
     margin:0;
     height:100vw!important;
-    width:200px!important;
+    width:100px!important;
     opacity:0.7;
 }
 
@@ -269,7 +317,7 @@ label {
 #commissions .logo {
     position:absolute;
     margin:10px;
-}
+}*/
 
 /*INFO PAGES*/
 #commissions .wrapper {
