@@ -14,7 +14,6 @@ body#commissions {
 }
 
 #commissions #main > .index {
-    height:calc(100vh - 46px);
     overflow:hidden;
 }
 
@@ -22,6 +21,10 @@ body#commissions {
     width:100%;
     height:100%;
     display:block;
+}
+
+#commissions a#threed.half-width{ 
+    flex: 0 0 46px;
 }
 
 #commissions #twod.hover:hover, #commissions #threed.hover:hover{
@@ -215,6 +218,8 @@ label {
 #commissions logo {
     display:flex;
     position:relative;
+    opacity:1;
+    transition:opacity 0.4s;
 }
 
 #commissions .logo {
@@ -447,17 +452,13 @@ label {
     flex-grow:1!important;
 }
 
-#commissions #twod.full-width::before, #commissions #threed.full-width::before {
-    opacity:0.4!important;
-}
-
-#commissions .hide {
-    opacity:0;
+#commissions footer {
+    opacity:1;
     transition:opacity 0.4s;
 }
 
-#commissions .view {
-    opacity:1;
+#commissions .hide {
+    opacity:0!important;
     transition:opacity 0.4s;
 }
 

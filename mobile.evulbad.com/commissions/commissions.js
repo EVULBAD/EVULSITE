@@ -121,15 +121,15 @@ window.onload = onLoadFunctions;
         target = target ? target : 0;
         if (current < target) {
           if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
-            $("logo").removeClass("view");
-            $("logo").addClass("hide");
+            $("logo").addClass("hide"); $("footer").addClass("hide");
+            $(".half-width").removeClass("half-width");
             $("#" + clickedBtn).addClass("full-width");
           }
           transition = "from-bottom";
         } else if (current > target){
           if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
-            $("logo").removeClass("view");
-            $("logo").addClass("hide");
+            $("logo").addClass("hide"); $("footer").addClass("hide");
+            $(".half-width").removeClass("half-width");
             $("#" + clickedBtn).addClass("full-width");
           }
           transition = "from-top";
@@ -152,9 +152,12 @@ window.onload = onLoadFunctions;
           $site.animate({scrollTop: 0});
           if (clickedBtn === "toindex") {
             $body.css("overflow", "hidden");
-            $("logo").removeClass("hide");
-            $("logo").addClass("view");
             $(".full-width").removeClass("full-width");
+            $("a#threed").addClass("half-width");
+            setTimeout(function() {
+              $("logo").removeClass("hide");
+              $("footer").removeClass("hide");
+            }, 100)
             setTimeout(function(){
               smoothStateIsExiting($container, $newContent);
               $body.css("overflow", "");
