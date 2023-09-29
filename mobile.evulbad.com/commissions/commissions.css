@@ -333,6 +333,14 @@ label {
     width:100%;
 }
 
+#commissions .example img:first-of-type {
+    margin-right:5px;
+}
+
+#commissions .example:first-of-type {
+    margin-bottom:5px;
+}
+
 #commissions .right.text, #commissions .right.example {
     margin-left:5px;
 }
@@ -342,14 +350,13 @@ label {
 }
 
 /*FORM PAGES*/
-#commissions form {
-    width:80%;
-    margin:0 auto;
-}
-
 #commissions formlabel {
     display:flex;
     justify-content: center;
+}
+
+#commissions formlabel h1 {
+    text-align: center;
 }
 
 #commissions .textinput {
