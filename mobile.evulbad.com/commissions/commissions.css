@@ -198,17 +198,20 @@ label {
     -webkit-transition:flex-grow 1s, flex-basis 400ms, backround-size 1s;
 	-moz-transition:flex-grow 1s, flex-basis 400ms, backround-size 1s;
 	transition:flex-grow 1s, flex-basis 400ms, backround-size 1s;
-    background-position:center;
 }
+
+
 
 #commissions #twod {
     background-image: url(imgs/2d.png);
     background-color: darkred;
+    background-position:left;
 }
 
 #commissions #threed {
     background-image: url(imgs/3d.png);
     background-color: darkblue;
+    background-position:100vw;
 }
 
 /*LOGOS*/
@@ -262,7 +265,7 @@ label {
 
 #commissions content {
     height:100%;
-    width:85%;
+    width:95%;
     display:flex;
 }
 

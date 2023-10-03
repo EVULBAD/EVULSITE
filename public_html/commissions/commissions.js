@@ -128,9 +128,7 @@ window.onload = onLoadFunctions;
         currentURL = currentURLFinder();
         current = current ? current : 0;
         target = target ? target : 0;
-        if (clickedBtn === "submit") {
-          transition = "none";
-        } else if (current < target) {
+        if (current < target) {
           if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
             $("#" + clickedBtn).addClass("full-width");
           }
