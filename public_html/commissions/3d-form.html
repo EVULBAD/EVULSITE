@@ -31,7 +31,7 @@
                                 if you don't hear from me within 48 hours after submitting your inquiry, your inquiry doesn't suit the options on the form, or you have any additional questions, feel free to <a href="mailto:evulbad@gmail.com" target="_blank">email me</a>.
                                 <b>do not</b> send commission inquiries to any of my social media accounts; i will just point you back here. forms and emails keep me organized!</p>
                                 <hr class="dotted bottom"><br>
-                                <form>
+                                <form id="reused_form">
                                     <formlabel><h1>COMMISSION TYPE<span style="color:#0055C1">*</span></h1></formlabel>
                                     <input type="radio" id="half-body" name="type" value="half-body" checked="checked" data-valuetwo="1"><label for="half-body">low poly model</label><br>
                                     <input type="radio" id="full-body" name="type" value="full-body" data-valuetwo="1"><label for="full-body">high poly model</label><br>
@@ -60,9 +60,12 @@
                                     <br>
                                     <div class="textcenter">
                                         <tos><input type="checkbox" id="checkboxes-6" name="tos" value="yes" data-valuetwo="1"><label for="checkboxes-6">I have read and agree to the <a href="./tos.html" target="_blank">terms of service</a>.<span style="color:#0055C1">*</span><span class="checkmark"></span></label></tos><br><br>
-                                            <!--minimum price: <span id="sum">billion</span>-->
-                                            <input type="submit" value="SUBMIT" class="button">
+                                        <div class="button-holder">
+                                            <button class="ripple btn" type="submit" id="submit">SUBMIT</button>
+                                        </div>
                                     </div>
+                                    <div id="success_message" style="display:none;">SUCCUESS!!!!</div>
+                                    <div id="error" style="display:none;">CRINGE</div>
                                 </form>
                             </div>
                         </commission_type>
@@ -95,4 +98,5 @@
 <script src="../assets/redirection-mobile.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../assets/jquery.smoothState.min.js"></script>
+<script src="form.js"></script>
 <script src="commissions.js"></script>
