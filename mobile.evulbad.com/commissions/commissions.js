@@ -37,7 +37,7 @@ function fixBackgroundSizeCover(value) {
     return;
   }
 
-  //console.log("resize bg has run");
+  console.log("resize bg has run");
 };
 
 //function that figures out which elements to slap fixBackgroundSizeCover onto.
@@ -94,7 +94,7 @@ function smoothStateIsExiting($container, $newContent) {
 //set of functions to run everytime the window loads.
 function onLoadFunctions() {
   currentURL = currentURLFinder();
-  //commented out while i work on mobile SA.redirection_mobile();
+  //DELETE SA.redirection_mobile();
   buttonListener();
   fixBackgroundElements();
 }
@@ -121,14 +121,14 @@ window.onload = onLoadFunctions;
         target = target ? target : 0;
         if (current < target) {
           if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
-            $("logo").addClass("hide"); $("footer").addClass("hide");
+            $("logo").addClass("hide");
             $(".half-width").removeClass("half-width");
             $("#" + clickedBtn).addClass("full-width");
           }
           transition = "from-bottom";
         } else if (current > target){
           if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
-            $("logo").addClass("hide"); $("footer").addClass("hide");
+            $("logo").addClass("hide");
             $(".half-width").removeClass("half-width");
             $("#" + clickedBtn).addClass("full-width");
           }
@@ -142,6 +142,7 @@ window.onload = onLoadFunctions;
         duration: 400,
         render: function(url, $container) {
         $main.attr("data-transition", transition);
+        $("footer").addClass("hide");
         $main.addClass("is-exiting");
         }
       },
