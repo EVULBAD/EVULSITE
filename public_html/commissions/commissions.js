@@ -122,15 +122,14 @@ window.onload = onLoadFunctions;
       $site = $("html, body"),
       transition;
     $main.smoothState({
+      blacklist: '.no-smoothState',
       onBefore: function($anchor, $container) {
         let current = $("[data-viewport]").first().data("viewport"),
           target = $anchor.data("target"),
         currentURL = currentURLFinder();
         current = current ? current : 0;
         target = target ? target : 0;
-        if (clickedBtn === "submit") {
-          //do nothing
-        } else if (current < target) {
+        if (current < target) {
           if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
             $("#" + clickedBtn).addClass("full-width");
           }

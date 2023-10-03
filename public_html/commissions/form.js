@@ -4,17 +4,13 @@ $(function() {
             $('form#reused_form').hide();
             $('#success_message').show();
             $('#error_message').hide();
-            console.log("SUCCESS");
         } else {
             $('#error_message').append('<ul></ul>');
-
             jQuery.each(data.errorcs,function(key,val) {
                 $('#error_message ul').append('<li>'+key+':'+val+'</li>');
             });
             $('#success_message').hide();
             $('#error_message').show();
-
-            //reverse the response on the button
             $('button[type="submit"]', $form).each(function() {
                 $btn = $(this);
                 label = $btn.prop('orig_label');
@@ -30,7 +26,6 @@ $(function() {
     $('#reused_form').submit(function(e) {
         e.preventDefault();
         $form = $(this);
-        //show some response on the button
         $('button[type="submit"]', $form).each(function() {
             $btn = $(this);
             $btn.prop('type','button' ); 

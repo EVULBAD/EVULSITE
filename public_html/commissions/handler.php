@@ -10,12 +10,8 @@ use FormGuide\Handlx\FormHandler;
 $pp = new FormHandler(); 
 
 $validator = $pp->getValidator();
-/*$validator->field('EMAIL')->isRequired()->isEmail();
-$validator->field('REFS')->isRequired();
-$validator->field('INFO')->maxLength(500);
-$validator->field('TOS')->isRequired();*/
 
-$pp->sendEmailTo('evulbad@gmail.com'); // ← Your email here
+$pp->sendEmailTo('evulbad@gmail.com');
 
 echo $pp->process($_POST);
 ?>

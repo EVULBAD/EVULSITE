@@ -42,17 +42,17 @@ class FormHandler
 		$this->mailer = new PHPMailer;
 		$this->mail_template='';
 
-		$this->mailer->Subject = "COMMISSION ORDER!";
+		$this->mailer->Subject = "COMMISSION ORDER";
 
 		$host = isset($_SERVER['SERVER_NAME'])?$_SERVER['SERVER_NAME']:'localhost';
         $from_email ='forms@'.$host;
-   		$this->mailer->setFrom($from_email,'submissionz',false);  
+   		$this->mailer->setFrom($from_email,'forms',false);  
 
    		$this->captcha = false;   
 
    		$this->attachments = [];
 
-   		$this->recaptcha =null;
+   		$this->recaptcha = null;
 
 
 	}
