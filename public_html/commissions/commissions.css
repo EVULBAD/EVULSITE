@@ -428,6 +428,20 @@ label {
     box-shadow: none;
 }
 
+/*FORM RESULT PAGE*/
+#commissions .form_result .wrapper {
+    height:100%;    
+}
+
+#commissions .form_result content {
+    height:auto;
+    align-items:center;
+    background:black;
+    color:white;
+    padding:20px;
+    margin-bottom:35px;
+}
+
 /*ANIMATIONS*/
 #commissions nav.right span {
     position:absolute;

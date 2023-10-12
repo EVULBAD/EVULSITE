@@ -31,7 +31,7 @@
                                 if you don't hear from me within 48 hours after submitting your inquiry, your inquiry doesn't suit the options on the form, or you have any additional questions, feel free to <a href="mailto:evulbad@gmail.com" target="_blank">email me</a>.
                                 <b>do not</b> send commission inquiries to any of my social media accounts; i will just point you back here. forms and emails keep me organized!</p>
                                 <hr class="dotted bottom"><br>
-                                <form action="mailer.php" method="POST" enctype="multipart/form-data" id="reused_form" class="no-smoothState">
+                                <form action="mailer.php" method="POST" enctype="multipart/form-data" id="form" class="no-smoothState">
                                     <formlabel><h1>COMMISSION TYPE<span style="color:#0055C1">*</span></h1></formlabel>
                                     <input type="radio" id="low-poly" name="TYPE" value="low-poly" checked="checked" data-valuetwo="1"><label for="low-poly">low poly model</label><br>
                                     <input type="radio" id="high-poly" name="TYPE" value="high-poly" data-valuetwo="1"><label for="high-poly">high poly model</label><br>
@@ -41,11 +41,11 @@
                                     <input type="radio" id="no" name="AVATAR" value="no" data-valuetwo="1"><label for="no">no</label><br>
                                     <br>
                                     <formlabel><h1>ADD-ONS</h1></formlabel>
-                                    <input type="checkbox" id="checkboxes-1" name="ADDONS" value="extra&nbsp;poses" data-valuetwo="1"><label for="checkboxes-1">additional poses<span class="checkmark"></span></label><br>
-                                    <input type="checkbox" id="checkboxes-2" name="ADDONS" value="extra&nbsp;outfits" data-valuetwo="1"><label for="checkboxes-2">additional outfits<span class="checkmark"></span></label><br>
-                                    <input type="checkbox" id="checkboxes-3" name="ADDONS" value="animation" data-valuetwo="1"><label for="checkboxes-3">short animations<span class="checkmark"></span></label><br>
-                                    <input type="checkbox" id="checkboxes-4" name="ADDONS" value="nsfw" data-valuetwo="1"><label for="checkboxes-4">nsfw anatomy<span class="checkmark"></span></label><br>
-                                    <input type="checkbox" id="checkboxes-5" name="ADDONS" value="scenic&nbsp;bg" data-valuetwo="1"><label for="checkboxes-5">scenic background<span class="checkmark"></span></label><br>
+                                    <input type="checkbox" id="checkboxes-1" name="ADDONS[]" value="additional&nbsp;poses" data-valuetwo="1"><label for="checkboxes-1">additional poses<span class="checkmark"></span></label><br>
+                                    <input type="checkbox" id="checkboxes-2" name="ADDONS[]" value="additional&nbsp;outfits" data-valuetwo="1"><label for="checkboxes-2">additional outfits<span class="checkmark"></span></label><br>
+                                    <input type="checkbox" id="checkboxes-3" name="ADDONS[]" value="animation" data-valuetwo="1"><label for="checkboxes-3">short animations<span class="checkmark"></span></label><br>
+                                    <input type="checkbox" id="checkboxes-4" name="ADDONS[]" value="nsfw" data-valuetwo="1"><label for="checkboxes-4">nsfw anatomy<span class="checkmark"></span></label><br>
+                                    <input type="checkbox" id="checkboxes-5" name="ADDONS[]" value="scenic&nbsp;bg" data-valuetwo="1"><label for="checkboxes-5">scenic background<span class="checkmark"></span></label><br>
                                     <br>
                                     <formlabel><h1>CHARACTER REFERENCE<span style="color:#0055C1">*</span></h1></formlabel>
                                     <input type="file" id="files" name="FILES[]" accept="image/*" onchange="uploadFile(this)" multiple><label for="files">upload</label><span id="file-count"> up to 3 files no larger than 10mb each.</span><br>
@@ -56,16 +56,13 @@
                                     <textarea class="form-control textinput" name="INFO" placeholder="traits, poses, fashion, color schemes, etc etc etc..." rows="5" cols="50" style="resize: none;"></textarea><br>
                                     <br>
                                     <formlabel><h1>CONTACT EMAIL<span style="color:#0055C1">*</span></h1></formlabel>
-                                    <input class="form-control textinput" name="EMAIL" placeholder="email@example.com" size="50" type="text" /><br>
+                                    <input class="form-control textinput" name="EMAIL" placeholder="email@example.com" size="50" type="email" /><br>
                                     <br>
                                     <div class="textcenter">
-                                        <tos><input type="checkbox" id="checkboxes-6" name="tos" value="yes" data-valuetwo="1"><label for="checkboxes-6">I have read and agree to the <a href="./tos.html" target="_blank">terms of service</a>.<span style="color:#0055C1">*</span><span class="checkmark"></span></label></tos><br><br>
-                                        <div class="button-holder">
-                                            <button class="ripple btn" type="submit" id="submit">SUBMIT</button>
-                                        </div>
+                                        <tos><input type="checkbox" id="checkboxes-6" name="TOS" value="yes" data-valuetwo="1"><label for="checkboxes-6">I have read and agree to the <a href="./tos.html" target="_blank">terms of service</a>.<span style="color:#0055C1">*</span><span class="checkmark"></span></label></tos><br><br>
+                                        <button class="button btn" type="submit" id="submit">SUBMIT</button>
                                     </div>
                                 </form>
-                                <div id="success_message" style="display:none;">SUCCUESS!!!!</div>
                             </div>
                         </commission_type>
                     </commissions>
@@ -97,5 +94,5 @@
 <script src="../assets/redirection-mobile.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../assets/jquery.smoothState.min.js"></script>
-<script src="form.js"></script>
 <script src="commissions.js"></script>
+<script src="form.js"></script>
