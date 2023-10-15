@@ -2,7 +2,21 @@
 let bodyClass,
   currentURL,
   prevURL = document.referrer,
-  clickedBtn;
+  clickedBtn,
+  monthNames = ["January", "February", "March", "April", "May","June","July", "August", "September", "October", "November","December"],
+  todaysDate = new Date(),
+  twoDays = new Date(),
+  month,
+  day,
+  year,
+  displayDate,
+  result;
+
+result = twoDays.setDate(todaysDate.getDate() + 2);
+day = twoDays.getDate();
+month = monthNames[twoDays.getMonth()];
+year = twoDays.getFullYear();
+displayDate = month + " " + day + ", " + year;
 
 //STANDALONE FUNCTIONS:
 //gets current url.
@@ -80,6 +94,8 @@ function onLoadFunctions() {
 
 //INITIALIZATION AND ANIMATIONS:
 //intializing page by getting current url and listening for buttons.
+document.getElementById("displayDate").innerHTML = displayDate;
+
 window.onload = onLoadFunctions;
 
 //jQuery for smoothState.

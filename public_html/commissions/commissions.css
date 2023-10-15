@@ -429,6 +429,10 @@ label {
 }
 
 /*FORM RESULT PAGE*/
+#commissions.form_result {
+    background:black;    
+}
+
 #commissions .form_result .wrapper {
     height:100%;    
 }
@@ -436,10 +440,14 @@ label {
 #commissions .form_result content {
     height:auto;
     align-items:center;
-    background:black;
-    color:white;
+    color:black;
     padding:20px;
     margin-bottom:35px;
+    background:white;
+}
+
+#commissions .form_result text {
+    width:100%;
 }
 
 /*ANIMATIONS*/
