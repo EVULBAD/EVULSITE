@@ -12,6 +12,7 @@ let bodyClass,
   displayDate,
   result;
 
+//setting the date that will display on the form success page.
 result = twoDays.setDate(todaysDate.getDate() + 2);
 day = twoDays.getDate();
 month = monthNames[twoDays.getMonth()];
@@ -94,83 +95,85 @@ function onLoadFunctions() {
 
 //INITIALIZATION AND ANIMATIONS:
 //intializing page by getting current url and listening for buttons.
-document.getElementById("displayDate").innerHTML = displayDate;
+if (document.getElementsByClassName("form_result").length > 0) {
+  document.getElementById("displayDate").innerHTML = displayDate;
+} else {
+  window.onload = onLoadFunctions;
 
-window.onload = onLoadFunctions;
-
-//jQuery for smoothState.
-(function ($) {
-  "use strict";
-  $(document).ready(function () {
-    let $body = $("body"),
-      $main = $("#main"),
-      $site = $("html, body"),
-      transition;
-    $main.smoothState({
-      blacklist: '.no-smoothState',
-      onBefore: function($anchor, $container) {
-        let current = $("[data-viewport]").first().data("viewport"),
-          target = $anchor.data("target"),
-        currentURL = currentURLFinder();
-        current = current ? current : 0;
-        target = target ? target : 0;
-        if (current < target) {
-          if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
-            $("#" + clickedBtn).addClass("full-width");
-          }
-          transition = "from-right";
-        } else if (current > target){
-          if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
-            $("#" + clickedBtn).addClass("full-width");
-          }
-          transition = "from-left";
-        } else {
-          transition = "none";
-        }
-      },
-
-      onStart: {
-        duration: 400,
-        render: function(url, $container) {
-        $main.attr("data-transition", transition);
-        $main.addClass("is-exiting");
-        }
-      },
-
-      onReady: {
-        duration: 0,
-        render: function($container, $newContent) {
-          $site.animate({scrollTop: 0});
-          if (clickedBtn === "toindex") {
-            $body.css("overflow", "hidden");
-            $(".full-width").removeClass("full-width");
-            setTimeout(function(){
-              smoothStateIsExiting($container, $newContent);
-              $body.css("overflow", "");
-              removeHalfWidth();
-            }, 400)
-          } else if (clickedBtn === "totwod") {
-            $(".full-width").removeClass("full-width");
-            $("#twod").addClass("full-width");
-            setTimeout(function(){
-              smoothStateIsExiting($container, $newContent);
-            }, 400)
-          } else if (clickedBtn === "tothreed") {
-            $(".full-width").removeClass("full-width");
-            $("#threed").addClass("full-width");
-            setTimeout(function(){
-              smoothStateIsExiting($container, $newContent);
-            }, 400)
+  //jQuery for smoothState.
+  (function ($) {
+    "use strict";
+    $(document).ready(function () {
+      let $body = $("body"),
+        $main = $("#main"),
+        $site = $("html, body"),
+        transition;
+      $main.smoothState({
+        blacklist: '.no-smoothState',
+        onBefore: function($anchor, $container) {
+          let current = $("[data-viewport]").first().data("viewport"),
+            target = $anchor.data("target"),
+          currentURL = currentURLFinder();
+          current = current ? current : 0;
+          target = target ? target : 0;
+          if (current < target) {
+            if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
+              $("#" + clickedBtn).addClass("full-width");
+            }
+            transition = "from-right";
+          } else if (current > target){
+            if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
+              $("#" + clickedBtn).addClass("full-width");
+            }
+            transition = "from-left";
           } else {
-            smoothStateIsExiting($container, $newContent)
+            transition = "none";
           }
+        },
+  
+        onStart: {
+          duration: 400,
+          render: function(url, $container) {
+          $main.attr("data-transition", transition);
+          $main.addClass("is-exiting");
+          }
+        },
+  
+        onReady: {
+          duration: 0,
+          render: function($container, $newContent) {
+            $site.animate({scrollTop: 0});
+            if (clickedBtn === "toindex") {
+              $body.css("overflow", "hidden");
+              $(".full-width").removeClass("full-width");
+              setTimeout(function(){
+                smoothStateIsExiting($container, $newContent);
+                $body.css("overflow", "");
+                removeHalfWidth();
+              }, 400)
+            } else if (clickedBtn === "totwod") {
+              $(".full-width").removeClass("full-width");
+              $("#twod").addClass("full-width");
+              setTimeout(function(){
+                smoothStateIsExiting($container, $newContent);
+              }, 400)
+            } else if (clickedBtn === "tothreed") {
+              $(".full-width").removeClass("full-width");
+              $("#threed").addClass("full-width");
+              setTimeout(function(){
+                smoothStateIsExiting($container, $newContent);
+              }, 400)
+            } else {
+              smoothStateIsExiting($container, $newContent)
+            }
+          }
+        },
+  
+        onAfter: function() {
+          fixBackgroundElements();
+          currentURL = currentURLFinder();
         }
-      },
-
-      onAfter: function() {
-        fixBackgroundElements();
-        currentURL = currentURLFinder();
-      }
-    }).data("smoothState");
-  });
-}(jQuery));
+      }).data("smoothState");
+    });
+  }(jQuery));
+}

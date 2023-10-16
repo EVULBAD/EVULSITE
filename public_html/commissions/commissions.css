@@ -167,6 +167,7 @@ label {
     cursor:pointer;
     font-weight:bold;
     font-family: 'space grotesk';
+    letter-spacing: 1px;
 }
 
 .button {
@@ -430,7 +431,7 @@ label {
 
 /*FORM RESULT PAGE*/
 #commissions.form_result {
-    background:black;    
+    background:url(imgs/exit.png);
 }
 
 #commissions .form_result .wrapper {
@@ -438,16 +439,37 @@ label {
 }
 
 #commissions .form_result content {
-    height:auto;
     align-items:center;
-    color:black;
-    padding:20px;
-    margin-bottom:35px;
-    background:white;
+    color:white;
+    font-size:20px;
+    background:black;
+    width:50%;
+    display:flex;
+    justify-content: center;
 }
 
 #commissions .form_result text {
+    width:80%;
+    padding:20px;
+    margin-bottom:35px;
+}
+
+#commissions .form_result .columns a {
     width:100%;
+}
+
+#commissions .form_result .button {
+    width:100%;
+    background:#7ff60c;
+    color:black;
+}
+
+#commissions .form_result .columns :first-child {
+    margin-right:20px;
+}
+
+#commissions .form_result #displayDate {
+    color: #7ff60c;
 }
 
 /*ANIMATIONS*/

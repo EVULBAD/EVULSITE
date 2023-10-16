@@ -13,6 +13,9 @@ main {
     height:100%;
 }
 
+a {
+    text-decoration:none;
+}
 /*FOOTER*/
 footer {
 	background:black;
