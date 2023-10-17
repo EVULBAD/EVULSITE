@@ -368,6 +368,45 @@ label {
     box-shadow: none;
 }
 
+/*FORM RESULT PAGE*/
+#commissions.form_result {
+    background:url(imgs/exit.png);
+}
+
+#commissions .form_result .wrapper {
+    height:100%;    
+}
+
+#commissions .form_result content {
+    align-items:center;
+    color:white;
+    background:black;
+    width:70%;
+    display:flex;
+    justify-content: center;
+}
+
+#commissions .form_result text {
+    width:80%;
+    padding:20px;
+    margin-bottom:35px;
+}
+
+#commissions .form_result .columns a {
+    width:50%;
+}
+
+#commissions .form_result .button {
+    width:100%;
+    background:#7ff60c;
+    color:black;
+    padding:5px 10px;
+}
+
+#commissions .form_result #displayDate {
+    color: #7ff60c;
+}
+
 /*ANIMATIONS*/
 #commissions nav > a.right span {
     position:absolute;
@@ -462,6 +501,7 @@ label {
 #commissions footer {
     opacity:1;
     transition:opacity 0.4s;
+    z-index:999;
 }
 
 #commissions .hide {

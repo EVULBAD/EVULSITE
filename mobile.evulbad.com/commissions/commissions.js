@@ -2,7 +2,22 @@
 let bodyClass,
   currentURL,
   prevURL = document.referrer,
-  clickedBtn;
+  clickedBtn,
+  monthNames = ["January", "February", "March", "April", "May","June","July", "August", "September", "October", "November","December"],
+  todaysDate = new Date(),
+  twoDays = new Date(),
+  month,
+  day,
+  year,
+  displayDate,
+  result;
+
+//setting the date that will display on the form success page.
+result = twoDays.setDate(todaysDate.getDate() + 2);
+day = twoDays.getDate();
+month = monthNames[twoDays.getMonth()];
+year = twoDays.getFullYear();
+displayDate = month + " " + day + ", " + year;
 
 //STANDALONE FUNCTIONS:
 //gets current url.
@@ -52,36 +67,6 @@ function fixBackgroundElements() {
   });
 }
 
-//function for file uploading on the form page. implements limitations to user uploads.
-function uploadFile(target) {
-  let fileSize,
-    fileMb,
-    fileName,
-    fileRejects = [];
-
-  for (var i = 0; i < target.files.length; i++) {
-    fileName = target.files.item(i).name;
-    fileSize = target.files.item(i).size;
-    fileMb = fileSize / 1024 ** 2;
-    if (fileMb > 10) {
-      fileRejects += fileName + "\n";
-      fileRejects[fileRejects.length - 1] = fileRejects[fileRejects.length - 1].replace("\n", "")
-    }
-  }
-
-  if (fileRejects.length >= 1) {
-    alert("maximum file size is 10mb. files listed below exceed maximum file size:\n" + fileRejects)
-  } else if (target.files.length > 3) {
-    alert("you may only upload up to 3 files.");
-  } else if (target.files.length === 1) {
-    document.getElementById("file-count").innerHTML = " " + target.files.length + " file selected.";
-  } else if (target.files.length === 0) {
-    "no more than 3 files may be uploaded.";
-  } else {
-    document.getElementById("file-count").innerHTML = " " + target.files.length + " files selected.";
-  }
-}
-
 //function to run when smooth state is exiting so that i'm not copy-pasting the same text over and over again.
 function smoothStateIsExiting($container, $newContent) {
   $container.removeClass("is-exiting");
@@ -91,99 +76,104 @@ function smoothStateIsExiting($container, $newContent) {
   buttonListener();
 }
 
+//function that adds a mousemove event to add and remove some classes.
+function removeHalfWidth() {
+  document.addEventListener("mousemove", (e) => {
+    $(".half-width").removeClass("half-width");
+    $("#twod").addClass("hover"); $("#threed").addClass("hover");
+  }, {once: true});
+}
+
 //set of functions to run everytime the window loads.
 function onLoadFunctions() {
   currentURL = currentURLFinder();
-  //commented out while i work on mobile SA.redirection_mobile();
+  //commented out while i work on SA.redirection_mobile();
   buttonListener();
   fixBackgroundElements();
+  removeHalfWidth();
 }
 
-
-//ACTUAL WORK:
+//INITIALIZATION AND ANIMATIONS:
 //intializing page by getting current url and listening for buttons.
-window.onload = onLoadFunctions;
+if (document.getElementsByClassName("form_result").length > 0) {
+  console.log("form result");
+  document.getElementById("displayDate").innerHTML = displayDate;
+} else {
+  console.log("not form result");
+  window.onload = onLoadFunctions;
 
-//jQuery for smoothState.
-(function ($) {
-  "use strict";
-  $(document).ready(function () {
-    let $body = $("body"),
-      $main = $("#main"),
-      $site = $("html, body"),
-      transition;
-    $main.smoothState({
-      onBefore: function($anchor, $container) {
-        let current = $("[data-viewport]").first().data("viewport"),
-          target = $anchor.data("target"),
-        currentURL = currentURLFinder();
-        current = current ? current : 0;
-        target = target ? target : 0;
-        if (current < target) {
-          if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
+  //jQuery for smoothState.
+  (function ($) {
+    "use strict";
+    $(document).ready(function () {
+      let $body = $("body"),
+        $main = $("#main"),
+        $site = $("html, body"),
+        transition;
+      $main.smoothState({
+        onBefore: function($anchor, $container) {
+          let current = $("[data-viewport]").first().data("viewport"),
+            target = $anchor.data("target"),
+          currentURL = currentURLFinder();
+          current = current ? current : 0;
+          target = target ? target : 0;
+          if (current < target) {
             $("logo").addClass("hide"); $("footer").addClass("hide");
-            $(".half-width").removeClass("half-width");
             $("#" + clickedBtn).addClass("full-width");
-          }
-          transition = "from-bottom";
-        } else if (current > target){
-          if (currentURL.indexOf("3d") === -1 && currentURL.indexOf("2d") === -1) {
+            transition = "from-bottom";
+          } else if (current > target){
             $("logo").addClass("hide"); $("footer").addClass("hide");
-            $(".half-width").removeClass("half-width");
             $("#" + clickedBtn).addClass("full-width");
-          }
-          transition = "from-top";
-        } else {
-          transition = "none";
-        }
-      },
-
-      onStart: {
-        duration: 400,
-        render: function(url, $container) {
-        $main.attr("data-transition", transition);
-        $main.addClass("is-exiting");
-        }
-      },
-
-      onReady: {
-        duration: 0,
-        render: function($container, $newContent) {
-          $site.animate({scrollTop: 0});
-          if (clickedBtn === "toindex") {
-            $body.css("overflow", "hidden");
-            $(".full-width").removeClass("full-width");
-            $("a#threed").addClass("half-width");
-            setTimeout(function() {
-              $("logo").removeClass("hide");
-              $("footer").removeClass("hide");
-            }, 100)
-            setTimeout(function(){
-              smoothStateIsExiting($container, $newContent);
-              $body.css("overflow", "");
-            }, 400)
-          } else if (clickedBtn === "totwod") {
-            $(".full-width").removeClass("full-width");
-            $("#twod").addClass("full-width");
-            setTimeout(function(){
-              smoothStateIsExiting($container, $newContent);
-            }, 400)
-          } else if (clickedBtn === "tothreed") {
-            $(".full-width").removeClass("full-width");
-            $("#threed").addClass("full-width");
-            setTimeout(function(){
-              smoothStateIsExiting($container, $newContent);
-            }, 400)
+            transition = "from-top";
           } else {
-            smoothStateIsExiting($container, $newContent)
+            transition = "none";
           }
+        },
+  
+        onStart: {
+          duration: 400,
+          render: function(url, $container) {
+          $main.attr("data-transition", transition);
+          $main.addClass("is-exiting");
+          }
+        },
+  
+        onReady: {
+          duration: 0,
+          render: function($container, $newContent) {
+            $site.animate({scrollTop: 0});
+            if (clickedBtn === "toindex") {
+              $body.css("overflow", "hidden");
+              $("logo").removeClass("hide"); $("footer").removeClass("hide");
+              $(".full-width").removeClass("full-width");
+              $("a#threed").addClass("half-width");
+              setTimeout(function(){
+                smoothStateIsExiting($container, $newContent);
+                $body.css("overflow", "");
+              }, 400)
+            } else if (clickedBtn === "totwod") {
+              $(".full-width").removeClass("full-width");
+              $("#twod").addClass("full-width");
+              setTimeout(function(){
+                smoothStateIsExiting($container, $newContent);
+              }, 400)
+            } else if (clickedBtn === "tothreed") {
+              $(".full-width").removeClass("full-width");
+              $("#threed").addClass("full-width");
+              setTimeout(function(){
+                smoothStateIsExiting($container, $newContent);
+              }, 400)
+            } else {
+              smoothStateIsExiting($container, $newContent)
+            }
+          }
+        },
+  
+        onAfter: function() {
+          fixBackgroundElements();
+          currentURL = currentURLFinder();
         }
-      },
-
-      onAfter: function() {
-        fixBackgroundElements();
-        currentURL = currentURLFinder();
-      }
-    }).data("smoothState");
-  });
-}(jQuery));
+      }).data("smoothState");
+    });
+  }(jQuery));
+}

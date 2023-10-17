@@ -28,42 +28,41 @@
                                 </div>
                                 <hr class="dotted top">
                                 <p>once you hit the submit button, this form will send an email my way. please be sure your contact email contains no typos, as that is how i'll be reaching out to you about your commission.<br><br>
-                                if you don't hear from me within 48 hours after submitting your inquiry, your inquiry doesn't suit the options on the form, or you have any additional questions, feel free to <a href="mailto:evulbad@gmail.com" target="_blank">email me</a>.
+                                if you don't receive a response within 48 hours after submitting your inquiry, your inquiry doesn't suit the options on the form, or you have any additional questions, feel free to <a href="mailto:evulbad@gmail.com" target="_blank">email directly</a>.
                                 <b>do not</b> send commission inquiries to any of my social media accounts; i will just point you back here. forms and emails keep me organized!</p>
                                 <hr class="dotted bottom"><br>
-                                <form>
+                                <form action="mailer.php" method="POST" enctype="multipart/form-data" id="form" class="no-smoothState">
                                     <formlabel><h1>COMMISSION TYPE<span style="color:#CC302F">*</span></h1></formlabel>
-                                    <input type="radio" id="bust" name="type" value="bust" checked="checked" data-valuetwo="1"><label for="bust">bust</label><br>
-                                    <input type="radio" id="half-body" name="type" value="half-body" data-valuetwo="1"><label for="half-body">half body</label><br>
-                                    <input type="radio" id="full-body" name="type" value="full-body" data-valuetwo="1"><label for="full-body">full body</label><br>
+                                    <input type="radio" id="bust" name="TYPE" value="bust" checked="checked" data-valuetwo="1"><label for="bust">bust</label><br>
+                                    <input type="radio" id="half-body" name="TYPE" value="half-body" data-valuetwo="1"><label for="half-body">half body</label><br>
+                                    <input type="radio" id="full-body" name="TYPE" value="full-body" data-valuetwo="1"><label for="full-body">full body</label><br>
                                     <br>
                                     <formlabel><h1>STYLE<span style="color:#CC302F">*</span></h1></formlabel>
-                                    <input type="radio" id="mono" name="style" value="mono" checked="checked" data-valuetwo="1"><label for="mono">monochrome</label><br>
-                                    <input type="radio" id="flat" name="style" value="flat" data-valuetwo="1"><label for="flat">flat color</label><br>
-                                    <input type="radio" id="cel" name="style" value="cel" data-valuetwo="1"><label for="cel">fully shaded</label><br>
-                                    <input type="radio" id="3D" name="style" value="cel" data-valuetwo="1"><label for="3D">3D illustration</label><br>
+                                    <input type="radio" id="mono" name="STYLE" value="mono" checked="checked" data-valuetwo="1"><label for="mono">monochrome</label><br>
+                                    <input type="radio" id="flat" name="STYLE" value="flat" data-valuetwo="1"><label for="flat">flat color</label><br>
+                                    <input type="radio" id="cel" name="STYLE" value="cel" data-valuetwo="1"><label for="cel">fully shaded</label><br>
+                                    <input type="radio" id="3D" name="STYLE" value="cel" data-valuetwo="1"><label for="3D">3D illustration</label><br>
                                     <br>
                                     <formlabel><h1>ADD-ONS</h1></formlabel>
-                                    <input type="checkbox" id="checkboxes-0" name="add-ons" value="extra&nbsp;characters" data-valuetwo="1"><label for="checkboxes-0">additional characters<span class="checkmark"></span></label><br>
-                                    <input type="checkbox" id="checkboxes-1" name="add-ons" value="nsfw" data-valuetwo="1"><label for="checkboxes-1">nsfw<span class="checkmark"></span></label><br>
-                                    <input type="checkbox" id="checkboxes-2" name="add-ons" value="scenic&nbsp;bg" data-valuetwo="1"><label for="checkboxes-2">scenic background<span class="checkmark"></span></label><br>
-                                    <input type="checkbox" id="checkboxes-3" name="add-ons" value="rush" data-valuetwo="1"><label for="checkboxes-3">rush order<span class="checkmark"></span></label><br>
+                                    <input type="checkbox" id="checkboxes-0" name="ADDONS[]" value="extra&nbsp;characters" data-valuetwo="1"><label for="checkboxes-0">additional characters<span class="checkmark"></span></label><br>
+                                    <input type="checkbox" id="checkboxes-1" name="ADDONS[]" value="nsfw" data-valuetwo="1"><label for="checkboxes-1">nsfw<span class="checkmark"></span></label><br>
+                                    <input type="checkbox" id="checkboxes-2" name="ADDONS[]" value="scenic&nbsp;bg" data-valuetwo="1"><label for="checkboxes-2">scenic background<span class="checkmark"></span></label><br>
+                                    <input type="checkbox" id="checkboxes-3" name="ADDONS[]" value="rush" data-valuetwo="1"><label for="checkboxes-3">rush order<span class="checkmark"></span></label><br>
                                     <br>
                                     <formlabel><h1>CHARACTER REFERENCE<span style="color:#CC302F">*</span></h1></formlabel>
-                                    <input type="file" id="files" name="ref&nbsp;files" accept="image/*" onchange="uploadFile(this)" multiple><label for="files">upload</label><span id="file-count"> up to 3 files no larger than 10mb each.</span><br>
+                                    <input type="file" id="files" name="FILES[]" accept="image/*" onchange="uploadFile(this)" multiple><label for="files">upload</label><span id="file-count"> up to 3 files no larger than 10mb each.</span><br>
                                     <p style="display:inline-block">or paste urls:</p>
-                                    <textarea class="form-control textinput" name="ref&nbsp;urls" placeholder="separate links with commas." rows="2" cols="50" style="resize: none;"></textarea><br>
+                                    <textarea class="form-control textinput" name="URLS" placeholder="separate links with commas." rows="2" cols="50" style="resize: none;"></textarea><br>
                                     <br>
                                     <formlabel><h1>ADDITIONAL INFO</h1></formlabel>
-                                    <textarea class="form-control textinput" name="addtl&nbsp;info" placeholder="traits, poses, fashion, color schemes, etc etc etc..." rows="5" cols="50" style="resize: none;"></textarea><br>
+                                    <textarea class="form-control textinput" name="INFO" placeholder="traits, poses, fashion, color schemes, etc etc etc..." rows="5" cols="50" style="resize: none;"></textarea><br>
                                     <br>
                                     <formlabel><h1>CONTACT EMAIL<span style="color:#CC302F">*</span></h1></formlabel>
-                                    <input class="form-control textinput" name="email" placeholder="email@example.com" size="50" type="text" /><br>
+                                    <input class="form-control textinput" name="EMAIL" placeholder="email@example.com" size="50" type="email" /><br>
                                     <br>
                                     <div class="textcenter">
-                                        <tos><input type="checkbox" id="checkboxes-4" name="tos" value="yes" data-valuetwo="1"><label for="checkboxes-4">I have read and agree to the <a href="./tos.html" target="_blank">terms of service</a>.<span style="color:#CC302F">*</span><span class="checkmark"></span></label></tos><br><br>
-                                            <!--minimum price: <span id="sum">billion</span>-->
-                                            <input type="submit" value="SUBMIT" class="button">
+                                        <tos><input type="checkbox" id="checkboxes-4" name="TOS" value="yes" data-valuetwo="1"><label for="checkboxes-4">I have read and agree to the <a href="./tos.html" target="_blank">terms of service</a>.<span style="color:#CC302F">*</span><span class="checkmark"></span></label></tos><br><br>
+                                        <button class="button btn" type="submit" id="submit">SUBMIT</button>
                                     </div>
                                 </form>
                             </div>
@@ -94,3 +93,4 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../assets/jquery.smoothState.min.js"></script>
 <script src="commissions.js"></script>
+<script src="form.js"></script>
