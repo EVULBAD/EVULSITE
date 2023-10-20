@@ -89,8 +89,8 @@ let slideIndex = [],
   slideId = [],
   slideIdFinder = document.getElementsByClassName("slideshow");
 
-for (element in slideIdFinder) {
-  slideId.push(slideIdFinder[element].id);
+for (i = 0; i < slideIdFinder.length; i++) {
+  slideId.push(slideIdFinder[i].id);
 }
 
 for (i = 0; i < slideId.length; i++) {
@@ -104,7 +104,6 @@ function plusDivs(n, id) {
 
 function showDivs(n, id) {
   let currentSlideshow = document.getElementsByClassName(slideId[id]);
-  console.log(currentSlideshow);
   if (n > currentSlideshow.length) {
     slideIndex[id] = 1;
   } else if (n < 1) {
