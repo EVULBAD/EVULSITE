@@ -84,26 +84,20 @@ function removeHalfWidth() {
   }, {once: true});
 }
 
-//commissions example slideshows.
+//SLIDESHOW FUNCTIONS:
+//declarations.
 let slideIndex = [],
   slideId = [],
-  slideIdFinder = document.getElementsByClassName("slideshow");
+  slideIdFinder = document.getElementsByClassName("slideshow"),
+  currentSlideshow = undefined;
 
 for (i = 0; i < slideIdFinder.length; i++) {
   slideId.push(slideIdFinder[i].id);
-}
-
-for (i = 0; i < slideId.length; i++) {
   slideIndex.push(1);
-  showDivs(1, i);
-}
-
-function plusDivs(n, id) {
-  showDivs(slideIndex[id] += n, id);
 }
 
 function showDivs(n, id) {
-  let currentSlideshow = document.getElementsByClassName(slideId[id]);
+  currentSlideshow = document.getElementsByClassName(slideId[id]);
   if (n > currentSlideshow.length) {
     slideIndex[id] = 1;
   } else if (n < 1) {
@@ -115,10 +109,15 @@ function showDivs(n, id) {
   currentSlideshow[(slideIndex[id] - 1)].style.display = "block";
 }
 
+function plusDivs(n, id) {
+  showDivs(slideIndex[id] += n, id);
+}
+
 function closeModal() {
   document.getElementsByTagName("modal")[0].style.display = "none";
 }
 
+//INITIALIZATION AND ANIMATIONS:
 //set of functions to run everytime the window loads.
 function onLoadFunctions() {
   currentURL = currentURLFinder();
@@ -129,7 +128,7 @@ function onLoadFunctions() {
 
   slideIndex = [],
     slideId = [],
-    slideIdFinder = document.getElementsByClassName("slideshow-container");
+    slideIdFinder = document.getElementsByClassName("slideshow");
 
   for (element in slideIdFinder) {
     slideId.push(slideIdFinder[element].id)
@@ -137,11 +136,9 @@ function onLoadFunctions() {
 
   for (i = 0; i < slideId.length; i++) {
     slideIndex.push(1);
-    //showDivs(1, i);
   }
 }
 
-//INITIALIZATION AND ANIMATIONS:
 //intializing page by getting current url and listening for buttons.
 if (document.getElementsByClassName("form_result").length > 0) {
   document.getElementById("displayDate").innerHTML = displayDate;

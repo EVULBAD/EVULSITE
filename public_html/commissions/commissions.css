@@ -86,7 +86,7 @@ body#commissions {
 }
 
 /*SLIDESHOWS*/
-#commissions .slideshow-container {
+#commissions commission_type .slideshow {
     width:100%;
     max-width: 1000px;
     position: relative;
@@ -96,12 +96,12 @@ body#commissions {
     justify-content: center;
 }
 
-#commissions .slideshow-container img {
+#commissions commission_type .slideshow img {
     max-height:500px;
     max-width:100%;
 }
 
-#commissions .slideshow-container button {
+#commissions commission_type .slideshow button {
     position: absolute;
     background:none;
     border:none;
@@ -115,7 +115,7 @@ body#commissions {
     transition:0.4s;
 }
 
-#commissions .slideshow-container:hover button, #commissions .slideshow-container:hover::before, #commissions .slideshow-container:hover::after {
+#commissions commission_type .slideshow:hover button, #commissions commission_type .slideshow:hover::before, #commissions commission_type .slideshow:hover::after {
     opacity:1;
     transition:0.4s;
 }
@@ -128,7 +128,7 @@ body#commissions {
     right:0px;
 }
 
-#commissions .slideshow-container::after, #commissions .slideshow-container::before {
+#commissions commission_type .slideshow::after, #commissions commission_type .slideshow::before {
     content:" ";
     height:100%;
     width:15%;
@@ -137,12 +137,12 @@ body#commissions {
     transition:0.4s;
 }
 
-#commissions .slideshow-container::before {
+#commissions commission_type .slideshow::before {
     left:0;
     background:linear-gradient(90deg, rgba(219,233,236,1) 25%, rgba(255,255,255,0) 100%);
 }
 
-#commissions .slideshow-container::after {
+#commissions commission_type .slideshow::after {
     right:0;
     background:linear-gradient(-90deg, rgba(219,233,236,1) 25%, rgba(255,255,255,0) 100%);
 }
@@ -152,7 +152,7 @@ body#commissions {
     width:100%;
     height:100%;
     position:absolute;
-    background:rgba(0, 0, 0, 0.75);
+    background:rgba(0, 0, 0, 0.80);
     z-index:999;
 }
 
@@ -163,21 +163,20 @@ body#commissions {
     top:50%;
     left:50%;
     transform:translateY(-50%) translateX(-50%);
-}
-
-.close {
-    color: white;
-    left:50%;
-    bottom:45px;
-    transform:translateX(-50%);
-    font-size: 36px;
-    font-weight: bold;
-    line-height:normal;
-    position:fixed;
     cursor:pointer;
 }
 
-#commissions modal button {
+#commissions modal .close {
+    color: white;
+    left:50%;
+    transform: translateX(-50%);
+    bottom:45px;
+    font-size: 30px;
+    line-height:normal;
+    position:fixed;
+}
+
+#commissions modal .slideshow button {
     position:fixed;
     background:none;
     border:none;
