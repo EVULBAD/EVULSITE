@@ -84,6 +84,42 @@ function removeHalfWidth() {
   }, {once: true});
 }
 
+//commissions example slideshows.
+let slideIndex = [],
+  slideId = [],
+  slideIdFinder = document.getElementsByClassName("slideshow");
+
+for (element in slideIdFinder) {
+  slideId.push(slideIdFinder[element].id);
+}
+
+for (i = 0; i < slideId.length; i++) {
+  slideIndex.push(1);
+  showDivs(1, i);
+}
+
+function plusDivs(n, id) {
+  showDivs(slideIndex[id] += n, id);
+}
+
+function showDivs(n, id) {
+  let currentSlideshow = document.getElementsByClassName(slideId[id]);
+  console.log(currentSlideshow);
+  if (n > currentSlideshow.length) {
+    slideIndex[id] = 1;
+  } else if (n < 1) {
+    slideIndex[id] = currentSlideshow.length;
+  }
+  for (i = 0; i < currentSlideshow.length; i++) {
+    currentSlideshow[i].style.display = "none";  
+  }
+  currentSlideshow[(slideIndex[id] - 1)].style.display = "block";
+}
+
+function closeModal() {
+  document.getElementsByTagName("modal")[0].style.display = "none";
+}
+
 //set of functions to run everytime the window loads.
 function onLoadFunctions() {
   currentURL = currentURLFinder();
@@ -91,6 +127,19 @@ function onLoadFunctions() {
   buttonListener();
   fixBackgroundElements();
   removeHalfWidth();
+
+  slideIndex = [],
+    slideId = [],
+    slideIdFinder = document.getElementsByClassName("slideshow-container");
+
+  for (element in slideIdFinder) {
+    slideId.push(slideIdFinder[element].id)
+  }
+
+  for (i = 0; i < slideId.length; i++) {
+    slideIndex.push(1);
+    //showDivs(1, i);
+  }
 }
 
 //INITIALIZATION AND ANIMATIONS:

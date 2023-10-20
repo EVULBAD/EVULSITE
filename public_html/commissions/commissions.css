@@ -85,6 +85,110 @@ body#commissions {
     margin-bottom:0;
 }
 
+/*SLIDESHOWS*/
+#commissions .slideshow-container {
+    width:100%;
+    max-width: 1000px;
+    position: relative;
+    height:500px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#commissions .slideshow-container img {
+    max-height:500px;
+    max-width:100%;
+}
+
+#commissions .slideshow-container button {
+    position: absolute;
+    background:none;
+    border:none;
+    color:black;
+    font-size:36px;
+    cursor:pointer;
+    margin:0;
+    padding:0;
+    z-index:999;
+    opacity:0;
+    transition:0.4s;
+}
+
+#commissions .slideshow-container:hover button, #commissions .slideshow-container:hover::before, #commissions .slideshow-container:hover::after {
+    opacity:1;
+    transition:0.4s;
+}
+
+#commissions button.left {
+    left:0px;
+}
+
+#commissions button.right {
+    right:0px;
+}
+
+#commissions .slideshow-container::after, #commissions .slideshow-container::before {
+    content:" ";
+    height:100%;
+    width:15%;
+    position:absolute;
+    opacity:0;
+    transition:0.4s;
+}
+
+#commissions .slideshow-container::before {
+    left:0;
+    background:linear-gradient(90deg, rgba(219,233,236,1) 25%, rgba(255,255,255,0) 100%);
+}
+
+#commissions .slideshow-container::after {
+    right:0;
+    background:linear-gradient(-90deg, rgba(219,233,236,1) 25%, rgba(255,255,255,0) 100%);
+}
+
+/*LIGHTBOX*/
+#commissions modal {
+    width:100%;
+    height:100%;
+    position:absolute;
+    background:rgba(0, 0, 0, 0.75);
+    z-index:999;
+}
+
+#commissions modal img {
+    max-width:90%;
+    max-height:80%;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translateY(-50%) translateX(-50%);
+}
+
+.close {
+    color: white;
+    left:50%;
+    bottom:45px;
+    transform:translateX(-50%);
+    font-size: 36px;
+    font-weight: bold;
+    line-height:normal;
+    position:fixed;
+    cursor:pointer;
+}
+
+#commissions modal button {
+    position:fixed;
+    background:none;
+    border:none;
+    color:white;
+    font-size:100px;
+    top:50%;
+    transform:translateY(-50%);
+    padding:0 20px;
+    cursor:pointer;
+}
+
 /*FORM LABELS*/
 label {
     display: inline;
@@ -107,26 +211,23 @@ label {
 }
 
 .checkmark:after {
-    content: "✖";
+    left: 5px;
+    top: 4px;
+    width: 4px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index:999;
+    content: "";
     position: absolute;
-    display:none;
-}
+    display: none;
+  }
 
 [type="checkbox"]:checked + label > .checkmark:after {
     display: block;
-}
-
-.checkmark:after {
-    left:2px;
-    top:0;
-    color: white;
-    z-index:999;
-}
-
-#commissions tos .checkmark:after {
-    left:3px;
-    top:1px;
-    font-size:15px;
 }
 
 [type="radio"] + label:before, [type="checkbox"] + label:before {
@@ -134,14 +235,14 @@ label {
     position: relative;
     height:17px;
     width:17px;
-    content: " ";
+    content: "";
     margin-right: 5px;
     cursor: pointer;
     top:4px;
 }
 
 [type="radio"] + label:after, [type="checkbox"] + label:after {
-    content: " ";
+    content: "";
     height: 15px;
     width: 15px;
     position: absolute;
@@ -386,15 +487,11 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex:0 1 60%;
+    flex:0 1 70%;
 }
 
 #commissions .text {
-    flex:0 0 40%;
-}
-
-#commissions .example img {
-    width:100%;
+    flex:0 0 30%;
 }
 
 #commissions .right.text, #commissions .right.example {
