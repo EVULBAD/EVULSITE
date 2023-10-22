@@ -96,6 +96,10 @@ body#commissions {
     justify-content: center;
 }
 
+#commissions .slideshow img {
+    cursor:pointer;
+}
+
 #commissions commission_type .slideshow img {
     max-height:500px;
     max-width:100%;
@@ -151,7 +155,8 @@ body#commissions {
 #commissions modal {
     width:100%;
     height:100%;
-    position:absolute;
+    position:fixed;
+    top:0;
     background:rgba(0, 0, 0, 0.80);
     z-index:999;
 }

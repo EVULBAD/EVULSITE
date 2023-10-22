@@ -88,33 +88,76 @@ function removeHalfWidth() {
 //declarations.
 let slideIndex = [],
   slideId = [],
-  slideIdFinder = document.getElementsByClassName("slideshow"),
-  currentSlideshow = undefined;
+  slideIdFinder = document.getElementsByClassName("slideshow");
 
 for (i = 0; i < slideIdFinder.length; i++) {
   slideId.push(slideIdFinder[i].id);
   slideIndex.push(1);
 }
 
+//functions.
 function showDivs(n, id) {
-  currentSlideshow = document.getElementsByClassName(slideId[id]);
+  let currentSlideshow = document.getElementsByClassName(slideId[id]);
   if (n > currentSlideshow.length) {
     slideIndex[id] = 1;
   } else if (n < 1) {
     slideIndex[id] = currentSlideshow.length;
   }
   for (i = 0; i < currentSlideshow.length; i++) {
-    currentSlideshow[i].style.display = "none";  
+    currentSlideshow[i].style.display = "none";
   }
-  currentSlideshow[(slideIndex[id] - 1)].style.display = "block";
+  currentSlideshow[slideIndex[id] - 1].style.display = "block";
 }
 
 function plusDivs(n, id) {
   showDivs(slideIndex[id] += n, id);
 }
 
+function plusMatchingDivs(n, id) {
+  let array = returnMatchingSlideshows(id);
+  for (i in array) {
+    plusDivs(n, array[i]);
+  }
+}
+
+function currentSlide(n, id) {
+  showDivs(slideIndex[id] = n, id);
+  openSelectModal(id);
+  openModal();
+}
+
+function openModal() {
+  document.getElementsByTagName("modal")[0].style.display = "block";
+}
+
 function closeModal() {
+  let elements = document.querySelectorAll('[id*="Modal"]');
   document.getElementsByTagName("modal")[0].style.display = "none";
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.display = "none";
+  }
+}
+
+function openSelectModal(id) {
+  let array = returnMatchingSlideshows(id),
+    modal = slideId[array[1]];
+  document.getElementById(modal).style.display = "block";
+}
+
+function returnMatchingSlideshows(id) {
+  let currentGroup = slideId[id],
+    indexOfSlides,
+    indexOfModal,
+    array = [];
+  if (currentGroup.indexOf("Slides") != -1) {
+    currentGroup = currentGroup.replace("Slides", "");
+  } else {
+    currentGroup = currentGroup.replace("Modal", "");
+  };
+  indexOfSlides = slideId.indexOf(currentGroup + "Slides");
+  indexOfModal = slideId.indexOf(currentGroup + "Modal");
+  array.push(indexOfSlides); array.push(indexOfModal);
+  return array;
 }
 
 //INITIALIZATION AND ANIMATIONS:

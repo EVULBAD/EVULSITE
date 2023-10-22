@@ -50,12 +50,12 @@
                                 <div class="columns">
                                     <div class="left example">
                                         <div id="bustSlides" class="slideshow no-smoothState">
-                                            <button class="left" onclick="plusDivs(-1, 0)">&#10094;</button>
-                                            <button class="right" onclick="plusDivs(1, 0)">&#10095;</button>
-                                            <img class="bustSlides" src="imgs/2d examples/bust_1.png" style="display:block">
-                                            <img class="bustSlides" src="imgs/2d examples/bust_2.png" style="display:none">
-                                            <img class="bustSlides" src="imgs/2d examples/bust_3.png" style="display:none">
-                                            <img class="bustSlides" src="imgs/2d examples/bust_4.png" style="display:none">
+                                            <button class="left" onclick="plusMatchingDivs(-1, 0)">&#10094;</button>
+                                            <button class="right" onclick="plusMatchingDivs(1, 0)">&#10095;</button>
+                                            <img class="bustSlides" onclick="currentSlide(1, 3)" src="imgs/2d examples/bust_1.png" style="display:block">
+                                            <img class="bustSlides" onclick="currentSlide(2, 3)" src="imgs/2d examples/bust_2.png" style="display:none">
+                                            <img class="bustSlides" onclick="currentSlide(3, 3)" src="imgs/2d examples/bust_3.png" style="display:none">
+                                            <img class="bustSlides" onclick="currentSlide(0, 3)" src="imgs/2d examples/bust_4.png" style="display:none">
                                         </div>
                                     </div>
                                     <div class="right text rows">
@@ -106,12 +106,12 @@
                                     </div>
                                     <div class="right example">
                                         <div id="halfbodySlides" class="slideshow no-smoothState">
-                                            <button class="left" onclick="plusDivs(-1, 1)">&#10094;</button>
-                                            <button class="right" onclick="plusDivs(1, 1)">&#10095;</button>
-                                            <img class="halfbodySlides" src="imgs/2d examples/halfbody_1.png" style="display:block">
-                                            <img class="halfbodySlides" src="imgs/2d examples/halfbody_2.png" style="display:none">
-                                            <img class="halfbodySlides" src="imgs/2d examples/halfbody_3.png" style="display:none">
-                                            <img class="halfbodySlides" src="imgs/2d examples/halfbody_4.png" style="display:none">
+                                            <button class="left" onclick="plusMatchingDivs(-1, 1)">&#10094;</button>
+                                            <button class="right" onclick="plusMatchingDivs(1, 1)">&#10095;</button>
+                                            <img class="halfbodySlides" onclick="currentSlide(1, 4)" src="imgs/2d examples/halfbody_1.png" style="display:block">
+                                            <img class="halfbodySlides" onclick="currentSlide(2, 4)" src="imgs/2d examples/halfbody_2.png" style="display:none">
+                                            <img class="halfbodySlides" onclick="currentSlide(3, 4)" src="imgs/2d examples/halfbody_3.png" style="display:none">
+                                            <img class="halfbodySlides" onclick="currentSlide(0, 4)" src="imgs/2d examples/halfbody_4.png" style="display:none">
                                         </div>
                                     </div>
                                 </div>
@@ -122,12 +122,12 @@
                                 <div class="columns">
                                     <div class="left example">
                                         <div id="fullbodySlides" class="slideshow no-smoothState">
-                                            <button class="left" onclick="plusDivs(-1, 2)">&#10094;</button>
-                                            <button class="right" onclick="plusDivs(1, 2)">&#10095;</button>
-                                            <img class="fullbodySlides" src="imgs/2d examples/fullbody_1.png" style="display:block">
-                                            <img class="fullbodySlides" src="imgs/2d examples/fullbody_2.png" style="display:none">
-                                            <img class="fullbodySlides" src="imgs/2d examples/fullbody_3.png" style="display:none">
-                                            <img class="fullbodySlides" src="imgs/2d examples/fullbody_4.jpg" style="display:none">
+                                            <button class="left" onclick="plusMatchingDivs(-1, 2)">&#10094;</button>
+                                            <button class="right" onclick="plusMatchingDivs(1, 2)">&#10095;</button>
+                                            <img class="fullbodySlides" onclick="currentSlide(1, 5)" src="imgs/2d examples/fullbody_1.png" style="display:block">
+                                            <img class="fullbodySlides" onclick="currentSlide(2, 5)" src="imgs/2d examples/fullbody_2.png" style="display:none">
+                                            <img class="fullbodySlides" onclick="currentSlide(3, 5)" src="imgs/2d examples/fullbody_3.png" style="display:none">
+                                            <img class="fullbodySlides" onclick="currentSlide(0, 5)" src="imgs/2d examples/fullbody_4.jpg" style="display:none">
                                         </div>
                                     </div>
                                     <div class="right text rows">
@@ -175,19 +175,6 @@
                         </commission_type>
                     </commissions>
                 </content>
-                <modal class="no-smoothState">
-                    <div id="bustModal" class="slideshow">
-                        <button class="left" onclick="plusDivs(-1, 3)">&#10094;</button>
-                        <button class="right" onclick="plusDivs(1, 3)">&#10095;</button>
-                        <img class="bustModal" onclick="closeModal()" src="imgs/2d examples/bust_1.png" style="display:block">
-                        <img class="bustModal" onclick="closeModal()" src="imgs/2d examples/bust_2.png" style="display:none">
-                        <img class="bustModal" onclick="closeModal()" src="imgs/2d examples/bust_3.png" style="display:none">
-                        <img class="bustModal" onclick="closeModal()" src="imgs/2d examples/bust_4.png" style="display:none">
-                        <span class="close">(click image to exit)</span>
-                    </div>
-                    <!--<div id="halfbodyModal" class="slideshow"></div>
-                    <div id="fullbodyModal" class="slideshow"></div>-->
-                </modal>
                 <nav class="right scene-element">
                     <a href="index.html" id="toindex" class="right btn" data-target="-1">back&nbsp;<span>▶</span></a>
                 </nav>
@@ -207,6 +194,35 @@
                 </a>
             </div>
         </main>
+        <modal class="no-smoothState" style="display:none;">
+            <div id="bustModal" class="slideshow" style="display:none;">
+                <button class="left" onclick="plusMatchingDivs(-1, 3)">&#10094;</button>
+                <button class="right" onclick="plusMatchingDivs(1, 3)">&#10095;</button>
+                <img class="bustModal" onclick="closeModal()" src="imgs/2d examples/bust_1.png" style="display:none">
+                <img class="bustModal" onclick="closeModal()" src="imgs/2d examples/bust_2.png" style="display:none">
+                <img class="bustModal" onclick="closeModal()" src="imgs/2d examples/bust_3.png" style="display:none">
+                <img class="bustModal" onclick="closeModal()" src="imgs/2d examples/bust_4.png" style="display:none">
+                <span class="close">(click image to exit)</span>
+            </div>
+            <div id="halfbodyModal" class="slideshow" style="display:none;">
+                <button class="left" onclick="plusMatchingDivs(-1, 4)">&#10094;</button>
+                <button class="right" onclick="plusMatchingDivs(1, 4)">&#10095;</button>
+                <img class="halfbodyModal" onclick="closeModal()" src="imgs/2d examples/halfbody_1.png" style="display:none">
+                <img class="halfbodyModal" onclick="closeModal()" src="imgs/2d examples/halfbody_2.png" style="display:none">
+                <img class="halfbodyModal" onclick="closeModal()" src="imgs/2d examples/halfbody_3.png" style="display:none">
+                <img class="halfbodyModal" onclick="closeModal()" src="imgs/2d examples/halfbody_4.png" style="display:none">
+                <span class="close">(click image to exit)</span>
+            </div>
+            <div id="fullbodyModal" class="slideshow" style="display:none;">
+                <button class="left" onclick="plusMatchingDivs(-1, 5)">&#10094;</button>
+                <button class="right" onclick="plusMatchingDivs(1, 5)">&#10095;</button>
+                <img class="fullbodyModal" onclick="closeModal()" src="imgs/2d examples/fullbody_1.png" style="display:none">
+                <img class="fullbodyModal" onclick="closeModal()" src="imgs/2d examples/fullbody_2.png" style="display:none">
+                <img class="fullbodyModal" onclick="closeModal()" src="imgs/2d examples/fullbody_3.png" style="display:none">
+                <img class="fullbodyModal" onclick="closeModal()" src="imgs/2d examples/fullbody_4.jpg" style="display:none">
+                <span class="close">(click image to exit)</span>
+            </div>
+        </modal>
         <footer>
             <div id="innerfooter">
                 <p>copyright © 2023 EVULBAD ◈ <a href="mailto:evulbad@gmail.com">contact me</a> ◈ someday, there'll be a sitemap here. not today though</p>
