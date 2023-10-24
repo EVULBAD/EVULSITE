@@ -168,7 +168,7 @@ body#commissions {
     top:50%;
     left:50%;
     transform:translateY(-50%) translateX(-50%);
-    cursor:pointer;
+    cursor:auto !important;
 }
 
 #commissions modal .close {
@@ -191,6 +191,12 @@ body#commissions {
     transform:translateY(-50%);
     padding:0 20px;
     cursor:pointer;
+    z-index:9999999;
+}
+
+#commissions .btn.closeModal {
+    width:100vw;
+    height:100vh;
 }
 
 /*FORM LABELS*/

@@ -25,13 +25,23 @@ function currentURLFinder() {
   return window.location.href;
 }
 
-//finds btns and saves id of whichever btn is clicked.
+//finds btns, saves id of whichever btn is clicked, and performs function depending on classlist of btn.
 function buttonListener(){
   const btns = document.querySelectorAll(".btn");
+  let classes, current, target;
   for (const btn of btns) {
     btn.addEventListener("click", function() {
       clickedBtn = btn.id;
-      //console.log(clickedBtn);
+      classes = btn.classList;
+      for (i = 0; i < classes.length; i++) {
+        if (classes[i].indexOf("closeModal") != -1) {
+          closeModal();
+        } else if (classes[i].indexOf("slideSwap") != -1) {
+          current = parseInt(btn.getAttribute("data-viewport")),
+          target = parseInt(btn.getAttribute("data-target"));
+          plusMatchingDivs(target, current);
+        }
+      }
     });
   }
 }
@@ -95,6 +105,11 @@ for (i = 0; i < slideIdFinder.length; i++) {
   slideIndex.push(1);
 }
 
+//event listeners.
+/*window.addEventListener(for "currentSlide" onclicks);
+window.addEventListener(for "plusMatchingDivs" onclicks);
+window.addEventListener()*/
+
 //functions.
 function showDivs(n, id) {
   let currentSlideshow = document.getElementsByClassName(slideId[id]);
@@ -153,7 +168,7 @@ function returnMatchingSlideshows(id) {
     currentGroup = currentGroup.replace("Slides", "");
   } else {
     currentGroup = currentGroup.replace("Modal", "");
-  };
+  }
   indexOfSlides = slideId.indexOf(currentGroup + "Slides");
   indexOfModal = slideId.indexOf(currentGroup + "Modal");
   array.push(indexOfSlides); array.push(indexOfModal);
