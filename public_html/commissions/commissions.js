@@ -33,14 +33,16 @@ function buttonListener(){
     btn.addEventListener("click", function() {
       clickedBtn = btn.id;
       classes = btn.classList;
-      for (i = 0; i < classes.length; i++) {
-        if (classes[i].indexOf("closeModal") != -1) {
-          closeModal();
-        } else if (classes[i].indexOf("slideSwap") != -1) {
-          current = parseInt(btn.getAttribute("data-viewport")),
-          target = parseInt(btn.getAttribute("data-target"));
-          plusMatchingDivs(target, current);
-        }
+      if (classes.contains("closeModal") != false) {
+        closeModal();
+      } else if (classes.contains("slideSwap") != false) {
+        current = parseInt(btn.getAttribute("data-viewport")),
+        target = parseInt(btn.getAttribute("data-target"));
+        plusMatchingDivs(target, current);
+      } else if (classes.contains("currentSlide") != false) {
+        current = parseInt(btn.getAttribute("data-viewport")),
+        target = parseInt(btn.getAttribute("data-target"));
+        currentSlide(current, target);
       }
     });
   }
@@ -104,11 +106,6 @@ for (i = 0; i < slideIdFinder.length; i++) {
   slideId.push(slideIdFinder[i].id);
   slideIndex.push(1);
 }
-
-//event listeners.
-/*window.addEventListener(for "currentSlide" onclicks);
-window.addEventListener(for "plusMatchingDivs" onclicks);
-window.addEventListener()*/
 
 //functions.
 function showDivs(n, id) {
