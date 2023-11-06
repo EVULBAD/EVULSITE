@@ -114,7 +114,7 @@ body#commissions {
     cursor:pointer;
     margin:0;
     padding:0;
-    z-index:999;
+    z-index:4;
     opacity:0;
     transition:0.4s;
 }
@@ -148,7 +148,7 @@ body#commissions {
 
 #commissions commission_type .slideshow::after {
     right:0;
-    background:linear-gradient(-90deg, rgba(219,233,236,1) 25%, rgba(255,255,255,0) 100%);
+    
 }
 
 /*LIGHTBOX*/
@@ -158,7 +158,7 @@ body#commissions {
     position:fixed;
     top:0;
     background:rgba(0, 0, 0, 0.80);
-    z-index:999;
+    z-index:10;
 }
 
 #commissions modal img {
@@ -191,7 +191,7 @@ body#commissions {
     transform:translateY(-50%);
     padding:0 20px;
     cursor:pointer;
-    z-index:9999999;
+    z-index:11;
 }
 
 #commissions .btn.closeModal {
@@ -230,7 +230,7 @@ label {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-    z-index:999;
+    z-index:4;
     content: "";
     position: absolute;
     display: none;
@@ -339,7 +339,6 @@ label {
 #commissions logo {
     width:100%;
     display:flex;
-    z-index:2;
 }
 
 #commissions logo.left {
@@ -381,7 +380,7 @@ label {
 
 /*INFO PAGES*/
 #commissions .wrapper {
-    z-index:999;
+    z-index:3;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -471,7 +470,7 @@ label {
     top:-20px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    z-index:999;
+    z-index:5;
 }
 
 #commissions jump p {
@@ -723,6 +722,14 @@ label {
     padding:20px;
 }
 
+#commissions .twod commission_type .slideshow::before {
+    background:linear-gradient(90deg, rgba(219,233,236,1) 25%, rgba(255,255,255,0) 100%);
+}
+
+#commissions .twod commission_type .slideshow::after {
+    background:linear-gradient(-90deg, rgba(219,233,236,1) 25%, rgba(255,255,255,0) 100%);
+}
+
 #commissions .twod [type="radio"]:checked + label:after, #commissions .twod [type="checkbox"]:checked + label:after {
     background: none repeat scroll 0 0 #CC302F;
 }
@@ -794,6 +801,14 @@ label {
 #commissions .threed .border-wrapper {
     border: double #A85F37;
     padding:20px;
+}
+
+#commissions .threed commission_type .slideshow::before {
+    background:linear-gradient(90deg, rgba(239,223,215,1) 25%, rgba(255,255,255,0) 100%);
+}
+
+#commissions .threed commission_type .slideshow::after {
+    background:linear-gradient(-90deg, rgba(239,223,215,1) 25%, rgba(255,255,255,0) 100%);
 }
 
 #commissions .threed [type="radio"]:checked + label:after, #commissions .threed [type="checkbox"]:checked + label:after {

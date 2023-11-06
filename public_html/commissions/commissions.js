@@ -63,8 +63,6 @@ function fixBackgroundSizeCover(value) {
   } else {
     return;
   }
-
-  //console.log("resize bg has run");
 };
 
 //function that figures out which elements to slap fixBackgroundSizeCover onto.
@@ -98,14 +96,8 @@ function removeHalfWidth() {
 
 //SLIDESHOW FUNCTIONS:
 //declarations.
-let slideIndex = [],
-  slideId = [],
-  slideIdFinder = document.getElementsByClassName("slideshow");
-
-for (i = 0; i < slideIdFinder.length; i++) {
-  slideId.push(slideIdFinder[i].id);
-  slideIndex.push(1);
-}
+let slideIndex = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+slideId = ["bustSlides", "halfbodySlides", "fullbodySlides", "bustModal", "halfbodyModal", "fullbodyModal", "lowpolySlides", "highpolySlides", "lowpolyModal", "highpolyModal"];
 
 //functions.
 function showDivs(n, id) {
@@ -180,25 +172,13 @@ function onLoadFunctions() {
   buttonListener();
   fixBackgroundElements();
   removeHalfWidth();
-
-  slideIndex = [],
-    slideId = [],
-    slideIdFinder = document.getElementsByClassName("slideshow");
-
-  for (element in slideIdFinder) {
-    slideId.push(slideIdFinder[element].id)
-  }
-
-  for (i = 0; i < slideId.length; i++) {
-    slideIndex.push(1);
-  }
 }
 
 //intializing page by getting current url and listening for buttons.
 if (document.getElementsByClassName("form_result").length > 0) {
   document.getElementById("displayDate").innerHTML = displayDate;
 } else {
-  window.onload = onLoadFunctions;
+  onLoadFunctions();
 
   //jQuery for smoothState.
   (function ($) {
@@ -234,8 +214,8 @@ if (document.getElementsByClassName("form_result").length > 0) {
         onStart: {
           duration: 400,
           render: function(url, $container) {
-          $main.attr("data-transition", transition);
-          $main.addClass("is-exiting");
+            $main.attr("data-transition", transition);
+            $main.addClass("is-exiting");
           }
         },
   
