@@ -36,16 +36,21 @@
                                     <input type="radio" id="low-poly" name="TYPE" value="low-poly" checked="checked" data-valuetwo="1"><label for="low-poly">low poly model</label><br>
                                     <input type="radio" id="high-poly" name="TYPE" value="high-poly" data-valuetwo="1"><label for="high-poly">high poly model</label><br>
                                     <br>
+                                    <formlabel><h1>BASE MODEL<span style="color:#0055C1">*</span></h1></formlabel>
+                                    <input type="radio" id="null&nbsp;base" name="BASE" value="null&nbsp;base" checked="checked" data-valuetwo="2"><label for="null&nbsp;base">yes, with null anatomy</label><br>
+                                    <input type="radio" id="nsfw&nbsp;base" name="BASE" value="nsfw&nbsp;base" data-valuetwo="2"><label for="nsfw&nbsp;base">yes, with nsfw anatomy</label><br>
+                                    <input type="radio" id="no&nbsp;base" name="BASE" value="no&nbsp;base" data-valuetwo="2"><label for="no&nbsp;base">no, my character doesn't wear full outfits/i don't need a separate base model at this time</label><br>
+                                    <br>
                                     <formlabel><h1>AVATAR UPGRADE<span style="color:#0055C1">*</span></h1></formlabel>
                                     <input type="radio" id="yes" name="AVATAR" value="yes" checked="checked" data-valuetwo="1"><label for="yes">yes</label><br>
                                     <input type="radio" id="no" name="AVATAR" value="no" data-valuetwo="1"><label for="no">no</label><br>
                                     <br>
                                     <formlabel><h1>ADD-ONS</h1></formlabel>
-                                    <input type="checkbox" id="checkboxes-1" name="ADDONS[]" value="additional&nbsp;poses" data-valuetwo="1"><label for="checkboxes-1">additional poses<span class="checkmark"></span></label><br>
-                                    <input type="checkbox" id="checkboxes-2" name="ADDONS[]" value="additional&nbsp;outfits" data-valuetwo="1"><label for="checkboxes-2">additional outfits<span class="checkmark"></span></label><br>
-                                    <input type="checkbox" id="checkboxes-3" name="ADDONS[]" value="animation" data-valuetwo="1"><label for="checkboxes-3">short animations<span class="checkmark"></span></label><br>
-                                    <input type="checkbox" id="checkboxes-4" name="ADDONS[]" value="nsfw" data-valuetwo="1"><label for="checkboxes-4">nsfw anatomy<span class="checkmark"></span></label><br>
-                                    <input type="checkbox" id="checkboxes-5" name="ADDONS[]" value="scenic&nbsp;bg" data-valuetwo="1"><label for="checkboxes-5">scenic background<span class="checkmark"></span></label><br>
+                                    <input type="checkbox" id="checkboxes-3" name="ADDONS[]" value="additional&nbsp;poses" data-valuetwo="1"><label for="checkboxes-3">additional posed render<span class="checkmark"></span></label><br>
+                                    <input type="checkbox" id="checkboxes-4" name="ADDONS[]" value="additional&nbsp;outfits" data-valuetwo="1"><label for="checkboxes-4">additional outfit<span class="checkmark"></span></label><br>
+                                    <input type="checkbox" id="checkboxes-5" name="ADDONS[]" value="animation" data-valuetwo="1"><label for="checkboxes-5">short animation<span class="checkmark"></span></label><br>
+                                    <input type="checkbox" id="checkboxes-6" name="ADDONS[]" value="nsfw&nbsp;content" data-valuetwo="1"><label for="checkboxes-6">nsfw content<span class="checkmark"></span></label><br>
+                                    <input type="checkbox" id="checkboxes-7" name="ADDONS[]" value="scenic&nbsp;bg" data-valuetwo="1"><label for="checkboxes-7">scenic background<span class="checkmark"></span></label><br>
                                     <br>
                                     <formlabel><h1>CHARACTER REFERENCE<span style="color:#0055C1">*</span></h1></formlabel>
                                     <input type="file" id="files" name="FILES[]" accept="image/*" onchange="uploadFile(this)" multiple><label for="files">upload</label><span id="file-count"> up to 3 files no larger than 10mb each.</span><br>
@@ -59,7 +64,7 @@
                                     <input class="form-control textinput" name="EMAIL" placeholder="email@example.com" size="50" type="email" /><br>
                                     <br>
                                     <div class="textcenter">
-                                        <tos><input type="checkbox" id="checkboxes-6" name="TOS" value="yes" data-valuetwo="1"><label for="checkboxes-6">I have read and agree to the <a href="./tos.html" target="_blank">terms of service</a>.<span style="color:#0055C1">*</span><span class="checkmark"></span></label></tos><br><br>
+                                        <tos><input type="checkbox" id="checkboxes-8" name="TOS" value="yes" data-valuetwo="1"><label for="checkboxes-8">I have read and agree to the <a href="./tos.html" target="_blank">terms of service</a>.<span style="color:#0055C1">*</span><span class="checkmark"></span></label></tos><br><br>
                                         <button class="button btn" type="submit" id="submit">SUBMIT</button>
                                     </div>
                                 </form>
@@ -83,7 +88,7 @@
                 </a>
             </div>
         </main>
-        <footer>
+        <footer class="no-smoothState">
             <div id="innerfooter">
                 <p>copyright © 2023 EVULBAD ◈ <a href="mailto:evulbad@gmail.com">contact me</a> ◈ someday, there'll be a sitemap here. not today though</p>
             </div>

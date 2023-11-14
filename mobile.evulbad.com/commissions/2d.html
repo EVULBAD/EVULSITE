@@ -53,7 +53,7 @@
                                 <div class="textcenter">
                                     <hr class="dotted top">
                                     <h1>BUST</h1>
-                                    <sub>chest-up portrait. only one character per commission. can not have a scenic background.</sub><br>
+                                    <sub>chest-up portrait. perfect for icons!</sub><br>
                                     <hr class="dotted bottom">
                                 </div>
                                 <div class="textcenter">
@@ -65,14 +65,10 @@
                                     <br><br>
                                 </div>
                                 <div class="rows">
-                                    <div class="example">
-                                        <img src="imgs/test.png">
-                                        <img src="imgs/test.png">
-                                    </div>
-                                    <div class="example">
-                                        <img src="imgs/test.png">
-                                        <img src="imgs/test.png">
-                                    </div>
+                                    <img class="btn currentSlide" data-viewport="0" data-target="1" src="imgs/2d examples/thbust_1.png">
+                                    <img class="btn currentSlide" data-viewport="0" data-target="2" src="imgs/2d examples/thbust_2.png">
+                                    <img class="btn currentSlide" data-viewport="0" data-target="3" src="imgs/2d examples/thbust_3.png">
+                                    <img class="btn currentSlide" data-viewport="0" data-target="0" src="imgs/2d examples/thbust_4.png">
                                 </div>
                                 <div style="display:none" class="textcenter">
                                     this doesn't exist yet. why are you playing with my html, ya little sneak!<br>
@@ -97,14 +93,10 @@
                                     <br><br>
                                 </div>
                                 <div class="rows">
-                                    <div class="example">
-                                        <img src="imgs/test.png">
-                                        <img src="imgs/test.png">
-                                    </div>
-                                    <div class="example">
-                                        <img src="imgs/test.png">
-                                        <img src="imgs/test.png">
-                                    </div>
+                                    <img class="btn currentSlide" data-viewport="1" data-target="1" src="imgs/2d examples/thhalfbody_1.png">
+                                    <img class="btn currentSlide" data-viewport="1" data-target="2" src="imgs/2d examples/thhalfbody_2.png">
+                                    <img class="btn currentSlide" data-viewport="1" data-target="3" src="imgs/2d examples/thhalfbody_3.png">
+                                    <img class="btn currentSlide" data-viewport="1" data-target="0" src="imgs/2d examples/thhalfbody_4.jpg">
                                 </div>
                                 <div style="display:none" class="textcenter">
                                     this doesn't exist yet. why are you playing with my html, ya little sneak!<br>
@@ -129,14 +121,10 @@
                                     <br><br>
                                 </div>
                                 <div class="rows">
-                                    <div class="example">
-                                        <img src="imgs/test.png">
-                                        <img src="imgs/test.png">
-                                    </div>
-                                    <div class="example">
-                                        <img src="imgs/test.png">
-                                        <img src="imgs/test.png">
-                                    </div>
+                                    <img class="btn currentSlide" data-viewport="2" data-target="1" src="imgs/2d examples/thfullbody_1.png">
+                                    <img class="btn currentSlide" data-viewport="2" data-target="2" src="imgs/2d examples/thfullbody_2.png">
+                                    <img class="btn currentSlide" data-viewport="2" data-target="3" src="imgs/2d examples/thfullbody_3.png">
+                                    <img class="btn currentSlide" data-viewport="2" data-target="0" src="imgs/2d examples/thfullbody_4.jpg">
                                 </div>
                                 <div style="display:none" class="textcenter">
                                     this doesn't exist yet. why are you playing with my html, ya little sneak!<br>
@@ -161,6 +149,33 @@
                                     price varies depending on complexity, +$20 minimum<br><br>
                                     <b>rush order</b><br>
                                     +100% total price
+                                    <br><br>
+                                    <hr class="dotted top">
+                                    <div class="textcenter">
+                                        <h1>DISCOUNTS</h1>
+                                        <sub>stuff that'll do the opposite of cost extra.</sub><br>
+                                    </div>
+                                    <hr class="dotted bottom"><br>
+                                    <div class="textright">
+                                        <b>feature my own personal character</b><br>
+                                        <i><sub>
+                                            for if you commission art featuring one of my characters. if you do this, you're a certified sweetheart.
+                                        </sub></i>
+                                        <br>
+                                        15% off the cost of said character<br><br>
+                                        <b>feature my own design</b><br>
+                                        <i><sub>
+                                            for if you own a design of mine and commission art featuring it.
+                                        </sub></i>
+                                        <br>
+                                        10% off the cost of said character<br><br>
+                                        <b>commission redraw</b><br>
+                                        <i><sub>
+                                            for if you have a commission i made for you 2+ years ago and you'd like me to redraw it.
+                                        </sub></i>
+                                        <br>
+                                        10% off total
+                                    </div>
                                 </div>
                             </div>
                         </commission_type>
@@ -192,6 +207,50 @@
                 </a>
             </div>
         </main>
+        <modal class="no-smoothState" style="display:none;">
+            <div id="bustModal" class="slideshow" style="display:none;">
+                <button class="left btn slideSwap" data-target="-1" data-viewport="0">
+                    <p>&#10094;</p>
+                </button>
+                <button class="right btn slideSwap" data-target="1" data-viewport="0">
+                    <p>&#10095;</p>
+                </button>
+                <div class="btn closeModal">
+                    <img class="bustModal" src="imgs/2d examples/bust_1.png" style="display:none">
+                    <img class="bustModal" src="imgs/2d examples/bust_2.png" style="display:none">
+                    <img class="bustModal" src="imgs/2d examples/bust_3.png" style="display:none">
+                    <img class="bustModal" src="imgs/2d examples/bust_4.png" style="display:none">
+                </div>
+            </div>
+            <div id="halfbodyModal" class="slideshow" style="display:none;">
+                <button class="left btn slideSwap" data-target="-1" data-viewport="1">
+                    <p>&#10094;</p>
+                </button>
+                <button class="right btn slideSwap" data-target="1" data-viewport="1">
+                    <p>&#10095;</p>
+                </button>
+                <div class="btn closeModal">
+                    <img class="halfbodyModal" src="imgs/2d examples/halfbody_1.png" style="display:none">
+                    <img class="halfbodyModal" src="imgs/2d examples/halfbody_2.png" style="display:none">
+                    <img class="halfbodyModal" src="imgs/2d examples/halfbody_3.png" style="display:none">
+                    <img class="halfbodyModal" src="imgs/2d examples/halfbody_4.jpg" style="display:none">
+                </div>
+            </div>
+            <div id="fullbodyModal" class="slideshow" style="display:none;">
+                <button class="left btn slideSwap" data-target="-1" data-viewport="2">
+                    <p>&#10094;</p>
+                </button>
+                <button class="right btn slideSwap" data-target="1" data-viewport="2">
+                    <p>&#10095;</p>
+                </button>
+                <div class="btn closeModal">
+                    <img class="fullbodyModal" src="imgs/2d examples/fullbody_1.png" style="display:none">
+                    <img class="fullbodyModal" src="imgs/2d examples/fullbody_2.png" style="display:none">
+                    <img class="fullbodyModal" src="imgs/2d examples/fullbody_3.png" style="display:none">
+                    <img class="fullbodyModal" src="imgs/2d examples/fullbody_4.jpg" style="display:none">
+                </div>
+            </div>
+        </modal>
     </div>
 </body>
 </html>

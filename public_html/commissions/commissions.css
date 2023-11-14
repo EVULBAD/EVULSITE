@@ -61,7 +61,8 @@ body#commissions {
 
 #commissions sub {
     line-height:0;
-    font-size:14px
+    font-size:14px;
+    vertical-align: baseline;
 }
 
 #commissions .textcenter {
@@ -148,7 +149,6 @@ body#commissions {
 
 #commissions commission_type .slideshow::after {
     right:0;
-    
 }
 
 /*LIGHTBOX*/

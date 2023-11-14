@@ -66,7 +66,8 @@ body#commissions {
 
 #commissions sub {
     line-height:0;
-    font-size:14px
+    font-size:14px;
+    vertical-align:baseline;
 }
 
 #commissions .textcenter {
@@ -88,6 +89,75 @@ body#commissions {
 
 #commissions hr.dotted.bottom {
     margin-bottom:0;
+}
+
+/*LIGHTBOX*/
+#commissions modal {
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    background:rgba(0, 0, 0, 0.80);
+    z-index:10;
+}
+
+#commissions modal img {
+    max-width:90%;
+    max-height:80%;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translateY(-50%) translateX(-50%);
+    cursor:auto !important;
+}
+
+#commissions modal .close {
+    color: white;
+    left:50%;
+    transform: translateX(-50%);
+    bottom:45px;
+    font-size: 30px;
+    line-height:normal;
+    position:fixed;
+}
+
+#commissions modal .slideshow button {
+    position:fixed;
+    background:rgba(0, 0, 0, .75);
+    border-radius:9999px;
+    border:none;
+    color:white;
+    font-size:36px;
+    top:50%;
+    transform:translateY(-50%);
+    padding:0!important;
+    cursor:pointer;
+    z-index:11;
+    height:52px;
+    width:52px;
+}
+
+#commissions button.left {
+    left:5px;
+}
+
+#commissions button.right {
+    right:5px;
+}
+
+#commissions button.left p {
+    margin-left:-4px;
+    margin-bottom:4px;
+}
+
+#commissions button.right p {
+    margin-right:-4px;
+    margin-bottom:4px;
+}
+
+#commissions .btn.closeModal {
+    width:100vw;
+    height:100vh;
 }
 
 /*FORM LABELS*/
@@ -112,26 +182,23 @@ label {
 }
 
 .checkmark:after {
-    content: "✖";
+    left: 5px;
+    top: 4px;
+    width: 4px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index:4;
+    content: "";
     position: absolute;
-    display:none;
-}
+    display: none;
+  }
 
 [type="checkbox"]:checked + label > .checkmark:after {
     display: block;
-}
-
-.checkmark:after {
-    left:2px;
-    top:0;
-    color: white;
-    z-index:999;
-}
-
-#commissions tos .checkmark:after {
-    left:3px;
-    top:1px;
-    font-size:15px;
 }
 
 [type="radio"] + label:before, [type="checkbox"] + label:before {
@@ -139,14 +206,14 @@ label {
     position: relative;
     height:17px;
     width:17px;
-    content: " ";
+    content: "";
     margin-right: 5px;
     cursor: pointer;
     top:4px;
 }
 
 [type="radio"] + label:after, [type="checkbox"] + label:after {
-    content: " ";
+    content: "";
     height: 15px;
     width: 15px;
     position: absolute;
@@ -172,6 +239,7 @@ label {
     cursor:pointer;
     font-weight:bold;
     font-family: 'space grotesk';
+    letter-spacing: 1px;
 }
 
 .button {
@@ -252,7 +320,7 @@ label {
 
 /*INFO PAGES*/
 #commissions .wrapper {
-    z-index:999;
+    z-index:3;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -265,6 +333,7 @@ label {
 
 #commissions content {
     height:100%;
+    max-width:600px;
     width:95%;
     display:flex;
 }
@@ -288,6 +357,7 @@ label {
     text-align:center;
     margin:10px;
     width:95%;
+    max-width:600px;
     display:flex;
     justify-content: space-evenly;
 }
@@ -297,6 +367,10 @@ label {
     height:100%;
     padding:10px 0;
     border-radius: 20px;
+}
+
+#commissions nav > a.full-width {
+    flex-basis:50% !important;
 }
 
 #commissions .form nav > a {
@@ -314,39 +388,22 @@ label {
 
 #commissions .rows {
     display:flex;
-    flex-direction:column;
-    justify-content: space-between;
+    flex-wrap:wrap;
+    gap:5px;
 }
 
-#commissions .example {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex:0 1 60%;
+#commissions .currentSlide {
+    flex-basis:calc(50% - 5px);
+    flex-grow:1;
+    cursor:pointer;
+}
+
+#commissions .rows img {
+    width:100%;
 }
 
 #commissions .text {
     flex:0 0 40%;
-}
-
-#commissions .example img {
-    width:100%;
-}
-
-#commissions .example img:first-of-type {
-    margin-right:5px;
-}
-
-#commissions .example:first-of-type {
-    margin-bottom:5px;
-}
-
-#commissions .right.text, #commissions .right.example {
-    margin-left:5px;
-}
-
-#commissions .left.text, #commissions .left.example {
-    margin-right:5px;
 }
 
 /*FORM PAGES*/

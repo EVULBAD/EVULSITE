@@ -25,13 +25,25 @@ function currentURLFinder() {
   return window.location.href;
 }
 
-//finds btns and saves id of whichever btn is clicked.
+//finds btns, saves id of whichever btn is clicked, and performs function depending on classlist of btn.
 function buttonListener(){
   const btns = document.querySelectorAll(".btn");
+  let classes, current, target;
   for (const btn of btns) {
     btn.addEventListener("click", function() {
       clickedBtn = btn.id;
-      //console.log(clickedBtn);
+      classes = btn.classList;
+      if (classes.contains("closeModal") != false) {
+        closeModal();
+      } else if (classes.contains("slideSwap") != false) {
+        current = parseInt(btn.getAttribute("data-viewport")),
+        target = parseInt(btn.getAttribute("data-target"));
+        plusDivs(target, current);
+      } else if (classes.contains("currentSlide") != false) {
+        current = parseInt(btn.getAttribute("data-viewport")),
+        target = parseInt(btn.getAttribute("data-target"));
+        currentSlide(target, current);
+      }
     });
   }
 }
@@ -93,13 +105,74 @@ function onLoadFunctions() {
   removeHalfWidth();
 }
 
+/*LIGHTBOX FUNCTIONS*/
+//declarations.
+let slideIndex = [1, 1, 1, 1, 1],
+slideId = ["bustModal", "halfbodyModal", "fullbodyModal", "lowpolyModal", "highpolyModal"];
+
+//functions.
+function showDivs(n, id) {
+  let currentSlideshow = document.getElementsByClassName(slideId[id]);
+  if (n > currentSlideshow.length) {
+    slideIndex[id] = 1;
+  } else if (n < 1) {
+    slideIndex[id] = currentSlideshow.length;
+  }
+  for (i = 0; i < currentSlideshow.length; i++) {
+    currentSlideshow[i].style.display = "none";
+  }
+  currentSlideshow[slideIndex[id] - 1].style.display = "block";
+}
+
+function plusDivs(n, id) {
+  showDivs(slideIndex[id] += n, id);
+}
+
+function currentSlide(n, id) {
+  showDivs(slideIndex[id] = n, id);
+  openSelectModal(id);
+  openModal();
+}
+
+function openModal() {
+  document.getElementsByTagName("modal")[0].style.display = "block";
+}
+
+function closeModal() {
+  let elements = document.querySelectorAll('[id*="Modal"]');
+  document.getElementsByTagName("modal")[0].style.display = "none";
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.display = "none";
+  }
+}
+
+function openSelectModal(id) {
+  let array = returnMatchingSlideshows(id),
+    modal = slideId[array[1]];
+  document.getElementById(modal).style.display = "block";
+}
+
+function returnMatchingSlideshows(id) {
+  let currentGroup = slideId[id],
+    indexOfSlides,
+    indexOfModal,
+    array = [];
+  if (currentGroup.indexOf("Slides") != -1) {
+    currentGroup = currentGroup.replace("Slides", "");
+  } else {
+    currentGroup = currentGroup.replace("Modal", "");
+  }
+  indexOfSlides = slideId.indexOf(currentGroup + "Slides");
+  indexOfModal = slideId.indexOf(currentGroup + "Modal");
+  array.push(indexOfSlides); array.push(indexOfModal);
+  return array;
+}
+
 //INITIALIZATION AND ANIMATIONS:
 //intializing page by getting current url and listening for buttons.
 if (document.getElementsByClassName("form_result").length > 0) {
-  console.log("form result");
   document.getElementById("displayDate").innerHTML = displayDate;
 } else {
-  console.log("not form result");
   window.onload = onLoadFunctions;
 
   //jQuery for smoothState.
