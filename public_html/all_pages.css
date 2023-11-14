@@ -16,6 +16,16 @@ main {
 a {
     text-decoration:none;
 }
+
+/*TEXT*/
+.textcenter {
+    text-align: center;
+}
+
+.textright {
+    text-align:right;
+}
+
 /*FOOTER*/
 footer {
 	background:black;

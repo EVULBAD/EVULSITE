@@ -566,6 +566,37 @@ label {
     transition:opacity 0.4s;
 }
 
+/*TOS*/
+#tos {
+    background:black;
+}
+
+#tos #main {
+    width:100%;
+    height:100%;
+}
+
+#tos .wrapper {
+    display:flex;
+    justify-content: center;
+    overflow:auto;
+}
+
+#tos content {
+    background:white;
+    width:75%;
+    margin: auto 0;
+    padding:20px;
+}
+
+#tos h1, #tos h2 {
+    margin:0;
+}
+
+#tos h1 {
+    font-size:60px;
+}
+
 /*2D PAGES COLORS*/
 #commissions .twod {
     color: black;
