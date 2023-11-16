@@ -10,7 +10,8 @@ let bodyClass,
   day,
   year,
   displayDate,
-  result;
+  result,
+  script;
 
 //setting the date that will display on the form success page.
 result = twoDays.setDate(todaysDate.getDate() + 2);
@@ -163,6 +164,144 @@ function returnMatchingSlideshows(id) {
   array.push(indexOfSlides); array.push(indexOfModal);
   return array;
 }
+
+//FORM FUNCTIONS:
+//declarations.
+let form = document.getElementById("form"),
+  submitButton = document.getElementById("submit"),
+  fileSizeLarge = false,
+  wrongFileType = false;
+
+//function for file uploading on the form page. implements limitations to user uploads.
+function uploadFile(target) {
+  let fileSize,
+    fileMb,
+    fileName,
+    filesExceedMax = [],
+    filesWrongType = [],
+    rejected = false,
+    imageTypes = ['image/gif', 'image/jpeg', 'image/jpg', 'image/png'],
+    errorArray = [];
+
+  for (var i = 0; i < target.files.length; i++) {
+    fileName = target.files.item(i).name;
+    fileSize = target.files.item(i).size;
+    fileType = target.files.item(i).type;
+    fileMb = fileSize / 1024 ** 2;
+    if (fileMb > 10) {
+      filesExceedMax += fileName + ", ";
+      filesExceedMax[filesExceedMax.length - 1] = filesExceedMax[filesExceedMax.length - 1].replace(", ", "")
+    } else if (!imageTypes.includes(fileType)) {
+      filesWrongType += fileName + ", ";
+      filesWrongType[filesWrongType.length - 1] = filesWrongType[filesWrongType.length - 1].replace(", ", "")
+    }
+  }
+
+  if (filesExceedMax.length >= 1) {
+    errorArray.push("file(s) listed larger than maximum 10mb: " + filesExceedMax);
+    document.getElementById("file-count").value = "";
+    document.getElementById("file-count").innerHTML = " up to 3 files no larger than 10mb each.";
+    rejected = true;
+    fileSizeLarge = true;
+  } else if (filesWrongType.length >= 1) {
+    errorArray.push("file(s) listed are not png/jpg/gif: " + filesWrongType);
+    document.getElementById("file-count").value = "";
+    document.getElementById("file-count").innerHTML = " up to 3 files no larger than 10mb each.";
+    rejected = true;
+    wrongFileType = true;
+  } else if (target.files.length > 3) {
+    errorArray.push("more than 3 files selected; you may only upload up to 3 files total");
+    document.getElementById("file-count").value = "";
+    document.getElementById("file-count").innerHTML = " up to 3 files no larger than 10mb each.";
+    rejected = true;
+  } else {
+    fileSizeLarge = false;
+    wrongFileType = false;
+  }
+
+  if (rejected === true) {
+    alertMessage = "file upload unsuccessful. following errors detected:\n";
+    for (i = 0; i < errorArray.length; i++) {
+      alertMessage += "\n-" + errorArray[i];
+    }
+    alertMessage += "\n\nplease try again.";
+    alert(alertMessage);
+  } else if (target.files.length === 1 && rejected === false) {
+    document.getElementById("file-count").innerHTML = " " + target.files.length + " file selected."
+  } else if (rejected === false) {
+    document.getElementById("file-count").innerHTML = " " + target.files.length + " files selected."
+  }
+}
+
+//function to read a value from the form.
+function formReader(valueName) {
+  return document.getElementById(valueName).value;
+}
+
+//function that uses formReader() to determine why a form may have an error.
+function formErrors() {
+  let emailValue = formReader("email"),
+    uploadFiles = document.getElementById("files").files.length,
+    refUrls = formReader("urls"),
+    tosValue = document.querySelector(".tos").checked,
+    errorArray = [];
+
+  if (!emailValue) {
+    errorArray.push("email field is empty")
+  }
+
+  if (uploadFiles === 0 && !refUrls) {
+    errorArray.push("no references attached")
+  }
+
+  if (uploadFiles > 3) {
+    errorArray.push("file count exceeds maximum of 3")
+  }
+
+  if (fileSizeLarge) {
+    errorArray.push("file(s) in upload exceeds maximum of 10mb")
+  }
+
+  if (wrongFileType) {
+    errorArray.push("file(s) in upload are not png/jpg/gif")
+  }
+
+  if (tosValue === false) {
+    errorArray.push("terms of service unchecked")
+  }
+
+  return errorArray;
+}
+
+//functions for form submission.
+$("#form").submit(function(e){
+  e.preventDefault();
+  $form = $(this);
+  let alertMessage,
+    errorArray;
+
+  submitButton.innerHTML = "SENDING...";
+
+  $.ajax({
+    type: "POST",
+    url: 'mailer.php',
+    data: $form.serialize(),
+    dataType: "html",
+    success: function() {
+      window.location = "success.html";
+    },
+    error: function() {
+      alertMessage = "form submission unsuccessful. following errors detected:\n";
+      errorArray = formErrors();
+      for (i = 0; i < errorArray.length; i++) {
+        alertMessage += "\n-" + errorArray[i];
+      }
+      alertMessage += "\n\nplease double check that the form is filled out correctly and try again.";
+      alert(alertMessage);
+      submitButton.innerHTML = "SUBMIT";
+    }
+  });
+});
 
 //INITIALIZATION AND ANIMATIONS:
 //set of functions to run everytime the window loads.
