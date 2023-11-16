@@ -1,4 +1,5 @@
 //FORM FUNCTIONS:
+//declarations.
 let form = document.getElementById("form"),
   submitButton = document.getElementById("submit");
 
@@ -32,7 +33,38 @@ function uploadFile(target) {
   }
 }
 
-//function to edit the button when form is sending an email.
-form.addEventListener("submit", (e) => {
+//function to read a value from the form.
+function formReader(valueName) {
+  return document.getElementsByName(valueName).value;
+}
+
+//function that uses formReader() to determine why a form may have an error.
+function formErrors() {
+  //empty email.
+  let email = formReader(email);
+  console.log(email);
+}
+
+//functions for form submission.
+$(form).submit(function(e)
+{
+  e.preventDefault();
+  $form = $(this);
+  let result;
+
   submitButton.innerHTML = "SENDING...";
+
+  $.ajax({
+    type: "POST",
+    url: 'mailer.php',
+    data: $form.serialize(),
+    dataType: "html",
+    success: function() {
+      window.location = "success.html";
+    },
+    error: function() {
+      submitButton.innerHTML = "SUBMIT";
+      formErrors();
+    }
+  });
 });

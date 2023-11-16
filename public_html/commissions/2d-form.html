@@ -28,7 +28,7 @@
                                 if you don't receive a response within 48 hours after submitting your inquiry, your inquiry doesn't suit the options on the form, or you have any additional questions, feel free to <a href="mailto:evulbad@gmail.com" target="_blank">email directly</a>.
                                 <b>do not</b> send commission inquiries to any of my social media accounts; i will just point you back here. forms and emails keep me organized!</p>
                                 <hr class="dotted bottom"><br>
-                                <form action="mailer.php" method="POST" enctype="multipart/form-data" id="form" class="no-smoothState">
+                                <form id="form" class="no-smoothState">
                                     <formlabel><h1>COMMISSION TYPE<span style="color:#CC302F">*</span></h1></formlabel>
                                     <input type="radio" id="bust" name="TYPE" value="bust" checked="checked" data-valuetwo="1"><label for="bust">bust</label><br>
                                     <input type="radio" id="half-body" name="TYPE" value="half-body" data-valuetwo="1"><label for="half-body">half body</label><br>
@@ -49,16 +49,16 @@
                                     <formlabel><h1>CHARACTER REFERENCE<span style="color:#CC302F">*</span></h1></formlabel>
                                     <input type="file" id="files" name="FILES[]" accept="image/*" onchange="uploadFile(this)" multiple><label for="files">upload</label><span id="file-count"> up to 3 files no larger than 10mb each.</span><br>
                                     <p style="display:inline-block">or paste urls:</p>
-                                    <textarea class="form-control textinput" name="URLS" placeholder="separate links with commas." rows="2" cols="50" style="resize: none;"></textarea><br>
+                                    <textarea class="form-control textinput" name="URLS" id="urls" placeholder="separate links with commas." rows="2" cols="50" style="resize: none;"></textarea><br>
                                     <br>
                                     <formlabel><h1>ADDITIONAL INFO</h1></formlabel>
                                     <textarea class="form-control textinput" name="INFO" placeholder="traits, poses, fashion, color schemes, etc etc etc..." rows="5" cols="50" style="resize: none;"></textarea><br>
                                     <br>
                                     <formlabel><h1>CONTACT EMAIL<span style="color:#CC302F">*</span></h1></formlabel>
-                                    <input class="form-control textinput" name="EMAIL" placeholder="email@example.com" size="50" type="email" /><br>
+                                    <input class="form-control textinput" name="EMAIL" id="email" placeholder="email@example.com" size="50" type="email" /><br>
                                     <br>
                                     <div class="textcenter">
-                                        <tos><input type="checkbox" id="checkboxes-4" name="TOS" value="yes" data-valuetwo="1"><label for="checkboxes-4">I have read and agree to the <a href="./tos.html" target="_blank">terms of service</a>.<span style="color:#CC302F">*</span><span class="checkmark"></span></label></tos><br><br>
+                                        <tos><input type="checkbox" id="checkboxes-4" class="tos" name="TOS" value="yes" data-valuetwo="1"><label for="checkboxes-4">I have read and agree to the <a href="./tos.html" target="_blank">terms of service</a>.<span style="color:#CC302F">*</span><span class="checkmark"></span></label></tos><br><br>
                                         <button class="button btn" type="submit" id="submit">SUBMIT</button>
                                     </div>
                                 </form>
