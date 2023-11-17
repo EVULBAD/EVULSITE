@@ -44,6 +44,9 @@ function buttonListener(){
         current = parseInt(btn.getAttribute("data-viewport")),
         target = parseInt(btn.getAttribute("data-target"));
         currentSlide(current, target);
+      } else if (clickedBtn === "submit") {
+        document.getElementById(clickedBtn).innerHTML = "SENDING...";
+        submitForm();
       }
     });
   }
@@ -133,14 +136,20 @@ function currentSlide(n, id) {
 
 function openModal() {
   document.getElementsByTagName("modal")[0].style.display = "block";
+  setTimeout(() => {
+    document.getElementsByTagName("modal")[0].style.opacity = "1";
+  }, 100);
 }
 
 function closeModal() {
   let elements = document.querySelectorAll('[id*="Modal"]');
-  document.getElementsByTagName("modal")[0].style.display = "none";
-  for (i = 0; i < elements.length; i++) {
-    elements[i].style.display = "none";
-  }
+  document.getElementsByTagName("modal")[0].style.opacity = "0";
+  setTimeout(() => {
+    document.getElementsByTagName("modal")[0].style.display = "none";
+    for (i = 0; i < elements.length; i++) {
+      elements[i].style.display = "none";
+    }
+  }, 300);
 }
 
 function openSelectModal(id) {
@@ -273,35 +282,39 @@ function formErrors() {
   return errorArray;
 }
 
-//functions for form submission.
-$("#form").submit(function(e){
-  e.preventDefault();
-  $form = $(this);
-  let alertMessage,
-    errorArray;
-
-  submitButton.innerHTML = "SENDING...";
-
-  $.ajax({
-    type: "POST",
-    url: 'mailer.php',
-    data: $form.serialize(),
-    dataType: "html",
-    success: function() {
-      window.location = "success.html";
-    },
-    error: function() {
-      alertMessage = "form submission unsuccessful. following errors detected:\n";
-      errorArray = formErrors();
-      for (i = 0; i < errorArray.length; i++) {
-        alertMessage += "\n-" + errorArray[i];
+//function for form submission.
+function submitForm() {
+  $("#form").submit(function(e){
+    openModal();
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $form = $(this);
+    let alertMessage,
+      errorArray;
+  
+    $.ajax({
+      type: "POST",
+      url: 'mailer.php',
+      data: new FormData( this ),
+      processData: false,
+      contentType: false,
+      success: function() {
+        window.location = "success.html";
+      },
+      error: function() {
+        closeModal();
+        alertMessage = "form submission unsuccessful. following errors detected:\n";
+        errorArray = formErrors();
+        for (i = 0; i < errorArray.length; i++) {
+          alertMessage += "\n-" + errorArray[i];
+        }
+        alertMessage += "\n\nplease double check that the form is filled out correctly and try again.";
+        alert(alertMessage);
+        document.getElementById("submit").innerHTML = "SUBMIT";
       }
-      alertMessage += "\n\nplease double check that the form is filled out correctly and try again.";
-      alert(alertMessage);
-      submitButton.innerHTML = "SUBMIT";
-    }
+    });
   });
-});
+}
 
 //INITIALIZATION AND ANIMATIONS:
 //set of functions to run everytime the window loads.

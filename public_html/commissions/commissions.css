@@ -151,6 +151,7 @@ body#commissions {
     top:0;
     background:rgba(0, 0, 0, 0.80);
     z-index:10;
+    transition: opacity .2s;
 }
 
 #commissions modal img {
@@ -189,6 +190,24 @@ body#commissions {
 #commissions .btn.closeModal {
     width:100vw;
     height:100vh;
+}
+
+#commissions modal div.form {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+    width:100%;
+}
+
+#commissions modal div.form text {
+    font-size:20px;
+    background: black;
+    background: -moz-radial-gradient(center, rgba(1, 1, 1, 0.5) 0%, rgba(0, 0, 0, 0) 50%);
+    background: -webkit-radial-gradient(center, rgba(1, 1, 1, 0.5) 0%, rgba(0, 0, 0, 0) 50%);
+    background: radial-gradient(ellipse at center, rgba(1, 1, 1, 0.5) 0%, rgba(0, 0, 0, 0) 50%);
+    margin-bottom: 35px;
+    padding:25vh 25vw;
 }
 
 /*FORM LABELS*/
@@ -262,7 +281,6 @@ label {
 
 .button, [type="file"] + label {
     border: none;
-    color: white;
     border-radius:20px;
     text-align: center;
     text-decoration: none;
@@ -271,9 +289,6 @@ label {
     font-weight:bold;
     font-family: 'space grotesk';
     letter-spacing: 1px;
-}
-
-.button {
     padding: 15px 30px;
     font-size: 16px;
 }
@@ -282,10 +297,15 @@ label {
     padding:2px 15px;
     font-size:14px;
     margin:3px 0;
+    color: white!important;
 }
 
 #file-count {
     font-size:14px;
+}
+
+#submit.button  {
+    color:white!important;
 }
 
 /*BACKGROUND IMAGES*/
@@ -419,7 +439,7 @@ label {
     height:36px;
     text-align:center;
     position:fixed;
-    top:calc(50% - 35px);
+    top:calc(50% - 35px + 18px);
     margin: -52px 0;
 }
 

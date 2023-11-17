@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body id="commissions" class="form twod">
     <!--<script>0</script>-->
@@ -28,7 +29,7 @@
                                 if you don't receive a response within 48 hours after submitting your inquiry, your inquiry doesn't suit the options on the form, or you have any additional questions, feel free to <a href="mailto:evulbad@gmail.com" target="_blank">email directly</a>.
                                 <b>do not</b> send commission inquiries to any of my social media accounts; i will just point you back here. forms and emails keep me organized!</p>
                                 <hr class="dotted bottom"><br>
-                                <form id="form" class="twod no-smoothState">
+                                <form action="mailer.php" method="POST" enctype="multipart/form-data" id="form" class="twod no-smoothState">
                                     <formlabel><h1>COMMISSION TYPE<span style="color:#CC302F">*</span></h1></formlabel>
                                     <input type="radio" id="bust" name="TYPE" value="bust" checked="checked" data-valuetwo="1"><label for="bust">bust</label><br>
                                     <input type="radio" id="half-body" name="TYPE" value="half-body" data-valuetwo="1"><label for="half-body">half body</label><br>
@@ -90,10 +91,25 @@
                 <p>copyright © 2023 EVULBAD ◈ <a href="mailto:evulbad@gmail.com">contact me</a> ◈ someday, there'll be a sitemap here. not today though</p>
             </div>
         </footer>
+        <modal class="no-smoothState" style="display:none; opacity:0;">
+            <div class="form">
+                <text class="textcenter" style="color:white">
+                    <h1>
+                        FORM IS SENDING...
+                        <br>
+                        <span style="border-bottom:red 1px solid; font-weight:bold;">please do not refresh or close page!</span>
+                    </h1>
+                    <p><br>
+                        larger reference images mean longer upload times.
+                        <br>
+                        page will change when submission is successful; give it a minute or two!
+                    </p>
+                </text>
+            </div>
+        </modal>
     </div>
 </body>
 </html>
 <script src="../assets/redirection-mobile.js"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="../assets/jquery.smoothState.min.js"></script>
 <script src="commissions.js"></script>
